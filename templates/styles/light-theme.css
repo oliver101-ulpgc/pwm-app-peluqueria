@@ -1,0 +1,9 @@
+:root {
+    --background-color: #ffffff;
+    --text-fg1-color: #000000;
+    --text-fg2-color: #eeeeee;
+    --button-bg1-color: #000000;
+    --card-bg1-color: lightgray;
+    --accent-color: #4CAF50;
+    --accent-color-hover: #45a049;
+}

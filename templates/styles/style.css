@@ -1,0 +1,35 @@
+.service-card {
+    background-image: none;
+    background-color: var(--card-bg1-color);
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 300px;
+    min-width: 200px;
+}
+
+.service-title {
+    color: var(--text-fg1-color);
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.service-content{
+    display: flex;
+    justify-content: right;
+}
+
+.part-service-content {
+    color: var(--text-fg1-color);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.reserve-button {
+    color: var(--text-fg2-color);
+    background-color: var(--button-bg1-color);
+    margin-left: 10px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}

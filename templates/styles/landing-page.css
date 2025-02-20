@@ -1,7 +1,3 @@
-p, h2 {
-    margin: 0;
-}
-
 .service-card {
     background-image: none;
     background-color: var(--card-bg1-color);
@@ -9,6 +5,10 @@ p, h2 {
     border-radius: 20px;
     max-width: 300px;
     min-width: 200px;
+}
+
+article.service-card p, h2 {
+    margin: 0;
 }
 
 .service-title {
@@ -42,5 +42,4 @@ p, h2 {
     border-width: 0;
     text-align: center;
     padding: 10px;
-    height: min-content;
 }

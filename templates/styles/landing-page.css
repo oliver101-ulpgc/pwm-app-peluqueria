@@ -1,3 +1,7 @@
+p, h2 {
+    margin: 0;
+}
+
 .service-card {
     background-image: none;
     background-color: var(--card-bg1-color);
@@ -13,7 +17,8 @@
     font-weight: bold;
     margin-bottom: 20px;
 }
-.service-content{
+
+.service-content {
     display: flex;
     justify-content: right;
 }
@@ -25,11 +30,17 @@
     align-items: flex-end;
 }
 
+.service-price {
+    font-weight: bold;
+}
+
 .reserve-button {
     color: var(--text-fg2-color);
     background-color: var(--button-bg1-color);
     margin-left: 10px;
     border-radius: 10px;
+    border-width: 0;
     text-align: center;
     padding: 10px;
+    height: min-content;
 }

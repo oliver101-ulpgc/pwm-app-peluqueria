@@ -93,11 +93,3 @@ input:focus::placeholder {
     font-size: 16px;
     margin: 20px 0;
 }
-
-.register-callout a {
-    color: var(--accent-color);
-}
-
-.register-callout a:hover {
-    color: var(--accent-color-hover);
-}

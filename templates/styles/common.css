@@ -7,6 +7,14 @@ body {
     background-color: var(--background-color);
 }
 
+a {
+    color: var(--accent-color);
+}
+
+a:hover {
+    color: var(--accent-color-hover);
+}
+
 .text-section-title-heading {
     color: var(--text-fg1-color);
     margin: 10px 0 20px 0;

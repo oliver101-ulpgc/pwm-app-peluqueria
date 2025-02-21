@@ -1,0 +1,103 @@
+:root {
+    --form-min-width: 400px;
+    --form-field-left-padding: 20px;
+    --form-element-height: 60px;
+    --form-element-border-radius: 10px;
+}
+
+.central-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.central-section form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.central-section header {
+    min-width: var(--form-min-width);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field {
+    min-width: var(--form-min-width);
+    background-color: var(--input-bg1-color);
+    height: var(--form-element-height);
+    border-radius: var(--form-element-border-radius);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.form-field input {
+    padding: 30px 15px 5px var(--form-field-left-padding);
+    border-radius: var(--form-element-border-radius);
+    background-color: transparent;
+    border: 0 transparent;
+    width: 100%;
+
+    color: var(--input-fg1-color);
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.form-field label {
+    position: absolute;
+    pointer-events: none;
+
+    color: var(--input-fg2-color);
+    font-size: 18px;
+    font-weight: normal;
+    transition: transform 0.05s ease-in-out, font-size 0.05s ease-in-out;
+    transform: translateX(var(--form-field-left-padding));
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    transform: translateX(var(--form-field-left-padding)) translateY(-70%);
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+input:focus::placeholder {
+    color: var(--input-fg2-color);
+    opacity: 80%;
+}
+
+.form-button {
+    background-color: var(--button-bg1-color);
+    height: var(--form-element-height);
+    border-radius: var(--form-element-border-radius);
+    border-width: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.text-submit-form-button {
+    color: var(--text-fg2-color);
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.register-callout {
+    color: var(--text-fg1-color);
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.register-callout a {
+    color: var(--accent-color);
+}
+
+.register-callout a:hover {
+    color: var(--accent-color-hover);
+}

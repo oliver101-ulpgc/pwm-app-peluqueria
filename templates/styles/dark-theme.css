@@ -4,6 +4,9 @@
     --text-fg2-color: #101010;
     --button-bg1-color: #eeeeee;
     --card-bg1-color: #333;
+    --input-bg1-color: var(--card-bg1-color);
+    --input-fg1-color: var(--text-fg1-color);
+    --input-fg2-color: #ddd;
     --accent-color: #4CAF50;
     --accent-color-hover: #45a049;
 }

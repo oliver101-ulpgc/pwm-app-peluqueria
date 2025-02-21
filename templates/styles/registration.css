@@ -3,9 +3,28 @@
     --form-field-left-padding: 20px;
     --form-element-height: 60px;
     --form-element-border-radius: 10px;
+    --text-form-size: 18px;
+}
+
+p {
+    font-size: 16px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    padding: 20px;
+    margin-top: 70px;
+    color: var(--text-fg1-color);
+    font-weight: normal;
 }
 
 .central-section {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,7 +63,7 @@
     width: 100%;
 
     color: var(--input-fg1-color);
-    font-size: 18px;
+    font-size: var(--text-form-size);
     font-weight: normal;
 }
 
@@ -53,7 +72,7 @@
     pointer-events: none;
 
     color: var(--input-fg2-color);
-    font-size: 18px;
+    font-size: var(--text-form-size);
     font-weight: normal;
     transition: transform 0.05s ease-in-out, font-size 0.05s ease-in-out;
     transform: translateX(var(--form-field-left-padding));
@@ -84,12 +103,11 @@ input:focus::placeholder {
 
 .text-submit-form-button {
     color: var(--text-fg2-color);
-    font-size: 18px;
+    font-size: var(--text-form-size);
     font-weight: normal;
 }
 
 .register-callout {
     color: var(--text-fg1-color);
-    font-size: 16px;
     margin: 20px 0;
 }

@@ -41,7 +41,7 @@ body {
         background-color: #CFCFCF;
     }
       
-    #container2 {
+    nav {
         width: 100%;
         justify-content: center;
         display: flex;
@@ -49,7 +49,7 @@ body {
         font-size: 25px;
     }
 
-    #container2 a {
+    nav a {
         text-decoration: none;
         color: inherit; /* Mantiene el color del texto del contenedor padre */
     }

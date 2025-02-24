@@ -1,0 +1,30 @@
+:root {
+    font-family: Inter, Helvetica, 'Noto Sans', Arial, sans-serif;
+    font-optical-sizing: auto;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+a {
+    color: var(--accent-color);
+}
+
+a:hover {
+    color: var(--accent-color-hover);
+}
+
+.text-section-title-heading {
+    color: var(--text-fg1-color);
+    margin: 10px 0 20px 0;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.text-section-subtitle-heading {
+    color: var(--text-fg1-color);
+    margin: 10px 0 20px 0;
+    font-size: 20px;
+    font-weight: normal;
+}

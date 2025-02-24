@@ -42,12 +42,16 @@ body {
     }
       
     #container2 {
-        width: 2000px;
+        width: 100%;
         justify-content: center;
         display: flex;
         gap: 30px; /* Espacio entre las palabras */
         font-size: 25px;
-        text-decoration: none; /* Elimina el subrayado */
+    }
+
+    #container2 a {
+        text-decoration: none;
+        color: inherit; /* Mantiene el color del texto del contenedor padre */
     }
   
     .Servicios{
@@ -115,5 +119,7 @@ body {
 
   #header {
     height: 250px;
-    background: url("https://www.cursosypostgrados.com/blog/wp-content/uploads/2020/10/guilherme-petri-PtOfbGkU3uI-unsplash-2000x660.jpg") no-repeat left top;
+    width: 100%;
+    background: url("https://www.cursosypostgrados.com/blog/wp-content/uploads/2020/10/guilherme-petri-PtOfbGkU3uI-unsplash-2000x660.jpg") no-repeat center center;
+    background-size: cover;
   }

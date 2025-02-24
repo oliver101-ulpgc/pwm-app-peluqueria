@@ -63,14 +63,16 @@ body {
       padding-left: 10%;
     }
   
-    .container_service-card{
-      padding-left: 10%;
-      width: 2000px;
-      height: 200px;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      display: flex;
-      gap: 30px;
+    .container_service-card {
+        width: 100%;  /* Ocupa todo el ancho disponible */
+        height: 50%;
+        max-width: 1200px; /* Evita que se expanda demasiado */
+        display: flex;
+        flex-wrap: wrap;  /* Permite que las tarjetas bajen de línea si no caben */
+        justify-content: center;  /* Centra las tarjetas */
+        gap: 20px;  /* Reduce el espacio entre tarjetas */
+        padding-left: 0;  /* Elimina el padding izquierdo */
+        margin: 0 auto;  /* Centrar el contenedor */
     }
   
     .service-content {
@@ -88,6 +90,7 @@ body {
         position: absolute;
         color: white;
         bottom: 0;
+        left: 0;
     }
   
       .reserve-button{
@@ -98,10 +101,6 @@ body {
           width: 100px;
           height: 20px;
           background-color: #CFCFCF;
-      }
-  
-      #Corte_degradado_barba{
-          color: white;
       }
 
   h1, h4 {

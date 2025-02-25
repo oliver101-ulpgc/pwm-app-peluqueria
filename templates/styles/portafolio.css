@@ -1,0 +1,104 @@
+/* Reset básico */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal */
+#container {
+  width: 100%;
+}
+
+/* Encabezado con imagen de fondo */
+#header {
+  height: 250px;
+  width: 100%;
+  background: url("https://www.cursosypostgrados.com/blog/wp-content/uploads/2020/10/guilherme-petri-PtOfbGkU3uI-unsplash-2000x660.jpg") no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+/* Botones de inicio de sesión y registro */
+#botones {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.boton {
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#iniciar_sesion {
+  background-color: black;
+  color: white;
+}
+
+#registrarse {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+/* Menú de navegación */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: #CDCECF;
+}
+
+/* Sección del portafolio */
+.portafolio {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.portafolio h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Grid optimizado */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Más columnas en pantallas grandes */
+  gap: 10px; /* Espacio más pequeño entre imágenes */
+  justify-items: center;
+}
+
+.grid-container img {
+  width: 100%;
+  max-width: 200px; /* Imágenes más compactas */
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.grid-container img:hover {
+  transform: scale(1.05);
+}
+

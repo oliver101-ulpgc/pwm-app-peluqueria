@@ -127,3 +127,16 @@ body {
     background: url("https://www.cursosypostgrados.com/blog/wp-content/uploads/2020/10/guilherme-petri-PtOfbGkU3uI-unsplash-2000x660.jpg") no-repeat center center;
     background-size: cover;
   }
+
+footer {
+    width: 100%;
+    height: 250px;
+    display: flex; /* Activa Flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+footer img {
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción */
+}

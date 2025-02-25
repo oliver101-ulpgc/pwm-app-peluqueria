@@ -4,6 +4,9 @@ body {
 
 #container {
     width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 #botones {
@@ -130,10 +133,12 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0048FE;
+    background-color: #CDCECF;
+    margin-top: 50px;
 }
 
 footer img {
     width: 150px;
     height: auto;
 }
+

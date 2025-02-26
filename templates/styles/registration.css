@@ -93,7 +93,7 @@ input:focus::placeholder {
 }
 
 .form-button {
-    background-color: var(--button-bg1-color);
+    background-color: var(--button-bg2-color);
     height: var(--form-element-height);
     border-radius: var(--form-element-border-radius);
     border-width: 0;

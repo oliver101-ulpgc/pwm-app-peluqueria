@@ -2,72 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    >
+
+    <link rel="stylesheet" href="../styles/light-theme.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="../styles/dark-theme.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/registration.css">
     <title>Reseñas de Usuarios</title>
     <style>
-
-
-        .review-avatar {
-            border-radius: 50%;
-            border: gray solid 2px;
-            width: 50px;
-            height: 50px;
-            background: darkgray url("Images/avatar-icon.png") no-repeat;
-            background-size: cover;
+        :root {
+            color: var(--text-fg1-color);
+            --review-graph-background: var(--card-bg1-color);
+            --review-graph-color: #ff9800;
+            --avatar-border-color: gray;
+            --avatar-background-color: darkgray;
+            --review-graph-max-width: 400px;
+            --central-section-max-width: 1000px;
+            --graph-spacing: 20px;
+            --small-spacing: 3px;
+            --element-spacing: 10px;
+            --big-border-radius: 20px;
+            --small-border-radius: 10px;
         }
 
-        .review div {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 10px;
+        p {
+            margin: 0;
         }
 
         .star {
-            border-radius: 50%;
-            border: gray solid 2px;
             width: 50px;
             height: 50px;
-            background: darkgray url("Images/avatar-icon.png") no-repeat;
+            /*
+            border-radius: 50%;
+            border: gray solid 2px;
+            background: darkgray url("Images/avatar.png") no-repeat;
             background-size: cover;
-        }
-
-        .reviews-graph {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
+            */
         }
 
         .half {
             width: 50%;
         }
 
-        /* Three column layout */
-        .side {
+        .side-bar {
             float: left;
             width: 15%;
-            margin-top: 10px;
+            margin-top: var(--element-spacing);
         }
 
-        .middle {
+        .middle-bar {
             float: left;
             width: 70%;
-            margin-top: 10px;
+            margin-top: var(--element-spacing);
         }
 
-        /* Place text to the right */
-        .right {
+        .right-bar {
             text-align: right;
         }
 
-        /* The bar container */
         .bar-container {
             width: 100%;
-            background-color: #f1f1f1;
-            border-radius: 10px;
+            background-color: var(--review-graph-background);
+            border-radius: var(--small-border-radius);
             text-align: center;
         }
 
-        /* Individual bars */
         .bar-5 {
             width: 60%;
         }
@@ -89,108 +93,181 @@
         }
 
         .bar {
+            background-color: var(--review-graph-color);
+            border-radius: var(--small-border-radius) var(--small-spacing) var(--small-spacing) var(--small-border-radius);
+
             height: 18px;
-            background-color: #ff9800;
-            border-radius: 10px 3px 3px 10px;
         }
 
         .graph-info {
+            margin-right: var(--graph-spacing);
+            gap: 0;
+
             display: flex;
             flex-direction: column;
+            align-self: center;
             align-items: end;
-            gap: 0;
+        }
+
+        .graph-info div {
+            gap: var(--element-spacing);
+
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .graph {
+            margin-right: var(--graph-spacing);
+            max-width: var(--review-graph-max-width);
         }
 
         .review-content {
+            margin: var(--graph-spacing);
+            width: 90%;
+
             display: flex;
             flex-direction: column;
-            justify-items: center;
-            justify-content: center;
-            justify-self: center;
+            align-items: center;
+        }
+
+        .reviews-graph {
+            margin: 0;
+            width: 100%;
+
+            display: flex;
+            flex-direction: row;
+        }
+
+        .review-comments {
+            gap: var(--graph-spacing);
+            margin-top: 50px;
+            width: 100%;
+            flex-grow: 1;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-avatar {
+            background: var(--avatar-background-color) url("Images/avatar.png") no-repeat;
+            border: var(--avatar-border-color) solid var(--small-spacing);
+            background-size: cover;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        .review div {
+            gap: var(--element-spacing);
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .review {
+            border-radius: var(--big-border-radius);
+            background-color: var(--card-bg1-color);
+            padding: 18px;
         }
 
         .central-section {
-            flex-grow: 1;
+            max-width: var(--central-section-max-width);
+            margin: 0 auto;
+            width: 100%;
+
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            max-width: 700px;
+            align-items: start;
         }
     </style>
 </head>
 <body>
-<header></header>
-<nav></nav>
+<header>
+    <div>
+        <button id="iniciar_sesion">Iniciar sesión</button>
+        <button id="registrarse">Registrarse</button>
+    </div>
+</header>
+<nav>
+    <a href="home_completo.html">Servicios</a>
+    <a href="reseñas.html">Reseñas</a>
+    <a href="portafolio.html">Portafolio</a>
+    <a href="detalles.html">Detalles</a>
+</nav>
 <div class="review-content">
     <div class="central-section">
         <section class="reviews-graph">
             <div class="half graph-info">
-                <p>4,1</p>
-                <p>254 reseñas</p>
+                <div>
+                    <p>4,1 ⭐</p>
+                    <p>254 reseñas</p>
+                </div>
             </div>
             <div class="half graph">
                 <div class="row">
-                    <div class="side">
+                    <div class="side-bar">
                         <div>5</div>
                     </div>
-                    <div class="middle">
+                    <div class="middle-bar">
                         <div class="bar-container">
                             <div class="bar-5 bar"></div>
                         </div>
                     </div>
-                    <div class="side right">
+                    <div class="side-bar right-bar">
                         <div>150</div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="side">
+                    <div class="side-bar">
                         <div>4</div>
                     </div>
-                    <div class="middle">
+                    <div class="middle-bar">
                         <div class="bar-container">
                             <div class="bar-4 bar"></div>
                         </div>
                     </div>
-                    <div class="side right">
+                    <div class="side-bar right-bar">
                         <div>63</div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="side">
+                    <div class="side-bar">
                         <div>3</div>
                     </div>
-                    <div class="middle">
+                    <div class="middle-bar">
                         <div class="bar-container">
                             <div class="bar-3 bar"></div>
                         </div>
                     </div>
-                    <div class="side right">
+                    <div class="side-bar right-bar">
                         <div>15</div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="side">
+                    <div class="side-bar">
                         <div>2</div>
                     </div>
-                    <div class="middle">
+                    <div class="middle-bar">
                         <div class="bar-container">
                             <div class="bar-2 bar"></div>
                         </div>
                     </div>
-                    <div class="side right">
+                    <div class="side-bar right-bar">
                         <div>6</div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="side">
+                    <div class="side-bar">
                         <div>1</div>
                     </div>
-                    <div class="middle">
+                    <div class="middle-bar">
                         <div class="bar-container">
                             <div class="bar-1 bar"></div>
                         </div>
                     </div>
-                    <div class="side right">
+                    <div class="side-bar right-bar">
                         <div>20</div>
                     </div>
                 </div>
@@ -204,7 +281,47 @@
                 </div>
                 <div>
                     <div class="star"></div>
-                    <p>Buen servicio!</p>
+                    <p>⭐ Buen servicio!</p>
+                </div>
+            </article>
+            <article class="review">
+                <div>
+                    <div class="review-avatar"></div>
+                    <label>username</label>
+                </div>
+                <div>
+                    <div class="star"></div>
+                    <p>⭐ Buen servicio!</p>
+                </div>
+            </article>
+            <article class="review">
+                <div>
+                    <div class="review-avatar"></div>
+                    <label>username</label>
+                </div>
+                <div>
+                    <div class="star"></div>
+                    <p>⭐ Buen servicio!</p>
+                </div>
+            </article>
+            <article class="review">
+                <div>
+                    <div class="review-avatar"></div>
+                    <label>username</label>
+                </div>
+                <div>
+                    <div class="star"></div>
+                    <p>⭐ Buen servicio!</p>
+                </div>
+            </article>
+            <article class="review">
+                <div>
+                    <div class="review-avatar"></div>
+                    <label>username</label>
+                </div>
+                <div>
+                    <div class="star"></div>
+                    <p>⭐ Buen servicio!</p>
                 </div>
             </article>
         </section>

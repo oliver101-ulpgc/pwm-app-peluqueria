@@ -1,10 +1,12 @@
 :root {
     font-family: Inter, Helvetica, 'Noto Sans', Arial, sans-serif;
     font-optical-sizing: auto;
+    --button-border-radius: 10px;
 }
 
 body {
     background-color: var(--background-color);
+    margin: 0;
 }
 
 a {
@@ -13,6 +15,14 @@ a {
 
 a:hover {
     color: var(--accent-color-hover);
+}
+
+button {
+    color: var(--text-fg2-color);
+    background-color: var(--button-bg2-color);
+    border-radius: var(--button-border-radius);
+    padding: 10px;
+    text-align: center;
 }
 
 .text-section-title-heading {

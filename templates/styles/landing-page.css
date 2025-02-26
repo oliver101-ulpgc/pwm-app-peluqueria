@@ -36,7 +36,7 @@ p, h2 {
 
 .reserve-button {
     color: var(--text-fg2-color);
-    background-color: var(--button-bg1-color);
+    background-color: var(--button-bg2-color);
     margin-left: 10px;
     border-radius: 10px;
     border-width: 0;

@@ -2,47 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Página Principal</title>
     <script src="../../common_html/contentLoader.js"></script>
     <script src="../../common_html/menu.js"></script>
     <link rel="stylesheet" href="../../styles/home-style.css">
     <link rel="stylesheet" href="../../styles/common.css">
 </head>
 <body>
-    <div id="container">
-        <header xlu-include-file="../../common_html/header.html">
+<div id="container">
+    <header id="header" xlu-include-file="../../common_html/header.html">
 
-        </header>
+    </header>
 
-        <nav id="nav" xlu-include-file="../../common_html/nav.html">
+    <nav id="nav" xlu-include-file="../../common_html/nav.html">
 
-        </nav>
+    </nav>
 
-        <div id="menu" xlu-include-file="../../common_html/menu.html" >
+    <div id="title1" xlu-include-file="title1.html">
 
-        </div>
-
-        <div id="title1" xlu-include-file="title1.html">
-
-        </div>
-
-        <div id="main_section" xlu-include-file="main.html">
-
-        </div>
-
-        <div id="title2" xlu-include-file="title2.html">
-
-        </div>
-
-        <div id="secundary_section" xlu-include-file="secundary.html">
-
-        </div>
-
-        <footer id="foot" xlu-include-file="../../common_html/footer.html">
-
-        </footer>
     </div>
 
+    <div id="main_section" xlu-include-file="main.html">
+
+    </div>
+
+    <div id="title2" xlu-include-file="title2.html">
+
+    </div>
+
+    <div id="secundary_section" xlu-include-file="secundary.html">
+
+    </div>
+
+    <footer id="foot" xlu-include-file="../../common_html/footer.html">
+
+    </footer>
+
+    <div id="menu" xlu-include-file="../../common_html/menu.html">
+
+    </div>
+</div>
 <script>
     xLuIncludeFile()
     toggleMenu()

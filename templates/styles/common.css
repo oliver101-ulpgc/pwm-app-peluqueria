@@ -7,6 +7,7 @@ git :root {
 body {
     background-color: var(--background-color);
     margin: 0;
+    overflow-x: hidden;
 }
 
 a {
@@ -17,7 +18,6 @@ a:hover {
     color: var(--accent-color-hover);
 }
 
-/*
 button {
     color: var(--text-fg2-color);
     background-color: var(--button-bg2-color);
@@ -25,7 +25,15 @@ button {
     padding: 10px;
     text-align: center;
 }
-*/
+
+/*
+.botones_ini_reg {
+    display: flex;
+    padding: 8px 15px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 12px;
+}*/
 
 .text-section-title-heading {
     color: var(--text-fg1-color);
@@ -59,12 +67,8 @@ button {
     padding-right: 30px;
 }
 
-.botones_ini_reg {
-    display: flex;
-    padding: 8px 15px;
-    border-radius: 3px;
-    text-decoration: none;
-    font-size: 12px;
+button:hover {
+    background-color: #333; /* Color más oscuro al pasar el mouse */
 }
 
 #iniciar_sesion {
@@ -77,6 +81,12 @@ button {
     color: black;
     background-color: #CFCFCF;
     cursor: pointer;
+}
+
+.profile-pic img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 
 nav {
@@ -120,7 +130,7 @@ h3 {
     font-size: 18px;
 }
 
-header {
+#header {
     height: 250px;
     width: 100%;
     background: url("../html/Images/Header.jpg") no-repeat center center;
@@ -129,13 +139,13 @@ header {
 
 .menu-container {
     width: 300px;
-    min-height: 100vh;
+    height: 100vh;
     background-color: #949393;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 0 10px 10px 0;
+    border-radius: 20px 0 0;
     position: absolute; /* Mantiene el menú en posición absoluta */
     top: 0;
     right: -400px; /* Fuera de la vista inicialmente */
@@ -180,7 +190,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #CDCECF;
+    background-color: var(--card-bg1-color, #CDCECF);
     margin-top: 50px;
 }
 

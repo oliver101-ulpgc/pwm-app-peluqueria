@@ -5,6 +5,7 @@
 
 body {
     background-color: var(--background-color);
+    margin: 0;
 }
 
 a {
@@ -27,4 +28,100 @@ a:hover {
     margin: 10px 0 20px 0;
     font-size: 20px;
     font-weight: normal;
+}
+
+#container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#botones {
+    position: absolute;
+    top: 0;
+    right: 0;
+    justify-content: flex-end;
+    display: flex;
+    gap: 35px;
+    padding-top: 30px;
+    padding-right: 30px;
+}
+
+.botones_ini_reg {
+    display: flex;
+    padding: 8px 15px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+#iniciar_sesion {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+#registrarse {
+    color: black;
+    background-color: #CFCFCF;
+    cursor: pointer;
+}
+
+nav {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 30px;
+    font-size: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav a:hover {
+    background-color: #CDCECF;
+    border-radius: 5px;
+}
+
+h1, h4 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+h2, h3 {
+    font-family: Georgia, Times, serif;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 22px;
+    line-height: 24px;
+}
+
+
+header {
+    height: 250px;
+    width: 100%;
+    background: url("https://www.cursosypostgrados.com/blog/wp-content/uploads/2020/10/guilherme-petri-PtOfbGkU3uI-unsplash-2000x660.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+footer {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #CDCECF;
+    margin-top: 50px;
+}
+
+footer img {
+    width: 150px;
+    height: auto;
 }

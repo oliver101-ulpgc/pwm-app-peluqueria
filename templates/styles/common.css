@@ -67,6 +67,10 @@ button {
     padding-right: 30px;
 }
 
+button:hover {
+    background-color: #333; /* Color más oscuro al pasar el mouse */
+}
+
 #iniciar_sesion {
     color: white;
     background-color: black;

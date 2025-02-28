@@ -1,0 +1,27 @@
+<main class="booking-container">
+    <h1>Reserva una cita con uno de nuestros peluqueros:</h1>
+
+    <div id="peluqueros">
+        <div class="peluquero" onclick="seleccionarPeluquero(this, '1')">
+            <img src="../Images/avatar.png" alt="Peluquero 1"> <span>Peluquero 1</span>
+        </div>
+        <div class="peluquero" onclick="seleccionarPeluquero(this, '2')">
+            <img src="../Images/avatar.png" alt="Peluquero 2"> <span>Peluquero 2</span>
+        </div>
+        <div class="peluquero" onclick="seleccionarPeluquero(this, '3')">
+            <img src="../Images/avatar.png" alt="Peluquero 3"> <span>Peluquero 3</span>
+        </div>
+    </div>
+    <div id="peluquero-seleccionado" class="highlight">Selecciona un peluquero</div>
+
+    <div class="section">
+        <input type="date" id="fecha" onchange="cargarHoras()">
+        <div id="fecha-seleccionada" class="highlight">Selecciona una fecha</div>
+    </div>
+
+    <div class="hours" id="horas"></div>
+
+    <div class="button-container">
+        <button onclick="confirmarReserva()">Reservar</button>
+    </div>
+</main>

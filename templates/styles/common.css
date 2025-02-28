@@ -179,7 +179,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #CDCECF;
+    background-color: var(--card-bg1-color, #CDCECF);
     margin-top: 50px;
 }
 

@@ -1,71 +1,61 @@
-/* Reset básico */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
 }
 
-/* Contenedor principal */
 #container {
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Encabezado con imagen de fondo */
-#header {
-  height: 250px;
-  width: 100%;
-  background: url("https://www.cursosypostgrados.com/blog/wp-content/uploads/2020/10/guilherme-petri-PtOfbGkU3uI-unsplash-2000x660.jpg") no-repeat center center;
-  background-size: cover;
-  position: relative;
-}
-
-/* Botones de inicio de sesión y registro */
 #botones {
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 0;
+  right: 0;
+  justify-content: flex-end;
   display: flex;
-  gap: 20px;
+  gap: 35px;
+  padding-top: 30px;
+  padding-right: 30px;
 }
 
-.boton {
-  padding: 10px 15px;
-  border-radius: 5px;
+.botones_ini_reg {
+  display: flex;
+  padding: 8px 15px;
+  border-radius: 3px;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 12px;
 }
 
 #iniciar_sesion {
-  background-color: black;
   color: white;
+  background-color: black;
+  cursor: pointer;
 }
 
 #registrarse {
-  background-color: white;
   color: black;
-  border: 2px solid black;
+  background-color: #CFCFCF;
+  cursor: pointer;
 }
 
-/* Menú de navegación */
 nav {
   width: 100%;
-  display: flex;
   justify-content: center;
+  display: flex;
   gap: 30px;
-  font-size: 20px;
-  padding: 10px 0;
+  font-size: 25px;
 }
 
 nav a {
   text-decoration: none;
-  color: black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: background 0.3s;
+  color: inherit;
 }
 
 nav a:hover {
   background-color: #CDCECF;
+  border-radius: 5px;
 }
 
 /* Sección del portafolio */
@@ -102,3 +92,42 @@ nav a:hover {
   transform: scale(1.05);
 }
 
+h1, h4 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+h2, h3 {
+  font-family: Georgia, Times, serif;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 24px;
+}
+
+
+header {
+  height: 250px;
+  width: 100%;
+  background: url("https://www.cursosypostgrados.com/blog/wp-content/uploads/2020/10/guilherme-petri-PtOfbGkU3uI-unsplash-2000x660.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+footer {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #CDCECF;
+  margin-top: 50px;
+}
+
+footer img {
+  width: 150px;
+  height: auto;
+}

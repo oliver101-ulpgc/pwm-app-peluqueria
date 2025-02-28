@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../common_html/contentLoader.js"></script>
+    <script src="../../common_html/menu.js"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    >
+
+    <link rel="stylesheet" href="../../styles/light-theme.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="../../styles/dark-theme.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/review-page.css">
+    <title>Reseñas de Usuarios</title>
+</head>
+<body>
+<div id="menu" xlu-include-file="../../common_html/menu.html"></div>
+<header xlu-include-file="../../common_html/header.html"></header>
+<nav id="nav" xlu-include-file="../../common_html/nav.html"></nav>
+<div class="review-content">
+    <div class="central-section">
+        <section class="reviews-graph">
+            <div class="half graph-info">
+                <div>
+                    <p>4,1 ⭐</p>
+                    <p>254 reseñas</p>
+                </div>
+            </div>
+            <div class="half graph">
+                <div class="row">
+                    <div class="side-bar">
+                        <div>5</div>
+                    </div>
+                    <div class="middle-bar">
+                        <div class="bar-container">
+                            <div class="bar-5 bar"></div>
+                        </div>
+                    </div>
+                    <div class="side-bar right-bar">
+                        <div>150</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="side-bar">
+                        <div>4</div>
+                    </div>
+                    <div class="middle-bar">
+                        <div class="bar-container">
+                            <div class="bar-4 bar"></div>
+                        </div>
+                    </div>
+                    <div class="side-bar right-bar">
+                        <div>63</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="side-bar">
+                        <div>3</div>
+                    </div>
+                    <div class="middle-bar">
+                        <div class="bar-container">
+                            <div class="bar-3 bar"></div>
+                        </div>
+                    </div>
+                    <div class="side-bar right-bar">
+                        <div>15</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="side-bar">
+                        <div>2</div>
+                    </div>
+                    <div class="middle-bar">
+                        <div class="bar-container">
+                            <div class="bar-2 bar"></div>
+                        </div>
+                    </div>
+                    <div class="side-bar right-bar">
+                        <div>6</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="side-bar">
+                        <div>1</div>
+                    </div>
+                    <div class="middle-bar">
+                        <div class="bar-container">
+                            <div class="bar-1 bar"></div>
+                        </div>
+                    </div>
+                    <div class="side-bar right-bar">
+                        <div>20</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="review-comments" xlu-include-file="review-template.html">
+        </section>
+    </div>
+</div>
+<footer id="foot" xlu-include-file="../../common_html/footer.html"></footer>
+<script>
+    xLuIncludeFile()
+    toggleMenu()
+</script>
+</body>
+</html>

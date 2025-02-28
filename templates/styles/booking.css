@@ -34,6 +34,10 @@
     color: white;
 }
 
+.peluquero:hover {
+    background-color: #007BFF; /* Color al pasar el mouse */
+}
+
 .hours {
     display: flex;
     flex-wrap: wrap;

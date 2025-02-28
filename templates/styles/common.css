@@ -7,6 +7,7 @@
 body {
     background-color: var(--background-color);
     margin: 0;
+    overflow-x: hidden;
 }
 
 a {
@@ -78,6 +79,12 @@ button {
     cursor: pointer;
 }
 
+.profile-pic img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
 nav {
     width: 100%;
     justify-content: center;
@@ -128,13 +135,13 @@ h3 {
 
 .menu-container {
     width: 300px;
-    min-height: 100vh;
+    height: 100vh;
     background-color: #949393;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 0 10px 10px 0;
+    border-radius: 20px 0 0;
     position: absolute; /* Mantiene el menú en posición absoluta */
     top: 0;
     right: -400px; /* Fuera de la vista inicialmente */

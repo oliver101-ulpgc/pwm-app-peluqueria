@@ -1,0 +1,56 @@
+#main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+#main img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+#main div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#main p {
+    margin: 10px 0;
+    line-height: 1.5;
+    display: block;
+}
+
+#secundary {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#secundary div {
+    display: block;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#secundary img {
+    width: 100px;
+    height: auto;
+}
+
+h2{
+    text-align: center;
+}
+
+#secundary .trabajadores {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#secundary .trabajador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="../../common_html/contentLoader.js"></script>
-    <script src="../../common_html/menu.js"></script>
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,9 +16,18 @@
     <title>Reseñas de Usuarios</title>
 </head>
 <body>
-<div id="menu" xlu-include-file="../../common_html/menu.html"></div>
-<header xlu-include-file="../../common_html/header.html"></header>
-<nav id="nav" xlu-include-file="../../common_html/nav.html"></nav>
+<header>
+    <div>
+        <button id="iniciar_sesion">Iniciar sesión</button>
+        <button id="registrarse">Registrarse</button>
+    </div>
+</header>
+<nav>
+    <a href="../home_completo.html">Servicios</a>
+    <a href="reseñas.html">Reseñas</a>
+    <a href="portafolio.html">Portafolio</a>
+    <a href="detalles.html">Detalles</a>
+</nav>
 <div class="review-content">
     <div class="central-section">
         <section class="reviews-graph">
@@ -98,14 +105,50 @@
                 </div>
             </div>
         </section>
-        <section class="review-comments" xlu-include-file="review-template.html">
+        <section class="review-comments">
+            <article class="review">
+                <div>
+                    <div class="review-avatar"></div>
+                    <h3>username</h3>
+                </div>
+                <div>
+                    <div class="star"></div>
+                    <p>⭐ Buen servicio!</p>
+                </div>
+            </article>
+            <article class="review">
+                <div>
+                    <div class="review-avatar"></div>
+                    <h3>username</h3>
+                </div>
+                <div>
+                    <div class="star"></div>
+                    <p>⭐ Buen servicio!</p>
+                </div>
+            </article>
+            <article class="review">
+                <div>
+                    <div class="review-avatar"></div>
+                    <h3>username</h3>
+                </div>
+                <div>
+                    <div class="star"></div>
+                    <p>⭐ Buen servicio!</p>
+                </div>
+            </article>
+            <article class="review">
+                <div>
+                    <div class="review-avatar"></div>
+                    <h3>username</h3>
+                </div>
+                <div>
+                    <div class="star"></div>
+                    <p>⭐ Buen servicio!</p>
+                </div>
+            </article>
         </section>
     </div>
 </div>
-<footer id="foot" xlu-include-file="../../common_html/footer.html"></footer>
-<script>
-    xLuIncludeFile()
-    toggleMenu()
-</script>
+<footer></footer>
 </body>
 </html>

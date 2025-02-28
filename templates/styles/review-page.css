@@ -1,5 +1,4 @@
 :root {
-    color: var(--text-fg1-color);
     --review-graph-background: var(--card-bg1-color);
     --review-graph-color: #ff9800;
     --avatar-border-color: gray;

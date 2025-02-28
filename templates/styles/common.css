@@ -1,4 +1,8 @@
-git :root {
+:root {
+    color: var(--text-fg1-color);
+}
+
+    git :root {
     font-family: Inter, Helvetica, 'Noto Sans', Arial, sans-serif;
     font-optical-sizing: auto;
     --button-border-radius: 10px;

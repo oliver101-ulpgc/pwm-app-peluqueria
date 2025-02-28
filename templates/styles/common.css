@@ -17,7 +17,6 @@ a:hover {
     color: var(--accent-color-hover);
 }
 
-/*
 button {
     color: var(--text-fg2-color);
     background-color: var(--button-bg2-color);
@@ -25,7 +24,15 @@ button {
     padding: 10px;
     text-align: center;
 }
-*/
+
+/*
+.botones_ini_reg {
+    display: flex;
+    padding: 8px 15px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 12px;
+}*/
 
 .text-section-title-heading {
     color: var(--text-fg1-color);
@@ -57,14 +64,6 @@ button {
     gap: 35px;
     padding-top: 30px;
     padding-right: 30px;
-}
-
-.botones_ini_reg {
-    display: flex;
-    padding: 8px 15px;
-    border-radius: 3px;
-    text-decoration: none;
-    font-size: 12px;
 }
 
 #iniciar_sesion {
@@ -120,7 +119,7 @@ h3 {
     font-size: 18px;
 }
 
-header {
+#header {
     height: 250px;
     width: 100%;
     background: url("../html/Images/Header.jpg") no-repeat center center;

@@ -23,6 +23,10 @@
 <div id="menu" xlu-include-file="../../common_html/menu.html" > </div>
 
 <script>
+    function cancelarCita(btn) {
+        let cita = btn.parentElement;
+        cita.remove(); // Elimina la cita
+    }
     xLuIncludeFile()
     toggleMenu()
 </script>

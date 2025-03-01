@@ -2,13 +2,14 @@
     <h2>Mis Citas</h2>
         <div class="cita">
             <span>Perfilar barba - 12 de marzo - 10:00</span>
-            <button class="cancelar">Cancelar</button>
+            <button class="cancelar" onclick="cancelarCita(this)">Cancelar</button>
         </div>
         <div class="cita">
             <span>Tinte - 20 de marzo - 14:00 </span>
-            <button class="cancelar">Cancelar</button>
+            <button class="cancelar" onclick="cancelarCita(this)">Cancelar</button>
         </div>
     <h2>Citas Anteriores</h2>
+    <div id="historial">
     <div class="cita">
         <span>Perfilar barba - 18 de febrero - 11:00</span>
     </div>
@@ -20,5 +21,6 @@
     </div>
     <div class="cita">
         <span>Tinte - 3 de enero - 9:00</span>
+    </div>
     </div>
 </main>

@@ -1,8 +1,6 @@
 :root {
     color: var(--text-fg1-color);
-}
 
-    git :root {
     font-family: Inter, Helvetica, 'Noto Sans', Arial, sans-serif;
     font-optical-sizing: auto;
     --button-border-radius: 10px;
@@ -29,15 +27,6 @@ button {
     padding: 10px;
     text-align: center;
 }
-
-/*
-.botones_ini_reg {
-    display: flex;
-    padding: 8px 15px;
-    border-radius: 3px;
-    text-decoration: none;
-    font-size: 12px;
-}*/
 
 .text-section-title-heading {
     color: var(--text-fg1-color);
@@ -111,16 +100,6 @@ nav a:hover {
     border-radius: 5px;
 }
 
-/*
-h1, h4 {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-}
-
-h2, h3 {
-    font-family: Georgia, Times, serif;
-}
-*/
-
 h1 {
     font-size: 32px;
 }
@@ -152,14 +131,14 @@ h3 {
     flex-direction: column;
     align-items: flex-start;
     border-radius: 20px 0 0;
-    position: absolute; /* Mantiene el menú en posición absoluta */
+    position: absolute;
     top: 0;
-    right: -400px; /* Fuera de la vista inicialmente */
-    transition: right 0.3s; /* Transición suave */
+    right: -400px;
+    transition: right 0.3s;
 }
 
 .menu-container.active {
-    right: 0; /* Mostrar menú al activar */
+    right: 0;
 }
 
 .perfil {

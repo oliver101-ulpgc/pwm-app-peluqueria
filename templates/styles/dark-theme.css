@@ -2,6 +2,8 @@
     --background-color: #222;
     --text-fg1-color: #f4f4f4;
     --text-fg2-color: #101010;
+    --text-button-hover: var(--text-fg2-color);
+    --button-bg1-color: #ccc;
     --button-bg2-color: #eeeeee;
     --card-bg1-color: #333;
     --input-bg1-color: var(--card-bg1-color);

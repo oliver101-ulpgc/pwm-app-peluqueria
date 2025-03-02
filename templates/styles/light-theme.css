@@ -2,6 +2,8 @@
     --background-color: #ffffff;
     --text-fg1-color: #000000;
     --text-fg2-color: #eeeeee;
+    --text-button-hover: var(--text-fg2-color);
+    --button-bg1-color: #222;
     --button-bg2-color: #000000;
     --card-bg1-color: lightgray;
     --input-bg1-color: var(--card-bg1-color);

@@ -38,5 +38,12 @@
     bottom: 0;
     right: 0;
     width: 100px;
-    background-color: #CFCFCF;
+    color: black;
+    background-color: #e1e1e1;
+    border-color: #e1e1e1;
+}
+
+.reserve-button:hover {
+    color: black;
+    background-color: #b6b6b6;
 }

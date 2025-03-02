@@ -23,9 +23,18 @@ a:hover {
 button {
     color: var(--text-fg2-color);
     background-color: var(--button-bg2-color);
+    border-color: var(--button-bg2-color);
     border-radius: var(--button-border-radius);
+    border-width: 3px;
     padding: 10px;
     text-align: center;
+    border-style: solid;
+}
+
+button:hover {
+    color: var(--text-button-hover);
+    background-color: var(--button-bg1-color, #333);
+    border-color: var(--accent-color);
 }
 
 .text-section-title-heading {
@@ -58,10 +67,6 @@ button {
     gap: 35px;
     padding-top: 30px;
     padding-right: 30px;
-}
-
-button:hover {
-    background-color: #333; /* Color más oscuro al pasar el mouse */
 }
 
 #iniciar_sesion {

@@ -1,0 +1,6 @@
+Requisitos:
+    Node
+    npm
+
+Para iniciar Strapi, entrar en una terminal en el directorio strapi y hacer:
+npm run develop

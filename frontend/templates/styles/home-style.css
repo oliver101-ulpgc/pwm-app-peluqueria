@@ -21,7 +21,7 @@
     position: relative;
     width: 300px;
     height: 200px;
-    background: url("https://i.ytimg.com/vi/UFIpEiBdjrs/maxresdefault.jpg") no-repeat left top;
+    background: url("../Images/service_card_background_placeholder.jpg") no-repeat left top;
     background-size: cover;
 }
 

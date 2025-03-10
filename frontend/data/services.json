@@ -1,15 +1,16 @@
 {
     "data": [
         {
-            "id": 2,
+            "id": 5,
             "documentId": "ii89fs67wglflmfjvy57woql",
             "title": "Corte degradado",
             "type": "service",
             "price_euro": 13,
             "duration_minutes": 30,
             "createdAt": "2025-03-10T16:14:14.784Z",
-            "updatedAt": "2025-03-10T16:14:19.134Z",
-            "publishedAt": "2025-03-10T16:14:19.143Z"
+            "updatedAt": "2025-03-10T16:46:04.566Z",
+            "publishedAt": "2025-03-10T16:46:04.572Z",
+            "image": "https://i.ytimg.com/vi/UFIpEiBdjrs/maxresdefault.jpg"
         }
     ],
     "meta": {

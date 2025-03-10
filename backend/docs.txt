@@ -4,3 +4,10 @@ Requisitos:
 
 Para iniciar Strapi, entrar en una terminal en el directorio strapi y hacer:
 npm run develop
+
+Iniciar sesión en strapi con:
+
+correo:
+admin@admin.com
+password:
+Admin1234

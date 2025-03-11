@@ -1,7 +1,7 @@
 // Cargar templates
 async function loadTemplate(templateName, targetElementId) {
     try {
-        const response = await fetch(`templates/common_html/${templateName}.html`);
+        const response = await fetch(`../../common_html/${templateName}.html`);
         const html = await response.text();
         document.getElementById(targetElementId).innerHTML = html;
     } catch (error) {
@@ -28,7 +28,7 @@ function trackClicks(itemId, type) {
 // Obtener datos del JSON
 async function fetchData() {
     try {
-        const response = await fetch('../data/data.json');
+        const response = await fetch('../../../data/data.json');
         return await response.json();
     } catch (error) {
         console.error('Error fetching data:', error);

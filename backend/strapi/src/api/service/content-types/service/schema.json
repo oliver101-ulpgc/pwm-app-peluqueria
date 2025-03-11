@@ -39,6 +39,11 @@
     },
     "image": {
       "type": "string"
+    },
+    "clicks": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
     }
   }
 }

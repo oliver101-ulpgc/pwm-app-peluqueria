@@ -2,6 +2,10 @@ Requisitos:
     Node
     npm
 
+Para instalar los modulos, que no están en github:
+npm install
+
+cd .\backend\strapi
 Para iniciar Strapi, entrar en una terminal en el directorio strapi y hacer:
 npm run develop
 

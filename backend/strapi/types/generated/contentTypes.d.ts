@@ -384,6 +384,14 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     background_image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    clicks: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

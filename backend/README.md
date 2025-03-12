@@ -11,7 +11,7 @@ Para ejecutar Strapi, asegúrate de tener instalados los siguientes programas:
 
 ## Instalación de Dependencias
 
-Para instalar los módulos necesarios, ejecuta el siguiente comando:
+Para instalar los módulos necesarios, ejecuta el siguiente comando en backend/strapi:
 
 ```sh
 npm install

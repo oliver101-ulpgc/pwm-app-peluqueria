@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Preguntas</title>
+    <script src="../../../../js/contentLoader.js"></script>
+    <script src="../../../../js/menu.js"></script>
+    <link rel="stylesheet" href="../../styles/light-theme.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="../../styles/dark-theme.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="../../styles/faq.css">
+    <link rel="stylesheet" href="../../styles/common.css">
+</head>
+<body>
+
+<header id="header" xlu-include-file="../../common_html/header.html"> </header>
+
+<nav id="nav" xlu-include-file="../../common_html/nav.html"> </nav>
+
+<div id="main_section" xlu-include-file="main.html"> </div>
+
+<footer id="foot" xlu-include-file="../../common_html/footer.html"> </footer>
+
+<div id="menu" xlu-include-file="../../common_html/menu.html" > </div>
+
+<script>
+    function toggleAnswer(button) {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle('active');  // Alterna la clase 'active' para mostrar u ocultar la respuesta
+    }
+    xLuIncludeFile()
+    toggleMenu()
+</script>
+
+</body>
+</html>

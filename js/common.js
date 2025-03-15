@@ -13,7 +13,7 @@ async function loadTemplate(templateName, targetElementId) {
 async function loadCommonTemplates() {
     await loadTemplate('header', 'header');
     await loadTemplate('nav', 'nav');
-    await loadTemplate('footer', 'footer');
+    await loadTemplate('footer', 'foot');
     await loadTemplate('menu', 'menu');
 }
 

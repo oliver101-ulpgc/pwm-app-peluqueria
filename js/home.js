@@ -14,48 +14,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!data) return;
 
     // Obtener y mezclar datos
-    const allItems = [...data.data]
-        .map(item => ({
-            ...item,
-            clicks: JSON.parse(localStorage.getItem(`${item.type}_clicks`))?.[item.id] || 0
-        }))
-        .sort((a, b) => b.clicks - a.clicks)
-        .slice(0, 6);
+    const allItems = data.data.map(item => ({
+        ...item,
+        clicks: JSON.parse(localStorage.getItem(`${item.type}_clicks`))?.[item.id] || 0
+    }));
 
-    // Generar HTML
-    const container = document.getElementById('main_section');
-    container.innerHTML = allItems.map(item => `
-        <article class="container_service-card">
-            <a href="${'service'}.html?id=${item.id}" 
-               onclick="trackClicks(${item.id}, '${item.type}')">
-                
-                <img src="${item.image}" alt="${item.title}" class="service-content">
-                
-                <div class="container_service-card">
-                    <h3>${item.title}</h3>
-                    <p>${item.price_euro}</p>
-                    <p>${item.duration_minutes}</p>
-                    ${item.clicks} ${item.clicks === 1 ? 'click' : 'clicks'}
-                </div>
-            </a>
-        </article>
-    `).join('');
+    // Ordenar por popularidad y limitar a los 6 más clickeados
+    const sortedItems = [...allItems].sort((a, b) => b.clicks - a.clicks);
 
-    const container2 = document.getElementById('secundary_section');
-    container2.innerHTML = allItems.map(item => `
-        <article class="container_service-card">
-            <a href="${'service'}.html?id=${item.id}" 
-               onclick="trackClicks(${item.id}, '${item.type}')">
-                
-                <img src="${item.image}" alt="${item.title}" class="service-content">
-                
-                <div class="container_service-card">
-                    <h3>${item.title}</h3>
-                    <p>${item.price_euro}</p>
-                    <p>${item.duration_minutes}</p>
-                    ${item.clicks} ${item.clicks === 1 ? 'click' : 'clicks'}
-                </div>
-            </a>
-        </article>
-    `).join('');
+    // Filtrar por tipo
+    const primaryItems = sortedItems.filter(item => item.type === "service");
+    const secondaryItems = sortedItems.filter(item => item.type === "other_service");
+
+    // Función para generar tarjetas
+    const generateCards = (items, containerId) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = items.map(item => `
+            <article class="container_service-card">
+                <a href="../booking/index.html?id=${item.id}" 
+                   onclick="trackClicks(${item.id}, '${item.type}')">
+                    
+                    <img src="${item.image}" alt="${item.title}" class="service-content">
+                    
+                    <div class="container_service-card">
+                        <h3>${item.title}</h3>
+                        <p>${item.price_euro} €</p>
+                        <p>${item.duration_minutes} min</p>
+                        ${item.clicks} ${item.clicks === 1 ? 'click' : 'clicks'}
+                    </div>
+                </a>
+            </article>
+        `).join('');
+    };
+
+    // Renderizar tarjetas en sus respectivas secciones
+    generateCards(primaryItems, 'main_section');
+    generateCards(secondaryItems, 'secondary_section');
 });
+

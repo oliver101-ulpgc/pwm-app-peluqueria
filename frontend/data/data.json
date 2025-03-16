@@ -4,13 +4,13 @@
             "id": 21,
             "documentId": "ad7p4246icr4b1fpblp2sxfm",
             "title": "Alisado de keratina",
-            "type": "service",
+            "type": "other_service",
             "price_euro": 30,
             "duration_minutes": 50,
             "createdAt": "2025-03-11T19:31:49.608Z",
             "updatedAt": "2025-03-11T20:02:22.956Z",
             "publishedAt": "2025-03-11T20:02:22.964Z",
-            "image": "https://i.ytimg.com/vi/UFIpEiBdjrs/maxresdefault.jpg",
+            "image": "https://hair.montibello.com/wp-content/uploads/2022/09/ALISADO-PERMANENTE-CON-QUERATINA-PASO-A-PASO-scaled.jpg",
             "clicks": 0
         },
         {
@@ -23,7 +23,7 @@
             "createdAt": "2025-03-11T19:31:18.837Z",
             "updatedAt": "2025-03-11T20:02:36.449Z",
             "publishedAt": "2025-03-11T20:02:36.455Z",
-            "image": "https://i.ytimg.com/vi/UFIpEiBdjrs/maxresdefault.jpg",
+            "image": "https://termix.net/blog/wp-content/uploads/2019/11/Sanear-las-puntas-del-pelo-antes-del-verano.jpg",
             "clicks": 0
         },
         {
@@ -49,7 +49,7 @@
             "createdAt": "2025-03-11T19:23:27.937Z",
             "updatedAt": "2025-03-11T20:02:46.941Z",
             "publishedAt": "2025-03-11T20:02:46.948Z",
-            "image": "https://i.ytimg.com/vi/UFIpEiBdjrs/maxresdefault.jpg",
+            "image": "https://bundeena.es/wp-content/uploads/2023/02/EpY-TnbynY-1.jpg",
             "clicks": 0
         },
         {
@@ -62,7 +62,7 @@
             "createdAt": "2025-03-11T19:30:00.688Z",
             "updatedAt": "2025-03-11T20:02:54.263Z",
             "publishedAt": "2025-03-11T20:02:54.269Z",
-            "image": "https://i.ytimg.com/vi/UFIpEiBdjrs/maxresdefault.jpg",
+            "image": "https://agendapro.com/blog/wp-content/uploads/sites/2/2024/08/image-1.png",
             "clicks": 0
         },
         {
@@ -75,33 +75,33 @@
             "createdAt": "2025-03-11T19:34:05.295Z",
             "updatedAt": "2025-03-11T20:02:58.168Z",
             "publishedAt": "2025-03-11T20:02:58.187Z",
-            "image": "https://i.ytimg.com/vi/UFIpEiBdjrs/maxresdefault.jpg",
+            "image": "https://elcirculodelabelleza.com/wp-content/uploads/2021/09/flequillo-largo.jpg",
             "clicks": 0
         },
         {
             "id": 27,
             "documentId": "edrxajrgl5lr1lcffw7tih66",
             "title": "Mechas",
-            "type": "service",
+            "type": "other_service",
             "price_euro": 10,
             "duration_minutes": 30,
             "createdAt": "2025-03-11T19:33:17.364Z",
             "updatedAt": "2025-03-11T20:03:02.624Z",
             "publishedAt": "2025-03-11T20:03:02.631Z",
-            "image": "https://i.ytimg.com/vi/UFIpEiBdjrs/maxresdefault.jpg",
+            "image": "https://haircutday.com/b/wp-content/uploads/2023/01/Imagen-de-WhatsApp-2024-05-13-a-las-13.58.24_ee59ff87-768x1024.jpg",
             "clicks": 0
         },
         {
             "id": 28,
             "documentId": "kkbd6fr5im41e6xi5mx1xufg",
             "title": "Perfilar barba",
-            "type": "service",
+            "type": "other_service",
             "price_euro": 13,
             "duration_minutes": 30,
             "createdAt": "2025-03-11T19:33:34.293Z",
             "updatedAt": "2025-03-11T20:03:06.604Z",
             "publishedAt": "2025-03-11T20:03:06.610Z",
-            "image": "https://i.ytimg.com/vi/UFIpEiBdjrs/maxresdefault.jpg",
+            "image": "https://i.ytimg.com/vi/I559LMpDmx0/hq720.jpg?sqp=-oaymwEnCK4FEIIDSFryq4qpAxkIARUAAAAAGAElAADIQj0AgKJDuAK33r8Y&rs=AOn4CLB8YHGYQV1Tkzp5NzRrgdpJYLWhnA",
             "clicks": 0
         }
     ],

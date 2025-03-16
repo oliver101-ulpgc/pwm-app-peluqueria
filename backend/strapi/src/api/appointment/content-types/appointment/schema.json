@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "hairdresser": {
@@ -20,10 +20,10 @@
     "date": {
       "type": "datetime"
     },
-    "user": {
+    "client": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
+      "target": "api::client.client",
       "inversedBy": "appointments"
     },
     "service": {

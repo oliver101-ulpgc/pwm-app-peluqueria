@@ -68,12 +68,6 @@
     "phone_number": {
       "type": "string",
       "required": false
-    },
-    "appointments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::appointment.appointment",
-      "mappedBy": "user"
     }
   }
 }

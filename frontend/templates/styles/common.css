@@ -182,9 +182,10 @@ footer {
     align-items: center;
     background-color: var(--card-bg1-color, #CDCECF);
     margin-top: 50px;
+    padding-bottom: 20px;
 }
 
-footer p{
+footer p {
     text-align: center;
 }
 
@@ -204,6 +205,6 @@ footer img {
     cursor: pointer;
 }
 
-#log{
+#log {
     text-align: center;
 }

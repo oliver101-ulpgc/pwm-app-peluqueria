@@ -4,6 +4,7 @@ function trackClicks(itemId, type) {
     let clicks = JSON.parse(localStorage.getItem(storageKey)) || {};
     clicks[itemId] = (clicks[itemId] || 0) + 1;
     localStorage.setItem(storageKey, JSON.stringify(clicks));
+    window.location.href = `../booking/index.html?id=${itemId}`;
 }
 
 // home.js actualizado
@@ -32,19 +33,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!container) return;
         container.innerHTML = items.map(item => `
             <article class="container_service-card">
-                <a href="../booking/index.html?id=${item.id}" 
-                   onclick="trackClicks(${item.id}, '${item.type}')">
-                    
-                    <img src="${item.image}" alt="${item.title}" class="service-content">
-                    
-                    <div class="container_service-card">
-                        <h3>${item.title}</h3>
-                        <p>${item.price_euro} €</p>
-                        <p>${item.duration_minutes} min</p>
-                        ${item.clicks} ${item.clicks === 1 ? 'click' : 'clicks'}
-                    </div>
-                </a>
-            </article>
+                <div class="service-content">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="Precio_duracion">
+                    <h3>${item.title}</h3>
+                    <p>${item.price_euro} €</p>
+                    <p>${item.duration_minutes} min</p>
+                    ${item.clicks} ${item.clicks === 1 ? 'click' : 'clicks'}
+                </div>
+                    <button class="reserve-button" onclick="trackClicks(${item.id}, '${item.type}')">Reservar</button>
+                </div>
+             </article>
         `).join('');
     };
 

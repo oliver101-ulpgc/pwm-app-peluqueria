@@ -1,8 +1,16 @@
+// Manejar clics y actualizar contador
+function trackClicks(itemId, type) {
+    const storageKey = `${type}_clicks`;
+    let clicks = JSON.parse(localStorage.getItem(storageKey)) || {};
+    clicks[itemId] = (clicks[itemId] || 0) + 1;
+    localStorage.setItem(storageKey, JSON.stringify(clicks));
+}
+
 // home.js actualizado
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
 
-    const data = await fetchData();
+    const data = await fetchData('../../../data/data.json');
     if (!data) return;
 
     // Obtener y mezclar datos

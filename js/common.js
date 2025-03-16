@@ -17,18 +17,10 @@ async function loadCommonTemplates() {
     await loadTemplate('menu', 'menu');
 }
 
-// Manejar clics y actualizar contador
-function trackClicks(itemId, type) {
-    const storageKey = `${type}_clicks`;
-    let clicks = JSON.parse(localStorage.getItem(storageKey)) || {};
-    clicks[itemId] = (clicks[itemId] || 0) + 1;
-    localStorage.setItem(storageKey, JSON.stringify(clicks));
-}
-
 // Obtener datos del JSON
-async function fetchData() {
+async function fetchData(jsonPath) {
     try {
-        const response = await fetch('../../../data/data.json');
+        const response = await fetch(jsonPath);
         return await response.json();
     } catch (error) {
         console.error('Error fetching data:', error);

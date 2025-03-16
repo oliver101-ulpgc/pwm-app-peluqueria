@@ -1,20 +1,19 @@
 // Cargar templates
-async function loadTemplate(templateName, targetElementId) {
+async function loadTemplate(templatePath, targetElementId) {
     try {
-        const response = await fetch(`../../common_html/${templateName}.html`);
-        const html = await response.text();
-        document.getElementById(targetElementId).innerHTML = html;
+        const response = await fetch(templatePath);
+        document.getElementById(targetElementId).innerHTML = await response.text();
     } catch (error) {
-        console.error(`Error loading template ${templateName}:`, error);
+        console.error(`Error loading template ${templatePath}:`, error);
     }
 }
 
 // Cargar todos los templates comunes
 async function loadCommonTemplates() {
-    await loadTemplate('header', 'header');
-    await loadTemplate('nav', 'nav');
-    await loadTemplate('footer', 'foot');
-    await loadTemplate('menu', 'menu');
+    await loadTemplate('../../common_html/header.html', 'header');
+    await loadTemplate('../../common_html/nav.html', 'nav');
+    await loadTemplate('../../common_html/footer.html', 'foot');
+    await loadTemplate('../../common_html/menu.html', 'menu');
 }
 
 // Obtener datos del JSON
@@ -25,5 +24,17 @@ async function fetchData(jsonPath) {
     } catch (error) {
         console.error('Error fetching data:', error);
         return null;
+    }
+}
+
+async function fetchTemplate(templatePath) {
+    try {
+        const response = await fetch(templatePath);
+        const text = await response.text();
+        const container = document.createElement('div');
+        container.innerHTML = text;
+        return container.firstElementChild;
+    } catch (error) {
+        console.error(`Error loading template ${templatePath}:`, error);
     }
 }

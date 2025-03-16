@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="../../../../js/contentLoader.js"></script>
-    <script src="../../../../js/menu.js"></script>
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,15 +16,16 @@
     <title>Reseñas de Usuarios</title>
 </head>
 <body>
-<header id="header" xlu-include-file="../../common_html/header.html"></header>
-<nav id="nav" xlu-include-file="../../common_html/nav.html"></nav>
-<div class="central-section" id="main" xlu-include-file="./main.html"></div>
-<div class="central-section" id="secondary" xlu-include-file="./secondary.html"></div>
-<footer id="foot" xlu-include-file="../../common_html/footer.html"></footer>
-<div id="menu" xlu-include-file="../../common_html/menu.html"></div>
-<script>
-    xLuIncludeFile()
-    toggleMenu()
-</script>
+<header id="header"></header>
+<nav id="nav"></nav>
+<div class="central-section" id="graph"></div>
+<div class="central-section">
+    <section class="review-comments" id="reviews"></section>
+</div>
+<footer id="foot"></footer>
+<div id="menu"></div>
+<script src="../../../../js/menu.js"></script>
+<script src="../../../../js/common.js"></script>
+<script src="../../../../js/reviews.js"></script>
 </body>
 </html>

@@ -29,3 +29,12 @@ Una vez que Strapi esté en ejecución, puedes acceder a la interfaz de administ
 
 - Correo electrónico: `admin@admin.com`
 - Contraseña: `Admin1234`
+
+### Realizar una consulta GET a una de las tablas
+
+Ejemplo:
+
+```http request
+GET http://localhost:1337/api/reviews?populate=* HTTP/1.1
+Authorization: Bearer $AUTH_TOKEN
+```

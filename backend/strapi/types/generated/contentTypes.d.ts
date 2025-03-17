@@ -455,6 +455,7 @@ export interface ApiClientClient extends Struct.CollectionTypeSchema {
 export interface ApiCutExampleCutExample extends Struct.CollectionTypeSchema {
   collectionName: 'cut_examples';
   info: {
+    description: '';
     displayName: 'Cut example';
     pluralName: 'cut-examples';
     singularName: 'cut-example';
@@ -473,6 +474,7 @@ export interface ApiCutExampleCutExample extends Struct.CollectionTypeSchema {
       'api::cut-example.cut-example'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

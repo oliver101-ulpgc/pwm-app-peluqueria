@@ -16,7 +16,7 @@ async function loadCommonTemplates() {
     await loadTemplate('../../common_html/menu.html', 'menu');
 }
 
-// Obtener datos del JSON
+// Obtener contenido de los datos del JSON
 async function fetchData(jsonPath) {
     try {
         const response = await fetch(jsonPath);
@@ -27,6 +27,7 @@ async function fetchData(jsonPath) {
     }
 }
 
+// Devolver el template de un fichero
 async function fetchTemplate(templatePath) {
     try {
         const response = await fetch(templatePath);

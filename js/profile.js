@@ -1,22 +1,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
 
-    const fetchData = async () => {
-        try {
-            const response = await fetch('../../../data/clients.json');
-            if (!response.ok) throw new Error('Failed to fetch data');
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Error fetching profile data:', error);
-            return null;
-        }
-    };
-
     let userData = JSON.parse(localStorage.getItem('userProfile'));
 
     if (!userData) {
-        const data = await fetchData();
+        const data = await fetchData('../../../data/clients.json');
         if (!data || !data.data || data.data.length === 0) {
             console.error("No data available");
             return;

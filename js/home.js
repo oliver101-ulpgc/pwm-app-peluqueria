@@ -32,12 +32,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         const container = document.getElementById(containerId);
         if (!container) return;
         container.innerHTML = items.map(item => `
-            <div class="card">
+            <article class="container_service-card">
+                <div class="service-content">
                 <img src="${item.image}" alt="${item.title}">
-                <div class="card-body">
-                    <h3>${item.name}</h3>
+                <div class="Precio_duracion">
+                    <h3>${item.title}</h3>
+                    <p>${item.price_euro} €</p>
+                    <p>${item.duration_minutes} min</p>
+                    ${item.clicks} ${item.clicks === 1 ? 'click' : 'clicks'}
                 </div>
-            </div>
+                    <button class="reserve-button" onclick="trackClicks(${item.id}, '${item.type}')">Reservar</button>
+                </div>
+             </article>
         `).join('');
     };
 

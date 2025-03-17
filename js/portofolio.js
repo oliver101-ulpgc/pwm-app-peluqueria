@@ -31,14 +31,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const container = document.getElementById(containerId);
         if (!container) return;
         container.innerHTML = items.map(item => `
-            <article class="container">
                 <div class="card">
                 <img src="${item.image}" alt="${item.title}">
                     <div class="card-body">
                     <h3>${item.name}</h3>
                     </div>
                 </div>
-             </article>
         `).join('');
     };
 

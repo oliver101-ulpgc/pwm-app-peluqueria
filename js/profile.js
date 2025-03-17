@@ -33,11 +33,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Función para generar los detalles del perfil dinámicamente
-    const generateProfileDetails = (user) => {
-        const profileDetails = document.querySelector(".profile-details");
-        if (!profileDetails) return;
-
-        profileDetails.innerHTML = `
+    const generateProfileDetails = (user, containerId) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = `
+            <div class="profile-pic-large">
+                <img src="${user.image}" alt="Foto de perfil"></img>
+            </div>
             <div class="detail">
                 <label>Nombre:</label>
                 <span>${user.username}</span>
@@ -61,5 +63,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
     };
 
-    generateProfileDetails(user);
+    generateProfileDetails(user, 'main_section');
 });

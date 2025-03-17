@@ -160,6 +160,7 @@ h3 {
     border-radius: var(--big-border-radius);
     background-color: var(--card-bg1-color);
     padding: 18px;
+    margin: 0 20px;
 }
 
 .central-section {

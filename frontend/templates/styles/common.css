@@ -72,12 +72,14 @@ button:hover {
 #iniciar_sesion {
     color: white;
     background-color: black;
+    border-color: white;
     cursor: pointer;
 }
 
 #registrarse {
     color: black;
     background-color: #CFCFCF;
+    border-color: white;
     cursor: pointer;
 }
 

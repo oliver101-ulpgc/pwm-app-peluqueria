@@ -3,6 +3,7 @@
     {
       "id": 11,
       "documentId": "lxnucf6tmqasxwrufgs0d2bi",
+      "type": "Corte_mujer",
       "image": "https://haircutday.com/b/wp-content/uploads/2024/01/cortes-de-pelo-pixie-otono-invierno-2021-2022-FOTO-pelo-tenido-istock-840x1024.jpg",
       "createdAt": "2025-03-17T10:00:24.569Z",
       "updatedAt": "2025-03-17T10:06:41.434Z",
@@ -12,6 +13,7 @@
     {
       "id": 12,
       "documentId": "h2gzy7gkjea5jzrvpmc1fgtg",
+      "type": "Corte_mujer",
       "image": "https://hips.hearstapps.com/hmg-prod/images/cortes-pelo-largo-elle-09-1603093466.jpg?resize=980:*",
       "createdAt": "2025-03-17T10:05:13.778Z",
       "updatedAt": "2025-03-17T10:06:56.443Z",
@@ -21,6 +23,7 @@
     {
       "id": 13,
       "documentId": "lqk2k3yttkrdgcvhueqt2o5h",
+      "type": "Corte_mujer",
       "image": "https://hips.hearstapps.com/hmg-prod/images/mullet-largo-6718c5b5c7eb5.jpg?crop=0.9790408525754886xw:1xh;center,top&resize=980:*",
       "createdAt": "2025-03-17T10:06:00.941Z",
       "updatedAt": "2025-03-17T10:07:04.520Z",
@@ -30,6 +33,7 @@
     {
       "id": 14,
       "documentId": "fpuuayqhaubel6u4xd56ewmv",
+      "type": "Corte_mujer",
       "image": "https://tahecosmetics.com/trends/wp-content/uploads/2025/01/11-Bob-texturizado-580x769.jpg",
       "createdAt": "2025-03-17T10:02:37.301Z",
       "updatedAt": "2025-03-17T10:07:10.434Z",
@@ -39,6 +43,7 @@
     {
       "id": 15,
       "documentId": "xuz28zfjaar87lwquiol51us",
+      "type": "Corte_mujer",
       "image": "https://tahecosmetics.com/trends/wp-content/uploads/2025/01/39-Butterfly-cut-580x769.jpg",
       "createdAt": "2025-03-17T10:03:40.316Z",
       "updatedAt": "2025-03-17T10:07:15.403Z",
@@ -48,6 +53,7 @@
     {
       "id": 17,
       "documentId": "elq31yq7j3wzn3ngveemyuih",
+      "type": "Corte_mujer",
       "image": "https://content20.lecturas.com/medio/2024/09/03/lob-con-puntas-hacia-dentro_00000000_240904053410_936x1165.jpg",
       "createdAt": "2025-03-17T10:30:59.767Z",
       "updatedAt": "2025-03-17T10:30:59.767Z",
@@ -57,6 +63,7 @@
     {
       "id": 19,
       "documentId": "cwlr1ljebhya9qddwp7dgsa2",
+      "type": "Corte_hombre",
       "image": "https://i.pinimg.com/236x/bd/74/a6/bd74a69d4d109555a0e6ab50bb72fd6c.jpg",
       "createdAt": "2025-03-17T10:37:53.210Z",
       "updatedAt": "2025-03-17T10:37:53.210Z",
@@ -66,6 +73,7 @@
     {
       "id": 21,
       "documentId": "djm00xtd5jjrblrl4g7bfknv",
+      "type": "Corte_hombre",
       "image": "https://www.infobae.com/resizer/v2/KMPVVRYGVFA4TJRRRHYN2SH5BQ.jpg?auth=62c08f746c46478f9e5c93b6a38b0c0dd2ea652a2e743d7fe324c8eb2c026283&smart=true&width=350&height=467&quality=85",
       "createdAt": "2025-03-17T10:39:30.887Z",
       "updatedAt": "2025-03-17T10:39:30.887Z",
@@ -75,6 +83,7 @@
     {
       "id": 23,
       "documentId": "rwq38fnuyird8zrxrvf2h7m0",
+      "type": "Corte_hombre",
       "image": "https://blog.newoldman.com.br/wp-content/uploads/2022/09/Cortes-de-Cabelo-FAUX-HAWX-Ondulado-Cacheado-Masculino-4.jpg",
       "createdAt": "2025-03-17T10:40:23.880Z",
       "updatedAt": "2025-03-17T10:40:23.880Z",
@@ -84,6 +93,7 @@
     {
       "id": 25,
       "documentId": "iiykop1poorltahvyolwle1x",
+      "type": "Corte_hombre",
       "image": "https://i.pinimg.com/736x/d5/55/40/d5554045789d07d46cab34ef9f4cf6bf.jpg",
       "createdAt": "2025-03-17T10:46:21.632Z",
       "updatedAt": "2025-03-17T10:46:21.632Z",
@@ -93,6 +103,7 @@
     {
       "id": 27,
       "documentId": "k47kj0gbzcz919o6ed6zvmih",
+      "type": "Corte_hombre",
       "image": "https://content.clara.es/medio/2024/05/31/cortes-de-pelo-para-hombre-joven-fade-con-linea_664f4da0_240531120804_800x1000.webp",
       "createdAt": "2025-03-17T10:47:08.157Z",
       "updatedAt": "2025-03-17T10:47:08.157Z",
@@ -102,6 +113,7 @@
     {
       "id": 31,
       "documentId": "f3sruadtn3yjckvmjvgeeout",
+      "type": "Corte_hombre",
       "image": "https://content.clara.es/medio/2024/06/17/corte_713bbee7_240617145931_800x1119.webp",
       "createdAt": "2025-03-17T10:53:05.890Z",
       "updatedAt": "2025-03-17T10:53:05.890Z",
@@ -111,6 +123,7 @@
     {
       "id": 33,
       "documentId": "d16trw4wdugb3d9y3jkko4xd",
+      "type": "Corte_mujer",
       "image": "https://i.pinimg.com/736x/47/ba/7e/47ba7eaa0b57b3934cd24308550d8ac1.jpg",
       "createdAt": "2025-03-17T10:55:11.305Z",
       "updatedAt": "2025-03-17T10:55:11.305Z",
@@ -120,6 +133,7 @@
     {
       "id": 34,
       "documentId": "o3cla6mx9n3p434ur32mkdud",
+      "type": "Corte_hombre",
       "image": "https://i.pinimg.com/736x/31/dc/22/31dc226710cfb3de74d51f921d5065e3.jpg",
       "createdAt": "2025-03-17T10:49:19.988Z",
       "updatedAt": "2025-03-17T10:55:35.714Z",

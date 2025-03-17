@@ -10,7 +10,7 @@ function trackClicks(itemId, type) {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
 
-    const data = await fetchData('../../../data/data.json');
+    const data = await fetchData('../../../data/portfolio.json');
     if (!data) return;
 
     // Obtener y mezclar datos
@@ -23,24 +23,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     const sortedItems = [...allItems].sort((a, b) => b.clicks - a.clicks);
 
     // Filtrar por tipo
-    const primaryItems = sortedItems.filter(item => item.type === "service");
-    const secondaryItems = sortedItems.filter(item => item.type === "other_service");
+    const primaryItems = sortedItems.filter(item => item.type === "Corte_hombre");
+    const secondaryItems = sortedItems.filter(item => item.type === "Corte_mujer");
 
     // Función para generar tarjetas
     const generateCards = (items, containerId) => {
         const container = document.getElementById(containerId);
         if (!container) return;
         container.innerHTML = items.map(item => `
-            <article class="container_service-card">
-                <div class="service-content">
+            <article class="container">
+                <div class="card">
                 <img src="${item.image}" alt="${item.title}">
-                <div class="Precio_duracion">
-                    <h3>${item.title}</h3>
-                    <p>${item.price_euro} €</p>
-                    <p>${item.duration_minutes} min</p>
-                    ${item.clicks} ${item.clicks === 1 ? 'click' : 'clicks'}
-                </div>
-                    <button class="reserve-button" onclick="trackClicks(${item.id}, '${item.type}')">Reservar</button>
+                    <div class="card-body">
+                    <h3>${item.name}</h3>
+                    </div>
                 </div>
              </article>
         `).join('');

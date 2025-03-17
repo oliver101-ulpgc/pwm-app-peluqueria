@@ -1,0 +1,62 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "documentId": "r0h3kelvv1qoxvxp8inw9cbj",
+      "username": "Diego Ortega",
+      "email": "diego.ortega@example.com",
+      "phone_number": "613830234",
+      "createdAt": "2025-03-16T12:56:32.766Z",
+      "updatedAt": "2025-03-16T12:56:32.766Z",
+      "publishedAt": "2025-03-16T12:56:32.659Z"
+    },
+    {
+      "id": 2,
+      "documentId": "co6ls7z3astznw5ro71a8qzt",
+      "username": "Bárbara Montero",
+      "email": "barbara.montero@example.com",
+      "phone_number": "649913810",
+      "createdAt": "2025-03-16T12:57:25.344Z",
+      "updatedAt": "2025-03-16T12:57:25.344Z",
+      "publishedAt": "2025-03-16T12:57:25.250Z"
+    },
+    {
+      "id": 3,
+      "documentId": "fnp6pc3jyltvsmjllj4esijh",
+      "username": "Gema",
+      "email": "gema@example.com",
+      "phone_number": "736829723",
+      "createdAt": "2025-03-16T12:58:24.166Z",
+      "updatedAt": "2025-03-16T12:58:24.166Z",
+      "publishedAt": "2025-03-16T12:58:24.078Z"
+    },
+    {
+      "id": 4,
+      "documentId": "twkv27tflqyy09g258574xgb",
+      "username": "Carlos Sánchez",
+      "email": "carlos.sanchez@example.com",
+      "phone_number": "629122333",
+      "createdAt": "2025-03-16T12:59:28.758Z",
+      "updatedAt": "2025-03-16T12:59:28.758Z",
+      "publishedAt": "2025-03-16T12:59:28.672Z"
+    },
+    {
+      "id": 5,
+      "documentId": "xrkpiuw4tauxmumyvg1sjyb0",
+      "username": "Silvia Pérez",
+      "email": "silvia.perez@example.com",
+      "phone_number": "675812339",
+      "createdAt": "2025-03-16T13:00:11.078Z",
+      "updatedAt": "2025-03-16T13:00:11.078Z",
+      "publishedAt": "2025-03-16T13:00:10.980Z"
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 5
+    }
+  }
+}

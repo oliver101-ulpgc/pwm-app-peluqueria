@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "documentId": "jtlip998934a8n5ir28tqrfs",
+      "direction": "",
+      "phone_number": "",
+      "email": "",
+      "createdAt": "2025-03-11T20:25:39.919Z",
+      "updatedAt": "2025-03-11T20:25:39.919Z",
+      "publishedAt": "2025-03-11T20:25:39.934Z"
+    }
+      ],
+      "meta": {
+        "pagination": {
+          "page": 1,
+          "pageSize": 25,
+          "pageCount": 1,
+          "total": 1
+        }
+      }
+    }

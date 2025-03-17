@@ -1,6 +1,6 @@
 async function addReviews(data) {
     let reviewTemplate = await fetchTemplate('./review.html',);
-    let reviews_parent = document.getElementById('reviews');
+    let reviewsParent = document.getElementById('reviews');
     [...data.data].forEach((review) => {
         const reviewElement = reviewTemplate.cloneNode(true);
 
@@ -26,7 +26,7 @@ async function addReviews(data) {
             // TODO
         }
 
-        reviews_parent.appendChild(reviewElement);
+        reviewsParent.appendChild(reviewElement);
     });
 }
 

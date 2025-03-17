@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    await loadCommonTemplates();
     const fetchData = async () => {
         try {
             const response = await fetch('../../../data/clients.json');
@@ -37,9 +38,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const container = document.getElementById(containerId);
         if (!container) return;
         container.innerHTML = `
+            <main class="profile-container">
+            <section class="profile-info">
             <div class="profile-pic-large">
                 <img src="${user.image}" alt="Foto de perfil"></img>
             </div>
+            <section>
             <div class="detail">
                 <label>Nombre:</label>
                 <span>${user.username}</span>
@@ -60,6 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <span>************</span>
                 <button class="btn">Cambiar</button>
             </div>
+            <main>
         `;
     };
 

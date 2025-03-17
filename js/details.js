@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
-    const fetchData = async () => {
+    const fetchData = async (json) => {
         try {
-            const response = await fetch('../../../data/hairdressers.json');
+            const response = await fetch(json);
             if (!response.ok) throw new Error('Failed to fetch data');
             const data = await response.json();
             return data;
@@ -12,14 +12,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    const data = await fetchData();
+    const data = await fetchData('../../../data/location.json');
+    const data2 = await fetchData('../../../data/hairdressers.json');
     if (!data || !data.data || data.data.length === 0) {
         console.error("No data available");
         return;
     }
 
+    const generateLocationDetails = (data, containerId) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = `
+            <img src="../Images/Ubicacion.jpg" width="200" height="200">
+            <div>
+            <p>${data.direction}</p>
+            <p>${data.phone_number}</p>
+            <p>${data.email}</p>
+        </div>
+        `;
+    };
+
     // Función para generar los detalles del perfil dinámicamente
-    const generateProfileDetails = (items, containerId) => {
+    const generateHairdresserDetails = (items, containerId) => {
         const container = document.getElementById(containerId);
         if (!container) return;
         container.innerHTML = items.map(item => `
@@ -30,5 +44,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         `).join('');
     };
 
-    generateProfileDetails(data.data, 'secundary');
+    generateLocationDetails(data.data, 'main');
+    generateHairdresserDetails(data2.data, 'secundary');
 });

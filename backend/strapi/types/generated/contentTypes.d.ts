@@ -452,6 +452,34 @@ export interface ApiClientClient extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCutExampleCutExample extends Struct.CollectionTypeSchema {
+  collectionName: 'cut_examples';
+  info: {
+    displayName: 'Cut example';
+    pluralName: 'cut-examples';
+    singularName: 'cut-example';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cut-example.cut-example'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHairdresserHairdresser extends Struct.CollectionTypeSchema {
   collectionName: 'hairdressers';
   info: {
@@ -1089,6 +1117,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::appointment.appointment': ApiAppointmentAppointment;
       'api::client.client': ApiClientClient;
+      'api::cut-example.cut-example': ApiCutExampleCutExample;
       'api::hairdresser.hairdresser': ApiHairdresserHairdresser;
       'api::review.review': ApiReviewReview;
       'api::service.service': ApiServiceService;

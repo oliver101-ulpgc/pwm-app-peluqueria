@@ -148,6 +148,10 @@ h3 {
     height: 50px;
 }
 
+.review-description {
+    margin-left: 50px;
+}
+
 .review div {
     gap: var(--element-spacing);
 

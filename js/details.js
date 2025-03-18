@@ -44,6 +44,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         `).join('');
     };
 
-    generateLocationDetails(data.data, 'main');
+    generateLocationDetails(data.data[0], 'main');
     generateHairdresserDetails(data2.data, 'secundary');
 });

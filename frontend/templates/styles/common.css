@@ -135,7 +135,7 @@ h3 {
     height: 100vh;
     background-color: #949393;
     padding: 20px;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 20px 0 0;
@@ -143,14 +143,13 @@ h3 {
     top: 0;
     right: -400px;
     opacity: 0;
-    visibility: hidden;
     transition: right 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .menu-container.active {
     right: 0;
     opacity: 1;
-    visibility: visible;
+    display: flex;
 }
 
 .menu-container.show {

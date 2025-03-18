@@ -50,9 +50,12 @@ function createGraphRow(stars, count, percentage) {
     `;
 }
 
-function addReviews(data) {
+async function addReviews(data) {
     const reviewsParent = document.getElementById('reviews');
     if (!reviewsParent) return;
+    const reviewTemplate = await fetchTemplate();
+    // TODO
+
     reviewsParent.innerHTML = data.data.map((review) => createReview(
         review.client.username,
         review.client.image,
@@ -61,14 +64,37 @@ function addReviews(data) {
     )).join('');
 }
 
-function addGraph(data) {
-    const reviewsGraphParent = document.getElementById('graph');
-    if (!reviewsGraphParent) return;
-    reviewsGraphParent.innerHTML = createGraph(
-        data.bars,
-        data.meta.total_reviews,
-        data.meta.average_rating
-    );
+async function addGraph(data) {
+    const graphContainer = document.getElementById('graph');
+    if (!graphContainer) return;
+    const graphSection = await fetchTemplate('./reviews-graph.html');
+    {
+        const meanText = graphSection.querySelector('.reviews-mean');
+        meanText.textContent = `${data.meta.average_rating} ⭐`;
+
+        const countText = graphSection.querySelector('.reviews-count');
+        countText.textContent = data.meta.total_reviews;
+    }
+
+    const graphParent = graphSection.querySelector('.graph');
+    const barTemplate = await fetchTemplate('./graph-row.html');
+    data.bars.forEach(bar => {
+        const row = barTemplate.cloneNode(true);
+
+        const stars = row.querySelector('.row-stars');
+        stars.textContent = bar.stars;
+
+        const rowBar = row.querySelector('.bar');
+        rowBar.style.width = (100 * bar.count / data.meta.total_reviews).toString() + `%`;
+
+        const rowCount = row.querySelector('.row-count');
+        rowCount.textContent = bar.count;
+
+        graphParent.appendChild(row);
+    });
+
+    graphSection.appendChild(graphParent);
+    graphContainer.appendChild(graphSection);
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -76,7 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const graphData = await fetchData('../../../data/reviews-graph.json');
     if (!graphData) return;
-    addGraph(graphData);
+    await addGraph(graphData);
 
     const reviewData = await fetchData('../../../data/reviews.json');
     if (!reviewData) return;

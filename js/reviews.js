@@ -1,14 +1,3 @@
-async function addReviews(data) {
-    const reviewsParent = document.getElementById('reviews');
-    if (!reviewsParent) return;
-    reviewsParent.innerHTML = [...data.data].map((review) => createReview(
-        review.client.username,
-        review.client.image,  // TODO: add review.client.avatar,
-        review.text,
-        '⭐'.repeat(parseInt(review.stars))
-    )).join('');
-}
-
 function createReview(username, avatarURL, description, stars) {
     return `
     <article class="review">
@@ -24,93 +13,72 @@ function createReview(username, avatarURL, description, stars) {
     `;
 }
 
-// TODO
-function createGraph() {
+function createGraph(starsBars, count, mean) {
+    const rows = starsBars.map((bar) => createGraphRow(
+        bar.stars,
+        bar.count,
+        100 * bar.count / count
+    )).join('');
     return `
-<section class="reviews-graph">
-    <div class="half graph-info">
-        <div>
-            <p>4,1 ⭐</p>
-            <p>254 reseñas</p>
-        </div>
-    </div>
-    <div class="half graph">
-        <div class="row">
-            <div class="side-bar">
-                <div>5</div>
-            </div>
-            <div class="middle-bar">
-                <div class="bar-container">
-                    <div class="bar-5 bar"></div>
-                </div>
-            </div>
-            <div class="side-bar right-bar">
-                <div>150</div>
+    <section class="reviews-graph">
+        <div class="half graph-info">
+            <div>
+                <p>${mean} ⭐</p>
+                <p>${count} reseñas</p>
             </div>
         </div>
-        <div class="row">
-            <div class="side-bar">
-                <div>4</div>
-            </div>
-            <div class="middle-bar">
-                <div class="bar-container">
-                    <div class="bar-4 bar"></div>
-                </div>
-            </div>
-            <div class="side-bar right-bar">
-                <div>63</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="side-bar">
-                <div>3</div>
-            </div>
-            <div class="middle-bar">
-                <div class="bar-container">
-                    <div class="bar-3 bar"></div>
-                </div>
-            </div>
-            <div class="side-bar right-bar">
-                <div>15</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="side-bar">
-                <div>2</div>
-            </div>
-            <div class="middle-bar">
-                <div class="bar-container">
-                    <div class="bar-2 bar"></div>
-                </div>
-            </div>
-            <div class="side-bar right-bar">
-                <div>6</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="side-bar">
-                <div>1</div>
-            </div>
-            <div class="middle-bar">
-                <div class="bar-container">
-                    <div class="bar-1 bar"></div>
-                </div>
-            </div>
-            <div class="side-bar right-bar">
-                <div>20</div>
-            </div>
-        </div>
-    </div>
-</section>
+        <div class="half graph">${rows}</div>
+    </section>
     `;
+}
+
+function createGraphRow(stars, count, percentage) {
+    return `
+    <div class="row">
+        <div class="side-bar">
+            <div>${stars}</div>
+        </div>
+        <div class="middle-bar">
+            <div class="bar-container">
+                <div class="bar" style='width: ${percentage}%'></div>
+            </div>
+        </div>
+        <div class="side-bar right-bar">
+            <div>${count}</div>
+        </div>
+    </div>
+    `;
+}
+
+function addReviews(data) {
+    const reviewsParent = document.getElementById('reviews');
+    if (!reviewsParent) return;
+    reviewsParent.innerHTML = data.data.map((review) => createReview(
+        review.client.username,
+        review.client.image,
+        review.text,
+        '⭐'.repeat(parseInt(review.stars))
+    )).join('');
+}
+
+function addGraph(data) {
+    const reviewsGraphParent = document.getElementById('graph');
+    if (!reviewsGraphParent) return;
+    reviewsGraphParent.innerHTML = createGraph(
+        data.bars,
+        data.meta.total_reviews,
+        data.meta.average_rating
+    );
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
 
-    const data = await fetchData('../../../data/reviews.json');
-    if (!data) return;
+    const graphData = await fetchData('../../../data/reviews-graph.json');
+    if (!graphData) return;
+    addGraph(graphData);
 
-    await loadTemplate('./graph.html', 'graph');
-    await addReviews(data);
+    const reviewData = await fetchData('../../../data/reviews.json');
+    if (!reviewData) return;
+    addReviews(reviewData);
 });

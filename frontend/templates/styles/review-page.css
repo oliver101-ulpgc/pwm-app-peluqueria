@@ -61,26 +61,6 @@ h3 {
     text-align: center;
 }
 
-.bar-5 {
-    width: 60%;
-}
-
-.bar-4 {
-    width: 30%;
-}
-
-.bar-3 {
-    width: 10%;
-}
-
-.bar-2 {
-    width: 4%;
-}
-
-.bar-1 {
-    width: 15%;
-}
-
 .bar {
     background-color: var(--review-graph-color);
     border-radius: var(--small-border-radius) var(--small-spacing) var(--small-spacing) var(--small-border-radius);

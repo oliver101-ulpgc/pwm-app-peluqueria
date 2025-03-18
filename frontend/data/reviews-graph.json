@@ -1,0 +1,13 @@
+{
+  "bars": [
+    { "stars": 5, "count": 150 },
+    { "stars": 4, "count": 63 },
+    { "stars": 3, "count": 15 },
+    { "stars": 2, "count": 6 },
+    { "stars": 1, "count": 20 }
+  ],
+  "meta": {
+    "total_reviews": 254,
+    "average_rating": 4.1
+  }
+}

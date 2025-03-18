@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         container.innerHTML = `
             <img src="../Images/Ubicacion.jpg" width="200" height="200">
             <div>
-            <p>${data.direction}</p>
+            <p>${data.address}</p>
             <p>${data.phone_number}</p>
             <p>${data.email}</p>
         </div>

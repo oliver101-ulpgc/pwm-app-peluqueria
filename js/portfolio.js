@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const sortedItems = [...allItems].sort((a, b) => b.clicks - a.clicks);
 
     // Filtrar por tipo
-    const primaryItems = sortedItems.filter(item => item.type === "Corte_hombre");
-    const secondaryItems = sortedItems.filter(item => item.type === "Corte_mujer");
+    const primaryItems = sortedItems.filter(item => item.type === "hombre");
+    const secondaryItems = sortedItems.filter(item => item.type === "mujer");
 
     // Función para generar tarjetas
     const generateCards = (items, containerId) => {

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadCommonTemplates();
+    await loadParcialCommonTemplates();
 
     let userData = JSON.parse(localStorage.getItem('userProfile'));
 

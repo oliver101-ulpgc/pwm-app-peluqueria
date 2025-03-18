@@ -16,6 +16,12 @@ async function loadCommonTemplates() {
     await loadTemplate('../../common_html/menu.html', 'menu');
 }
 
+async function loadParcialCommonTemplates() {
+    await loadTemplate('../../common_html/header.html', 'header');
+    await loadTemplate('../../common_html/nav.html', 'nav');
+    await loadTemplate('../../common_html/menu.html', 'menu');
+}
+
 // Obtener contenido de los datos del JSON
 async function fetchData(jsonPath) {
     try {

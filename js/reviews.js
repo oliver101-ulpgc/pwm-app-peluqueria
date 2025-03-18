@@ -53,30 +53,28 @@ function createGraphRow(stars, count, percentage) {
 async function addReviews(data) {
     const reviewsParent = document.getElementById('reviews');
     if (!reviewsParent) return;
-    const reviewTemplate = await fetchTemplate();
-    // TODO
 
-    reviewsParent.innerHTML = data.data.map((review) => createReview(
-        review.client.username,
-        review.client.image,
-        review.text,
-        '⭐'.repeat(parseInt(review.stars))
-    )).join('');
+    const reviewTemplate = await fetchTemplate('./review.html');
+    data.data.forEach(review => {
+        const reviewNode = reviewTemplate.cloneNode(true);
+
+        reviewNode.querySelector('.review-avatar').style.backgroundImage = `url(${review.client.image})`;
+        reviewNode.querySelector('.review-username').textContent = review.client.username;
+        reviewNode.querySelector('.review-description').textContent = review.text;
+        reviewNode.querySelector('.stars-display').textContent = '⭐'.repeat(parseInt(review.stars));
+
+        reviewsParent.appendChild(reviewNode);
+    });
 }
 
 async function addGraph(data) {
     const graphContainer = document.getElementById('graph');
     if (!graphContainer) return;
-    const graphSection = await fetchTemplate('./reviews-graph.html');
-    {
-        const meanText = graphSection.querySelector('.reviews-mean');
-        meanText.textContent = `${data.meta.average_rating} ⭐`;
+    const graphSections = await fetchTemplate('./reviews-graph.html');
+    graphSections.querySelector('.reviews-mean').textContent = `${data.meta.average_rating} ⭐`;
+    graphSections.querySelector('.reviews-count').textContent = data.meta.total_reviews;
 
-        const countText = graphSection.querySelector('.reviews-count');
-        countText.textContent = data.meta.total_reviews;
-    }
-
-    const graphParent = graphSection.querySelector('.graph');
+    const graphParent = graphSections.querySelector('.graph');
     const barTemplate = await fetchTemplate('./graph-row.html');
     data.bars.forEach(bar => {
         const row = barTemplate.cloneNode(true);
@@ -85,7 +83,7 @@ async function addGraph(data) {
         stars.textContent = bar.stars;
 
         const rowBar = row.querySelector('.bar');
-        rowBar.style.width = (100 * bar.count / data.meta.total_reviews).toString() + `%`;
+        rowBar.style.width = `${100 * bar.count / data.meta.total_reviews} %`;
 
         const rowCount = row.querySelector('.row-count');
         rowCount.textContent = bar.count;
@@ -93,8 +91,8 @@ async function addGraph(data) {
         graphParent.appendChild(row);
     });
 
-    graphSection.appendChild(graphParent);
-    graphContainer.appendChild(graphSection);
+    graphSections.appendChild(graphParent);
+    graphContainer.appendChild(graphSections);
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

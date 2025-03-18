@@ -3,7 +3,7 @@ async function addReviews(data) {
     if (!reviewsParent) return;
     reviewsParent.innerHTML = [...data.data].map((review) => createReview(
         review.client.username,
-        '../Images/avatar.png',  // TODO: add review.client.avatar,
+        review.client.image,  // TODO: add review.client.avatar,
         review.text,
         '⭐'.repeat(parseInt(review.stars))
     )).join('');

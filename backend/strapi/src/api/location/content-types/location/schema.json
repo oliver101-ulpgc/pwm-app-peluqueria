@@ -1,24 +1,24 @@
 {
   "kind": "collectionType",
-  "collectionName": "cut_examples",
+  "collectionName": "locations",
   "info": {
-    "singularName": "cut-example",
-    "pluralName": "cut-examples",
-    "displayName": "Cut example",
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "Location",
     "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "image": {
+    "address": {
       "type": "string"
     },
-    "name": {
+    "phone_number": {
       "type": "string"
     },
-    "type": {
-      "type": "string"
+    "email": {
+      "type": "email"
     }
   }
 }

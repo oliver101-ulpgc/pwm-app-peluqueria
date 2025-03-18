@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const container = document.getElementById(containerId);
         if (!container) return;
         container.innerHTML = `
-            <img src="../Images/Ubicacion.jpg" width="200" height="200">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" width="200" height="200">
             <div>
             <p>${data.address}</p>
             <p>${data.phone_number}</p>

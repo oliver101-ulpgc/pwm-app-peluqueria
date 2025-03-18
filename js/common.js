@@ -26,16 +26,3 @@ async function fetchData(jsonPath) {
         return null;
     }
 }
-
-// Devolver el template de un fichero
-async function fetchTemplate(templatePath) {
-    try {
-        const response = await fetch(templatePath);
-        const text = await response.text();
-        const container = document.createElement('div');
-        container.innerHTML = text;
-        return container.firstElementChild;
-    } catch (error) {
-        console.error(`Error loading template ${templatePath}:`, error);
-    }
-}

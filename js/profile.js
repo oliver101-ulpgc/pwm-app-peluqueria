@@ -13,40 +13,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         localStorage.setItem('userProfile', JSON.stringify(userData)); // Guardamos en localStorage
     }
 
-    const generateProfileDetails = (user, containerId) => {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = `
-            <main class="profile-container">
-                <section class="profile-info">
-                    <div class="profile-pic-large">
-                        <img src="${user.image}" alt="Foto de perfil">
-                    </div>
-                </section>
-                <section>
-                    ${createEditableDetail("Nombre", "username", user.username)}
-                    ${createEditableDetail("Email", "email", user.email)}
-                    ${createEditableDetail("Teléfono", "phone_number", user.phone_number)}
-                    ${createEditableDetail("Contraseña", "password", "************")}
-                </section>
-            </main>
-        `;
-
-        attachEventListeners();
-    };
-
-    const createEditableDetail = (label, key, value) => {
-        return `
-            <div class="detail" data-key="${key}">
-                <label>${label}:</label>
-                <span class="detail-value">${value}</span>
-                <input type="text" class="edit-input" value="${value}" style="display: none;">
-                <button class="btn edit-btn">Cambiar</button>
-                <button class="btn save-btn" style="display: none;">Guardar</button>
-            </div>
-        `;
-    };
-
     const attachEventListeners = () => {
         document.querySelectorAll('.edit-btn').forEach(button => {
             button.addEventListener('click', (event) => {
@@ -71,6 +37,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     };
 
+    const generateProfileDetails = async (user, containerId) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const main = await fetchTemplate('./profile-container.html');
+        const image = main.querySelector('.profile-pic-large img');
+        image.src = user.image;
+        image.alt = user.name;
+
+        const fieldTemplate = await fetchTemplate('./profile-field.html');
+        const details = main.querySelector('.profile-details-container');
+        createEditableDetail("Nombre", "username", user.username, fieldTemplate, details);
+        createEditableDetail("Email", "email", user.email, fieldTemplate, details);
+        createEditableDetail("Teléfono", "phone_number", user.phone_number, fieldTemplate, details);
+        createEditableDetail("Contraseña", "password", "************", fieldTemplate, details);
+
+        container.appendChild(main);
+        attachEventListeners();
+    };
+
+    const createEditableDetail = (label, key, value, template, parent) => {
+        const detail = template.cloneNode(true);
+        detail.querySelector('label').textContent = `${label}:`;
+        detail.querySelector('.detail-value').textContent = value;
+        detail.querySelector('input').value = value;
+        parent.appendChild(detail);
+    };
+
     const toggleEditMode = (detailDiv, isEditing, newValue = null) => {
         const valueSpan = detailDiv.querySelector('.detail-value');
         const inputField = detailDiv.querySelector('.edit-input');
@@ -92,5 +85,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    generateProfileDetails(userData, 'main_section');
+    await generateProfileDetails(userData, 'main_section');
 });

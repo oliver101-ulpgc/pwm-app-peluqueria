@@ -1,49 +1,58 @@
+async function fetchData(json) {
+    try {
+        const response = await fetch(json);
+        if (!response.ok) throw new Error('Failed to fetch data');
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return null;
+    }
+}
+
+async function addLocationDetails(data) {
+    const mainContainer = document.getElementById('main');
+    if (!mainContainer) return;
+
+    const locationTemplate = await fetchTemplate('./main.html');
+    locationTemplate.querySelector('.image').src  = data.image;
+    locationTemplate.querySelector('.address').textContent = data.address;
+    locationTemplate.querySelector('.telephone').textContent = data.phone_number;
+    locationTemplate.querySelector('.mail').textContent = data.email;
+
+    mainContainer.appendChild(locationTemplate);
+}
+
+async function addHairdressers(data) {
+    const secondaryContainer = document.getElementById('secondary');
+    const trabajadoresContainer = secondaryContainer.querySelector('.trabajadores');
+    const hairdresserTemplate = await fetchTemplate('./hairdresser.html');
+
+    data.forEach(hairdresser => {
+        const hairdresserNode = hairdresserTemplate.cloneNode(true);
+
+        // Corregir selectores: usa las clases correctas
+        const imageElement = hairdresserNode.querySelector('.image');
+        const nameElement = hairdresserNode.querySelector('.name');
+
+        if (imageElement && nameElement) {
+            imageElement.src = hairdresser.image;
+            nameElement.textContent = hairdresser.name;
+        }
+
+        trabajadoresContainer.appendChild(hairdresserNode);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
-    const fetchData = async (json) => {
-        try {
-            const response = await fetch(json);
-            if (!response.ok) throw new Error('Failed to fetch data');
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Error fetching profile data:', error);
-            return null;
-        }
-    };
 
-    const data = await fetchData('../../../data/location.json');
-    const data2 = await fetchData('../../../data/hairdressers.json');
-    if (!data || !data.data || data.data.length === 0) {
-        console.error("No data available");
-        return;
+    const locationData = await fetchData('../../../data/location.json');
+    if (locationData && locationData.data.length > 0) {
+        await addLocationDetails(locationData.data[0]);
     }
 
-    const generateLocationDetails = (data, containerId) => {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = `
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" width="200" height="200">
-            <div>
-            <p>${data.address}</p>
-            <p>${data.phone_number}</p>
-            <p>${data.email}</p>
-        </div>
-        `;
-    };
-
-    // Función para generar los detalles del perfil dinámicamente
-    const generateHairdresserDetails = (items, containerId) => {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = items.map(item => `
-            <div class="trabajador" id="trabajador1">
-                <img src="${item.image}" width="100" height="100">
-                <p>${item.name}</p>
-            </div>
-        `).join('');
-    };
-
-    generateLocationDetails(data.data[0], 'main');
-    generateHairdresserDetails(data2.data, 'secundary');
+    const hairdressersData = await fetchData('../../../data/hairdressers.json');
+    if (hairdressersData && hairdressersData.data.length > 0) {
+        await addHairdressers(hairdressersData.data);
+    }
 });

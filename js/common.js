@@ -45,3 +45,8 @@ async function fetchTemplate(templatePath) {
         console.error(`Error loading template ${templatePath}:`, error);
     }
 }
+
+function toggleNav() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('active'); // Alternar la clase 'active' para mostrar u ocultar los enlaces
+}

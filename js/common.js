@@ -8,18 +8,28 @@ async function loadTemplate(templatePath, targetElementId) {
     }
 }
 
+function handleHeader() {
+    const isLogged = localStorage.getItem('isLogged');
+    if (isLogged === null || isLogged === 'false') {
+        document.querySelector('#botones .profile-pic').style.display = "none";
+    } else {
+        document.querySelectorAll('#botones button').forEach(button => {
+            button.style.display = "none";
+        });
+    }
+}
+
 // Cargar todos los templates comunes
 async function loadCommonTemplates() {
-    await loadTemplate('../../common_html/header.html', 'header');
-    await loadTemplate('../../common_html/nav.html', 'nav');
+    await loadParcialCommonTemplates();
     await loadTemplate('../../common_html/footer.html', 'foot');
-    await loadTemplate('../../common_html/menu.html', 'menu');
 }
 
 async function loadParcialCommonTemplates() {
     await loadTemplate('../../common_html/header.html', 'header');
     await loadTemplate('../../common_html/nav.html', 'nav');
     await loadTemplate('../../common_html/menu.html', 'menu');
+    handleHeader();
 }
 
 // Obtener contenido de los datos del JSON

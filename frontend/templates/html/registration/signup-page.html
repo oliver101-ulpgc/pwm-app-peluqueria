@@ -59,5 +59,21 @@
         <a href="../policies/index.html">Aviso de Privacidad</a>
     </p>
 </footer>
+<script>
+    const emailInput = document.getElementById('email');
+
+    // Validar email cuando el input pierde el foco
+    emailInput.addEventListener('focusout', function() {
+        if (!emailInput.validity.valid) {
+            // Usamos setCustomValidity para mostrar el mensaje, pero no bloquear el enfoque
+            emailInput.setCustomValidity("Por favor, ingrese un correo electrónico válido.");
+        } else {
+            // Si es válido, eliminamos cualquier mensaje de error personalizado
+            emailInput.setCustomValidity("");
+        }
+        // Llamamos a reportValidity para mostrar el mensaje, pero sin bloquear el foco
+        emailInput.reportValidity();
+    });
+</script>
 </body>
 </html>

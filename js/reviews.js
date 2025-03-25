@@ -25,13 +25,14 @@ async function addGraph(data) {
     data.bars.forEach(bar => {
         const rowNode = rowTemplate.cloneNode(true);
         rowNode.querySelector('.row-stars').textContent = bar.stars;
-        rowNode.querySelector('.bar').style.width = `${100 * bar.count / data.meta.total_reviews} %`;
+        rowNode.querySelector('.bar').style.width = `${100 * bar.count / data.meta.total_reviews}%`;
         rowNode.querySelector('.row-count').textContent = bar.count;
         graphParent.appendChild(rowNode);
     });
     graphSections.appendChild(graphParent);
     graphContainer.appendChild(graphSections);
 }
+
 
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();

@@ -83,6 +83,8 @@ input:not(:placeholder-shown) + label {
     transform: translateX(var(--form-field-left-padding)) translateY(-70%);
 }
 
+input:invalid:not(:placeholder-shown) {border: 1px solid red}
+
 input::placeholder {
     color: transparent;
 }

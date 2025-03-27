@@ -19,6 +19,7 @@ body {
 footer {
     padding: 20px;
     margin-top: 70px;
+    background-color: var(--background-color);
     color: var(--text-fg1-color);
     font-weight: normal;
 }

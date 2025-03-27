@@ -22,7 +22,7 @@
         <h1 class="text-section-title-heading">Crea tu cuenta</h1>
         <h2 class="text-section-subtitle-heading">Ingresa tus datos para continuar</h2>
     </header>
-    <form action="../home/index.html" method="post">
+    <form id="registration-form" method="post">
         <div class="form-field">
             <input id="name" type="text" name="username" placeholder="username"
                    title="Nombre de usuario (entre 4 y 60 caracteres)" minlength="4" maxlength="60" required>
@@ -77,6 +77,13 @@
     emailInput.addEventListener('change', inputListener(emailInput));
     passwordInput.addEventListener('change', inputListener( passwordInput));
     phoneInput.addEventListener('change', inputListener(phoneInput));
+
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita la recarga automática
+
+        localStorage.setItem('isLogged', 'true'); // Usuario autenticado
+        window.location.href = '../home/index.html'; // Redireccionar a la página de inicio
+    });
 </script>
 </body>
 </html>

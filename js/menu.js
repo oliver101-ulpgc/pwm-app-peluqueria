@@ -7,3 +7,8 @@ function toggleMenu() {
         menu.classList.add("active");
     }
 }
+
+function logout() {
+    localStorage.setItem("isLogged", "false"); // Marcar como desconectado
+    window.location.href = "../../html/home/index.html"; // Redirigir a inicio
+}

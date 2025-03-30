@@ -181,11 +181,11 @@ h3 {
 }
 
 .menu-container {
-    width: 300px;
+    width: 35%;
     height: 100vh;
     background-color: #949393;
     padding: 20px;
-    display: flex; /* Cambiado a flex para simplificar el manejo */
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 20px 0 0;
@@ -198,6 +198,7 @@ h3 {
 }
 
 .menu-container.active {
+    display: flex;
     right: 0;
     opacity: 1;
 }

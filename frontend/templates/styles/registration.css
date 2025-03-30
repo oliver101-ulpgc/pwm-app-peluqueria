@@ -1,5 +1,6 @@
 :root {
-    --form-min-width: 400px;
+    --form-min-width: 300px; /* Ajustar a un tamaño más pequeño para pantallas pequeñas */
+    --form-max-width: 400px; /* Ancho máximo para pantallas más grandes */
     --form-field-left-padding: 20px;
     --form-element-height: 60px;
     --form-element-border-radius: 10px;
@@ -14,6 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 5%;
 }
 
 footer {

@@ -185,26 +185,38 @@ h3 {
     height: 100vh;
     background-color: #949393;
     padding: 20px;
-    display: none;
+    display: flex; /* Cambiado a flex para simplificar el manejo */
     flex-direction: column;
     align-items: flex-start;
     border-radius: 20px 0 0;
     position: absolute;
     top: 0;
-    right: -400px;
+    right: -400px; /* Oculto por defecto */
     opacity: 0;
-    transition: right 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    transition: right 0.3s ease, opacity 0.3s ease;
+    z-index: 1000; /* Asegúrate de que esté por encima de la superposición */
 }
 
 .menu-container.active {
     right: 0;
     opacity: 1;
-    display: flex;
 }
 
-.menu-container.show {
-    display: block;
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Oculto por defecto */
+    z-index: 999; /* Debajo del menú */
 }
+
+.overlay.active {
+    display: block; /* Mostrar superposición */
+}
+
 
 .perfil {
     display: flex;

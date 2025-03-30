@@ -1,12 +1,11 @@
 function toggleMenu() {
     const menu = document.getElementById("menuContainer");
+    const overlay = document.getElementById("overlay");
 
-    if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
-    } else {
-        menu.classList.add("active");
-    }
+    const isActive = menu.classList.toggle("active");
+    overlay.classList.toggle("active", isActive);
 }
+
 
 function logout() {
     localStorage.setItem("isLogged", "false"); // Marcar como desconectado

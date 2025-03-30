@@ -37,3 +37,9 @@ function confirmarReserva() {
     }
     alert(`Reserva confirmada para Peluquero ${peluqueroSeleccionado} el ${fechaSeleccionada} a las ${horaSeleccionada}.`);
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadCommonTemplates();
+
+    document.getElementById('main_section').appendChild(await fetchTemplate('./main.html'));
+});

@@ -42,13 +42,6 @@
         <a href="signup-page.html">Crear cuenta</a>
     </section>
 </div>
-<script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita la recarga automática
-
-        localStorage.setItem('isLogged', 'true'); // Usuario autenticado
-        window.location.href = '../home/index.html'; // Redireccionar a la página de inicio
-    });
-</script>
+<script src="../../../../js/login-page.js"></script>
 </body>
 </html>

@@ -41,7 +41,7 @@
         </div>
         <div class="form-field">
             <input id="phone" pattern="[0-9]{9}" type="tel" name="phone" placeholder="123456789"
-                   title="Número de teléfono" required>
+                   title="9 números seguidos" required>
             <label for="phone">Número de teléfono*</label>
         </div>
         <button class="form-button text-submit-form-button" type="submit">Crear cuenta</button>
@@ -60,31 +60,6 @@
         <a href="../policies/index.html">Aviso de Privacidad</a>
     </p>
 </footer>
-<script>
-    function inputListener(input) {
-        return function () {
-            if (!input.validity.valid) {
-                //input.setCustomValidity(message);
-                input.reportValidity();
-            }
-        };
-    }
-
-    let nameInput = document.getElementById("name");
-    let emailInput = document.getElementById("email");
-    let passwordInput = document.getElementById("password");
-    let phoneInput = document.getElementById("phone");
-    nameInput.addEventListener('change', inputListener(nameInput));
-    emailInput.addEventListener('change', inputListener(emailInput));
-    passwordInput.addEventListener('change', inputListener( passwordInput));
-    phoneInput.addEventListener('change', inputListener(phoneInput));
-
-    document.getElementById('registration-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita la recarga automática
-
-        localStorage.setItem('isLogged', 'true'); // Usuario autenticado
-        window.location.href = '../home/index.html'; // Redireccionar a la página de inicio
-    });
-</script>
+<script src="../../../../js/signup-page.js"></script>
 </body>
 </html>

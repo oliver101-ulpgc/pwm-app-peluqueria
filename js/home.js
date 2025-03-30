@@ -28,27 +28,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     const secondaryItems = sortedItems.filter(item => item.type === "other_service");
 
     // Función para generar tarjetas
-    const generateCards = (items, containerId) => {
+    const generateCards = async (items, containerId) => {
         const container = document.getElementById(containerId);
         if (!container) return;
-        container.innerHTML = items.map(item => `
-            <article class="container_service-card">
-                <div class="service-content">
-                <img src="${item.image}" alt="${item.title}">
-                <div class="Precio_duracion">
-                    <h3>${item.title}</h3>
-                    <p>${item.price_euro} €</p>
-                    <p>${item.duration_minutes} min</p>
-                    ${item.clicks} ${item.clicks === 1 ? 'click' : 'clicks'}
-                </div>
-                    <button class="reserve-button" onclick="trackClicks(${item.id}, '${item.type}')">Reservar</button>
-                </div>
-             </article>
-        `).join('');
+
+        const serviceTemplate = await fetchTemplate('./service.html');
+        items.forEach((item) => {
+            const service = serviceTemplate.cloneNode(true);
+            const image = service.querySelector('.service-content img');
+            image.src = item.image;
+            image.alt = item.title;
+            service.querySelector('.service-title').textContent = item.title;
+            service.querySelector('.service-price').textContent = `${item.price_euro}€`;
+            service.querySelector('.service-duration').textContent = `${item.duration_minutes} min`;
+            service.querySelector('.service-clicks').textContent = `${item.clicks} ${(item.clicks === 1) ? 'click' : 'clicks'}`;
+            service.querySelector('.reserve-button').addEventListener('click', () => trackClicks(item.id, item.type.toString()))
+            container.appendChild(service);
+        });
     };
 
     // Renderizar tarjetas en sus respectivas secciones
-    generateCards(primaryItems, 'main_section');
-    generateCards(secondaryItems, 'secondary_section');
+    await generateCards(primaryItems, 'main_section');
+    await generateCards(secondaryItems, 'secondary_section');
 });
 

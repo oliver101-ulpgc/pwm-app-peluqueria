@@ -176,7 +176,7 @@ h3 {
 #header {
     height: 250px;
     width: 100%;
-    background: url("../html/Images/Header.jpg") no-repeat center center;
+    background: url("../../../angular/src/assets/Images/Header.jpg") no-repeat center center;
     background-size: cover;
 }
 

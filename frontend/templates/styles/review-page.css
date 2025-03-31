@@ -120,7 +120,7 @@ h3 {
 }
 
 .review-avatar {
-    background: var(--avatar-background-color) url("../html/Images/avatar.png") no-repeat;
+    background: var(--avatar-background-color) url("../../../angular/src/assets/Images/avatar.png") no-repeat;
     border: var(--avatar-border-color) solid var(--small-spacing);
     background-size: cover;
     border-radius: 50%;

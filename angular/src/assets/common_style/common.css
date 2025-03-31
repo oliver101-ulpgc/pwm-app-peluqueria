@@ -176,7 +176,7 @@ h3 {
 #header {
     height: 250px;
     width: 100%;
-    background: url("../html/Images/Header.jpg") no-repeat center center;
+    background: url("/assets/Images/Header.jpg") no-repeat center;
     background-size: cover;
 }
 
@@ -280,4 +280,18 @@ footer img {
 
 #log {
     text-align: center;
+}
+
+#log img{
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+#legal-info{
+  text-align: center;
+}
+
+#info{
+  text-align: center;
 }

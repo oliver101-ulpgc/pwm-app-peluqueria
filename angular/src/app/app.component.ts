@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonPageComponent } from '../assets/common_component/common_page/common_page';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `<common_page-component></common_page-component>`,
+  standalone: true,
+  imports: [CommonPageComponent]
 })
-export class AppComponent {
-  title = 'angular';
-}
+export class AppComponent {}

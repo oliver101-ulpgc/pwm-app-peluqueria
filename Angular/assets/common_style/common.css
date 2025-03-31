@@ -1,0 +1,283 @@
+:root {
+    color: var(--text-fg1-color);
+
+    font-family: Inter, Helvetica, 'Noto Sans', Arial, sans-serif;
+    font-optical-sizing: auto;
+    --button-border-radius: 10px;
+}
+
+body {
+    background-color: var(--background-color);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--accent-color);
+}
+
+a:hover {
+    color: var(--accent-color-hover);
+}
+
+button {
+    color: var(--text-fg2-color);
+    background-color: var(--button-bg2-color);
+    border-color: var(--button-bg2-color);
+    border-radius: var(--button-border-radius);
+    border-width: 3px;
+    padding: 10px;
+    text-align: center;
+    border-style: solid;
+}
+
+button:hover {
+    color: var(--text-button-hover);
+    background-color: var(--button-bg1-color, #333);
+    border-color: var(--accent-color);
+}
+
+.text-section-title-heading {
+    color: var(--text-fg1-color);
+    margin: 10px 0 20px 0;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.text-section-subtitle-heading {
+    color: var(--text-fg1-color);
+    margin: 10px 0 20px 0;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#botones {
+    position: absolute;
+    top: 0;
+    right: 0;
+    justify-content: flex-end;
+    display: flex;
+    gap: 35px;
+    padding-top: 30px;
+    padding-right: 30px;
+}
+
+#iniciar_sesion {
+    color: white;
+    background-color: black;
+    border-color: white;
+    cursor: pointer;
+}
+
+#registrarse {
+    color: black;
+    background-color: #CFCFCF;
+    border-color: white;
+    cursor: pointer;
+}
+
+.profile-pic img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+nav {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 30px;
+    font-size: 25px;
+    position: relative;
+}
+
+nav a {
+    padding: 5px;
+    text-decoration: none;
+    color: inherit;
+}
+
+nav a:hover {
+    background-color: #CDCECF;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none; /* Ocultar el icono de hamburguesa por defecto */
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Estilos para los enlaces de navegación */
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Ocultar los enlaces de navegación por defecto */
+        flex-direction: column;
+        position: fixed; /* Posiciona el menú sobre el contenido */
+        top: 0; /* Alinea el menú en la parte superior */
+        left: 0;
+        width: 100%; /* Hace que el menú ocupe todo el ancho de la pantalla */
+        background-color: var(--background-color);
+        padding: 10px 0;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+        z-index: 9999; /* Asegura que el menú se ponga por encima de otros elementos */
+        text-align: center;
+        transform: translateY(-100%); /* El menú estará inicialmente fuera de la pantalla */
+        transition: transform 0.3s ease; /* Animación suave */
+    }
+
+    .nav-links a {
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar el icono de hamburguesa */
+    }
+
+    /* Cuando se active el menú, se moverá a la posición correcta */
+    .nav-links.active {
+        display: flex;
+        transform: translateY(0); /* El menú se desplaza hacia abajo */
+    }
+}
+
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 22px;
+    line-height: 24px;
+}
+
+h3 {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#header {
+    height: 250px;
+    width: 100%;
+    background: url("../html/Images/Header.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.menu-container {
+    width: 35%;
+    height: 100vh;
+    background-color: #949393;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 20px 0 0;
+    position: absolute;
+    top: 0;
+    right: -400px; /* Oculto por defecto */
+    opacity: 0;
+    transition: right 0.3s ease, opacity 0.3s ease;
+    z-index: 1000; /* Asegúrate de que esté por encima de la superposición */
+}
+
+.menu-container.active {
+    display: flex;
+    right: 0;
+    opacity: 1;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Oculto por defecto */
+    z-index: 999; /* Debajo del menú */
+}
+
+.overlay.active {
+    display: block; /* Mostrar superposición */
+}
+
+
+.perfil {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.perfil img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.menu-item {
+    width: 100%;
+    padding: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-bg1-color, #CDCECF);
+    margin-top: 50px;
+    padding-bottom: 20px;
+}
+
+footer p {
+    text-align: center;
+}
+
+footer img {
+    width: 150px;
+    height: auto;
+    padding-right: 20px;
+}
+
+#social {
+    text-align: center;
+}
+
+#social img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#log {
+    text-align: center;
+}

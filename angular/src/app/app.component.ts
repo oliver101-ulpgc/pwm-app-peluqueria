@@ -7,4 +7,6 @@ import { CommonPageComponent } from '../assets/common_component/common_page/comm
   standalone: true,
   imports: [CommonPageComponent]
 })
-export class AppComponent {}
+export class AppComponent {
+  title: string = 'angular';
+}

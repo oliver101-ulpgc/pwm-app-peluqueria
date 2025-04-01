@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router} from '@angular/router';
 
@@ -11,21 +11,21 @@ import {Router} from '@angular/router';
 })
 
 export class MenuComponent {
+  @ViewChild('menuContainer') menuContainer!: ElementRef;
+  @ViewChild('overlay') overlay!: ElementRef;
 
-  constructor(private router:Router) {
-  }
+  constructor(private router: Router) {}
 
   toggleMenu() {
-    const menu = document.getElementById("menuContainer");
-    const overlay = document.getElementById("overlay");
+    const menu = this.menuContainer.nativeElement;
+    const overlay = this.overlay.nativeElement;
 
-// Usando encadenamiento opcional para manejar los casos en que los elementos no existan
-    menu?.classList.toggle("active");
-    overlay?.classList.toggle("active", menu?.classList.contains("active"));
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active', menu.classList.contains('active'));
   }
 
   logout() {
-    localStorage.setItem("isLogged", "false"); // Marcar como desconectado
+    localStorage.setItem("isLogged", "false");
     this.router.navigate(['']);
   }
 }

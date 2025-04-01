@@ -181,26 +181,27 @@ h3 {
 }
 
 .menu-container {
-    width: 35%;
-    height: 100vh;
-    background-color: #949393;
-    padding: 20px;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    border-radius: 20px 0 0;
-    position: absolute;
-    top: 0;
-    right: -400px; /* Oculto por defecto */
-    opacity: 0;
-    transition: right 0.3s ease, opacity 0.3s ease;
-    z-index: 1000; /* Asegúrate de que esté por encima de la superposición */
+  width: 35%;
+  height: 100vh;
+  background-color: #949393;
+  padding: 20px;
+  display: flex; /* En lugar de none */
+  visibility: hidden; /* Oculto inicialmente */
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 20px 0 0;
+  position: absolute;
+  top: 0;
+  right: -400px;
+  opacity: 0;
+  transition: right 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
 }
 
 .menu-container.active {
-    display: flex;
-    right: 0;
-    opacity: 1;
+  right: 0;
+  opacity: 1;
+  visibility: visible; /* Mostrar el menú */
 }
 
 .overlay {

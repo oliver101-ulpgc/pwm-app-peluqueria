@@ -1,0 +1,26 @@
+#header {
+  height: 250px;
+  width: 100%;
+  background: url("/assets/Images/Header.jpg") no-repeat center;
+  background-size: cover;
+}
+
+#iniciar_sesion {
+  color: white;
+  background-color: black;
+  border-color: white;
+  cursor: pointer;
+}
+
+#registrarse {
+  color: black;
+  background-color: #CFCFCF;
+  border-color: white;
+  cursor: pointer;
+}
+
+.profile-pic img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

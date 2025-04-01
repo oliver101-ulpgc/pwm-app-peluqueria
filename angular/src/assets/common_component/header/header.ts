@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 @Component({
     selector: 'header-component',
-    styleUrl: '../../common_style/common.css',
+    styleUrl: 'header.css',
     templateUrl: './header.html',
     standalone: true,
     imports: [CommonModule]

@@ -1,0 +1,67 @@
+nav {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  gap: 30px;
+  font-size: 25px;
+  position: relative;
+}
+
+nav a {
+  padding: 5px;
+  text-decoration: none;
+  color: inherit;
+}
+
+nav a:hover {
+  background-color: #CDCECF;
+  border-radius: 5px;
+}
+
+.menu-toggle {
+  display: none; /* Ocultar el icono de hamburguesa por defecto */
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Estilos para los enlaces de navegación */
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Ocultar los enlaces de navegación por defecto */
+    flex-direction: column;
+    position: fixed; /* Posiciona el menú sobre el contenido */
+    top: 0; /* Alinea el menú en la parte superior */
+    left: 0;
+    width: 100%; /* Hace que el menú ocupe todo el ancho de la pantalla */
+    background-color: var(--background-color);
+    padding: 10px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+    z-index: 9999; /* Asegura que el menú se ponga por encima de otros elementos */
+    text-align: center;
+    transform: translateY(-100%); /* El menú estará inicialmente fuera de la pantalla */
+    transition: transform 0.3s ease; /* Animación suave */
+  }
+
+  .nav-links a {
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: block; /* Mostrar el icono de hamburguesa */
+  }
+
+  /* Cuando se active el menú, se moverá a la posición correcta */
+  .nav-links.active {
+    display: flex;
+    transform: translateY(0); /* El menú se desplaza hacia abajo */
+  }
+}

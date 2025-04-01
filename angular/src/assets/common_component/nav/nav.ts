@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 @Component({
     selector: 'nav-component',
-    styleUrl: '../../common_style/common.css',
+    styleUrl: 'nav.css',
     templateUrl: './nav.html',
     standalone: true,
     imports: [CommonModule]

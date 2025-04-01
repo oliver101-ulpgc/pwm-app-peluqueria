@@ -7,20 +7,27 @@
 }
 
 .service-content {
-  width: 300px; /* Ancho fijo para cada tarjeta */
-  height: 250px; /* Altura fija para cada tarjeta */
-  border: 1px solid #ccc; /* Borde ligero */
-  border-radius: 10px; /* Bordes redondeados */
-  overflow: hidden; /* Evita que el contenido se salga */
-  background-color: #f9f9f9; /* Fondo claro */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
   position: relative;
+  width: 300px; /* Ajusta según sea necesario */
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .service-content img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.service-text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Negro con transparencia */
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
 
 .Precio_duracion {
@@ -40,6 +47,7 @@
   background-color: #e1e1e1;
   color: black;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
 }
 

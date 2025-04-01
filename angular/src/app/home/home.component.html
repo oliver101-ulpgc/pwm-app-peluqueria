@@ -4,20 +4,26 @@
       <h2 class="Servicios">Servicios más populares</h2>
       <div id="main_section">
         <div class="container_service-card">
-          <div class="service-content" *ngFor="let item of items_primary">
-            <h2>{{item.title}}</h2>
-            <p>{{item.price_euro}}€ {{item.duration_minutes}}min</p>
-            <img src="{{item.image}}">
+          <div class="service-content" *ngFor="let services of services_primary">
+            <img src="{{services.image}}">
+            <div class="service-text">
+              <h2>{{services.title}}</h2>
+              <p>{{services.price_euro}}€ {{services.duration_minutes}}min</p>
+            </div>
+            <button class="reserve-button">Reservar</button>
           </div>
         </div>
       </div>
       <h2 class="Servicios">Otros servicios</h2>
       <div id="secondary_section">
         <div class="container_service-card">
-          <div class="service-content" *ngFor="let item of items_secondary">
-            <h2>{{item.title}}</h2>
-            <p>{{item.price_euro}}€ {{item.duration_minutes}}min</p>
-            <img src="{{item.image}}">
+          <div class="service-content" *ngFor="let services of services_secondary">
+            <img src="{{services.image}}">
+            <div class="service-text">
+              <h2>{{services.title}}</h2>
+              <p>{{services.price_euro}}€ {{services.duration_minutes}}min</p>
+            </div>
+            <button class="reserve-button">Reservar</button>
           </div>
         </div>
       </div>

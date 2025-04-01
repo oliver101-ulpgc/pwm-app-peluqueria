@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonPageComponent } from '../assets/common_component/common_page/common_page';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: `<common_page-component></common_page-component>`,
+  templateUrl: 'app.component.html',
   standalone: true,
-  imports: [CommonPageComponent]
+  imports: [CommonPageComponent, RouterModule]
 })
 export class AppComponent {
   title: string = 'angular';

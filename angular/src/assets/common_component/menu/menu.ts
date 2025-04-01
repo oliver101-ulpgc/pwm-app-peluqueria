@@ -1,6 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router} from '@angular/router';
+import {MenuService} from './menu.service';
 
 @Component({
     selector: 'menu-component',
@@ -11,17 +12,23 @@ import {Router} from '@angular/router';
 })
 
 export class MenuComponent {
+  isOpen = false;
   @ViewChild('menuContainer') menuContainer!: ElementRef;
   @ViewChild('overlay') overlay!: ElementRef;
 
-  constructor(private router: Router) {}
+  constructor(
+    private menuService: MenuService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.menuService.isMenuOpen$.subscribe(state => {
+      this.isOpen = state;
+    });
+  }
 
   toggleMenu() {
-    const menu = this.menuContainer.nativeElement;
-    const overlay = this.overlay.nativeElement;
-
-    menu.classList.toggle('active');
-    overlay.classList.toggle('active', menu.classList.contains('active'));
+    this.menuService.toggleMenu();
   }
 
   logout() {

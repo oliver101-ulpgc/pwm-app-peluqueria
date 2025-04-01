@@ -5,8 +5,9 @@
     </button>
     <button id="registrarse" onclick="window.location.href='../../html/registration/signup-page.html';">Registrarse
     </button>
-    <div class="profile-pic" onclick="toggleMenu()">
-      <img src="/assets/Images/profile.png" alt="Foto de perfil">
+    <div class="profile-pic">
+      <img src="/assets/Images/profile.png" (click)="toggleMenu()" alt="Foto de perfil">
     </div>
   </div>
+  <menu-component></menu-component>
 </div>

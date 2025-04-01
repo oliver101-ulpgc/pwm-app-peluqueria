@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonPageComponent } from '../assets/common_component/common_page/common_page';
 import {RouterModule} from '@angular/router';
 
@@ -8,6 +8,4 @@ import {RouterModule} from '@angular/router';
   standalone: true,
   imports: [CommonPageComponent, RouterModule]
 })
-export class AppComponent {
-  title: string = 'angular';
-}
+export class AppComponent{}

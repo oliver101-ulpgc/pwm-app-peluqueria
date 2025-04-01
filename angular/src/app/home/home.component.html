@@ -1,0 +1,20 @@
+<div id="container">
+  <header-component></header-component>
+  <nav-component></nav-component>
+  <main>
+    <h2 class="Servicios">Servicios más populares</h2>
+    <div id="main_section">
+      <div class="container_service-card">
+        <div class="service-content" *ngFor="let item of items">
+          <h2>{{item.title}}</h2>
+          <img src="{{item.image}}">
+          <p>{{item.price_euro}}, {{item.duration_minutes}}</p>
+        </div>
+      </div>
+    </div>
+    <h2 class="Servicios">Otros servicios</h2>
+    <div id="secondary_section"></div>
+  </main>
+  <footer-component></footer-component>
+  <menu-component></menu-component>
+</div>

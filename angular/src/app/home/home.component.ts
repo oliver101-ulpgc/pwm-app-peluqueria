@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FooterComponent} from '../../assets/common_component/footer/footer';
-import {MenuComponent} from '../../assets/common_component/menu/menu';
-import {NavComponent} from '../../assets/common_component/nav/nav';
-import {HeaderComponent} from '../../assets/common_component/header/header';
 import {Item} from '../item.model'
+import {CommonPageComponent} from '../../assets/common_component/common_page/common_page';
 
 @Component({
   selector: 'home-component',
-  imports: [CommonModule, FooterComponent, MenuComponent, NavComponent, HeaderComponent],
+  imports: [CommonModule, CommonPageComponent],
   templateUrl: './home.component.html',
   standalone: true,
   styleUrls: ['./home.component.css', '../../assets/common_style/common.css']
 })
 export class HomeComponent implements OnInit {
-  items: Item[] = [];
+  items_primary: Item[] = [];
+  items_secondary: Item[] = [];
 
   async fetchItems() {
     try {
@@ -22,7 +20,16 @@ export class HomeComponent implements OnInit {
       if (!response.ok) {
         throw new Error('Error al cargar los datos');
       }
-      this.items = await response.json();
+      const data = await response.json();
+      data.data.forEach((item: Item) => {
+        if (item.type == "service"){
+          this.items_primary.push(item)
+        }
+        else {
+          this.items_secondary.push(item)
+        }
+      })
+
     } catch (error) {
       console.error('Error en la petición:', error);
     }

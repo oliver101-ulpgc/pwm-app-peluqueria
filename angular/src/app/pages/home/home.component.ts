@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Services} from '../interfaces.model'
-import {CommonPageComponent} from '../../assets/common_component/common_page/common_page';
+import {Services} from '../../models/interfaces.model'
+import {CommonPageComponent} from '../../components/common_page/common_page';
 
 @Component({
   selector: 'home-component',
   imports: [CommonModule, CommonPageComponent],
   templateUrl: './home.component.html',
   standalone: true,
-  styleUrls: ['./home.component.css', '../../assets/common_style/common.css']
+  styleUrls: ['./home.component.css', '../../../assets/common_style/common.css']
 })
 export class HomeComponent implements OnInit {
   services_primary: Services[] = [];

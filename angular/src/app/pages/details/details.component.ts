@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonPageComponent} from '../../assets/common_component/common_page/common_page';
+import {CommonPageComponent} from '../../components/common_page/common_page';
 import {CommonModule} from '@angular/common';
-import {Hairdressers} from '../interfaces.model';
+import {Hairdressers} from '../../models/interfaces.model';
 
 @Component({
   selector: 'details-component',

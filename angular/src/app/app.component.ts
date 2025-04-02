@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonPageComponent } from '../assets/common_component/common_page/common_page';
+import { CommonPageComponent } from './components/common_page/common_page';
 import {RouterModule} from '@angular/router';
 
 @Component({

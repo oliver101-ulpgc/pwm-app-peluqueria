@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CommonPageComponent} from '../../assets/common_component/common_page/common_page';
-import {Portfolio} from '../interfaces.model'
+import {CommonPageComponent} from '../../components/common_page/common_page';
+import {Portfolio} from '../../models/interfaces.model'
 
 @Component({
   selector: 'portfolio-component',

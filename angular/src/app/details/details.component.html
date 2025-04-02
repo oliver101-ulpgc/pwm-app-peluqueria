@@ -1,0 +1,24 @@
+<div id="container">
+  <common_page-component>
+    <main>
+      <div class="image">
+        <img src="/assets/Images/Ubicacion.jpg" width="100" height="100" class="image-location">
+      </div>
+      <div class="location-details">
+        <p class="address">Dirección</p>
+        <p class="telephone">Número de teléfono</p>
+        <p class="mail">Correo electrónico</p>
+      </div>
+
+      <div id="secondary">
+        <h2>Conoce a nuestros trabajadores</h2>
+        <div class="trabajadores">
+          <div class="trabajador" *ngFor="let hairdresser of hairdressers">
+            <img src="{{hairdresser.image}}">
+            <p class="name">{{ hairdresser.name }}</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </common_page-component>
+</div>

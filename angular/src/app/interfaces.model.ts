@@ -14,3 +14,22 @@ export interface Portfolio {
   "name": string;
   "type": string;
 }
+
+export interface Reviews {
+  "id": number;
+  "text": string;
+  "stars": number;
+  "client": {
+    "id": number;
+    "username": string;
+    "email": string;
+    "phone_number": number;
+    "image": string;
+  }
+}
+
+export interface Hairdressers {
+  "id": number;
+  "name": string;
+  "image": string;
+}

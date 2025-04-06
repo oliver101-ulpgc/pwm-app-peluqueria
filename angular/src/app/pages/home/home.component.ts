@@ -1,41 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Services} from '../../models/interfaces.model'
-import {CommonPageComponent} from '../../components/common_page/common_page';
+import { Subscription } from 'rxjs';
+import { HomeService } from '../../services/homeService/homeService';
+import { CommonPageComponent } from '../../components/common_page/common_page';
+import { Services } from '../../models/interfaces.model';
 
 @Component({
   selector: 'home-component',
-  imports: [CommonModule, CommonPageComponent],
   templateUrl: './home.component.html',
   standalone: true,
-  styleUrls: ['./home.component.css', '../../../assets/common_style/common.css']
+  imports: [CommonModule, CommonPageComponent],
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  services_primary: Services[] = [];
-  services_secondary: Services[] = [];
+export class HomeComponent implements OnInit, OnDestroy {
+  primary_services: Services[] = [];
+  secondary_services: Services[] = [];
+  private sub: Subscription = new Subscription();
 
-  async fetchItems() {
-    try {
-      const response = await fetch('/assets/data/data.json');
-      if (!response.ok) {
-        throw new Error('Error al cargar los datos');
+  constructor(private homeService: HomeService) {}
+
+  ngOnInit(): void {
+    this.sub = this.homeService.getServices().subscribe({
+      next: (services: Services[]) => {
+        console.log("Hola", services);
+        if (!Array.isArray(services)) {
+          console.warn('La respuesta no es un array:', services);
+          return;
+        }
+
+        // Filtra los servicios por tipo
+        this.primary_services = services.filter(s => s.type === 'service');
+        this.secondary_services = services.filter(s => s.type === 'other_service');
+      },
+      error: (err) => {
+        console.error('Error:', err);
+        this.primary_services = [];
+        this.secondary_services = [];
       }
-      const data = await response.json();
-      data.data.forEach((item: Services) => {
-        if (item.type == "service"){
-          this.services_primary.push(item)
-        }
-        else {
-          this.services_secondary.push(item)
-        }
-      })
-
-    } catch (error) {
-      console.error('Error en la petición:', error);
-    }
+    });
   }
 
-  ngOnInit() {
-    this.fetchItems();
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

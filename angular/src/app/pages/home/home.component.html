@@ -4,7 +4,7 @@
       <h2 class="Servicios">Servicios más populares</h2>
       <div id="main_section">
         <div class="container_service-card">
-          <div class="service-content" *ngFor="let services of services_primary">
+          <div class="service-content" *ngFor="let services of primary_services">
             <img src="{{services.image}}">
             <div class="service-text">
               <h2>{{services.title}}</h2>
@@ -17,7 +17,7 @@
       <h2 class="Servicios">Otros servicios</h2>
       <div id="secondary_section">
         <div class="container_service-card">
-          <div class="service-content" *ngFor="let services of services_secondary">
+          <div class="service-content" *ngFor="let services of secondary_services">
             <img src="{{services.image}}">
             <div class="service-text">
               <h2>{{services.title}}</h2>

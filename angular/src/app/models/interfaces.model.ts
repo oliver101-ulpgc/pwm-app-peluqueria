@@ -33,3 +33,4 @@ export interface Hairdressers {
   "name": string;
   "image": string;
 }
+

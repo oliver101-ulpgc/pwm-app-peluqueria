@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
-import { HomeService } from '../../services/homeService/homeService';
-import { CommonPageComponent } from '../../components/common_page/common_page';
-import { Services } from '../../models/interfaces.model';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {Subscription} from 'rxjs';
+import {HomeService} from '../../services/homeService/homeService';
+import {CommonPageComponent} from '../../components/common_page/common_page';
+import {Service} from '../../models/interfaces.model';
 
 @Component({
   selector: 'home-component',
@@ -13,15 +13,15 @@ import { Services } from '../../models/interfaces.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  primary_services: Services[] = [];
-  secondary_services: Services[] = [];
+  primary_services: Service[] = [];
+  secondary_services: Service[] = [];
   private sub: Subscription = new Subscription();
 
   constructor(private homeService: HomeService) {}
 
   ngOnInit(): void {
     this.sub = this.homeService.getServices().subscribe({
-      next: (services: Services[]) => {
+      next: (services: Service[]) => {
         console.log("Hola", services);
         if (!Array.isArray(services)) {
           console.warn('La respuesta no es un array:', services);

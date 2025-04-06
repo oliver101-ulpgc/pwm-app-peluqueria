@@ -1,4 +1,4 @@
-export interface Services {
+export interface Service {
   id: number;
   type: string;
   image: string;
@@ -15,7 +15,7 @@ export interface Portfolio {
   "type": string;
 }
 
-export interface Reviews {
+export interface Review {
   "id": number;
   "text": string;
   "stars": number;
@@ -28,7 +28,7 @@ export interface Reviews {
   }
 }
 
-export interface Hairdressers {
+export interface Hairdresser {
   "id": number;
   "name": string;
   "image": string;

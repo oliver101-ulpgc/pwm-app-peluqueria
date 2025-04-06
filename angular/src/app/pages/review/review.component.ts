@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
-import {CommonPageComponent} from '../../components/common_page/common_page';
+import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Reviews} from '../../models/interfaces.model'
+import {Review} from '../../models/interfaces.model'
 
 @Component({
   selector: 'review-component',
-  imports: [CommonModule, CommonPageComponent],
+  imports: [CommonModule],
   standalone: true,
   templateUrl: './review.component.html',
   styleUrl: './review.component.css'
 })
 export class ReviewComponent {
-  reviews: Reviews[] = [];
+  reviews: Review[] = [];
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonPageComponent} from '../../components/common_page/common_page';
 import {CommonModule} from '@angular/common';
-import {Hairdressers} from '../../models/interfaces.model';
+import {Hairdresser} from '../../models/interfaces.model';
 
 @Component({
   selector: 'details-component',
@@ -11,7 +11,7 @@ import {Hairdressers} from '../../models/interfaces.model';
   styleUrl: './details.component.css'
 })
 export class DetailsComponent implements OnInit {
-  hairdressers: Hairdressers[] = [];
+  hairdressers: Hairdresser[] = [];
 
   async FetchHairdressers(): Promise<void> {
     try{

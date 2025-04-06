@@ -1,54 +1,46 @@
 import {Injectable} from '@angular/core';
 
 enum ThemeStyle {
-  LIGHT,
-  DARK
+  LIGHT = 'light-theme',
+  DARK = 'dark-theme'
 }
 
 @Injectable({
   providedIn: "root"
 })
 export class ThemeService {
-
   setTheme() {
-    const storedTheme = localStorage.getItem('theme');
+    const storedTheme: string | null = localStorage.getItem('theme');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     if (storedTheme) {
-      const style: ThemeStyle = (storedTheme === 'dark')
+      this.loadTheme((storedTheme === 'dark')
         ? ThemeStyle.DARK
-        : ThemeStyle.LIGHT;
-      this.applyTheme(style);
-    } else if (prefersDarkScheme) {
-      this.applyTheme(ThemeStyle.DARK);
-    } else {
-      this.applyTheme(ThemeStyle.LIGHT);
+        : ThemeStyle.LIGHT
+      );
+      return;
     }
+    if (prefersDarkScheme)
+      this.loadTheme(ThemeStyle.DARK);
+    else
+      this.loadTheme(ThemeStyle.LIGHT)
   }
 
-  applyTheme(theme: ThemeStyle) {
-    switch (theme) {
-      case ThemeStyle.LIGHT:
-        this.loadTheme('light-theme');
-        localStorage.setItem('theme', 'light');
-        break;
-      case ThemeStyle.DARK:
-        this.loadTheme('dark-theme');
-        localStorage.setItem('theme', 'dark');
-        break;
-    }
+  changeTheme(style: ThemeStyle) {
+    this.loadTheme(style);
+    localStorage.setItem('theme', (style == ThemeStyle.LIGHT) ? 'light' : 'dark');
   }
 
-  loadTheme(themeName: string) {
+  private loadTheme(theme: ThemeStyle) {
     const link = document.getElementById('theme-link') as HTMLLinkElement;
 
     if (link) {
-      link.href = `assets/styles/theme-${themeName}.css`;
+      link.href = `assets/themes/${theme}.css`;
     } else {
       const newLink = document.createElement('link');
       newLink.id = 'theme-link';
       newLink.rel = 'stylesheet';
-      newLink.href = themeName;
+      newLink.href = theme;
       document.head.appendChild(newLink);
     }
   }

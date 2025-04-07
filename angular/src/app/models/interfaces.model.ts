@@ -9,28 +9,28 @@ export interface Service {
 }
 
 export interface Portfolio {
-  "id": number;
-  "image": string;
-  "name": string;
-  "type": string;
+  id: number;
+  image: string;
+  name: string;
+  type: string;
 }
 
 export interface Review {
-  "id": number;
-  "text": string;
-  "stars": number;
-  "client": {
-    "id": number;
-    "username": string;
-    "email": string;
-    "phone_number": number;
-    "image": string;
+  id: number;
+  text: string;
+  stars: number;
+  client: {
+    id: number;
+    username: string;
+    email: string;
+    phone_number: number;
+    image: string;
   }
 }
 
 export interface Hairdresser {
-  "id": number;
-  "name": string;
-  "image": string;
+  id: number;
+  name: string;
+  image: string;
 }
 

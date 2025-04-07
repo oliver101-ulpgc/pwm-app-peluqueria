@@ -3,11 +3,13 @@ import {NgModule} from '@angular/core';
 import {HomeComponent} from './pages/home/home.component';
 import {PortfolioComponent} from './pages/portfolio/portfolio.component';
 import {DetailsComponent} from './pages/details/details.component';
+import {ReviewsComponent} from './pages/reviews/reviews.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'portfolio', component: PortfolioComponent},
   { path: 'details', component: DetailsComponent},
+  { path: 'reviews', component: ReviewsComponent},
 ];
 
 @NgModule({

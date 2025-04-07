@@ -1,14 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Review} from '../../models/interfaces.model'
 
 @Component({
-  selector: 'review-component',
+  selector: 'review',
   imports: [CommonModule],
   standalone: true,
   templateUrl: './review.component.html',
   styleUrl: './review.component.css'
 })
 export class ReviewComponent {
-  reviews: Review[] = [];
+  @Input() review: any;
 }

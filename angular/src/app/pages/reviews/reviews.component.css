@@ -1,0 +1,33 @@
+:root {
+  --review-graph-background: var(--card-bg1-color);
+  --review-graph-color: #ff9800;
+  --avatar-border-color: gray;
+  --avatar-background-color: darkgray;
+  --review-graph-max-width: 300px;
+  --central-section-max-width: 1000px;
+  --graph-spacing: 20px;
+  --small-spacing: 3px;
+  --element-spacing: 10px;
+  --big-border-radius: 20px;
+  --small-border-radius: 10px;
+}
+
+.central-section {
+  max-width: var(--central-section-max-width);
+  margin: 0 auto;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.review-comments {
+  gap: var(--graph-spacing);
+  margin-top: 50px;
+  width: 100%;
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,26 @@
+.half {
+  width: 50%;
+}
+
+.graph-info {
+  margin-right: var(--graph-spacing);
+  gap: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: end;
+}
+
+.graph-info div {
+  gap: var(--element-spacing);
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.graph {
+  margin-right: var(--graph-spacing);
+  max-width: var(--review-graph-max-width);
+}

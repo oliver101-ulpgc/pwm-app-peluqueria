@@ -1,0 +1,12 @@
+<common_page-component>
+<div class="central-section" id="graph">
+  <reviews-graph [data]="graphData"></reviews-graph>
+</div>
+<div class="central-section">
+  <section class="review-comments" id="reviews">
+    <ng-container *ngFor="let review of reviews">
+      <review [review]="review"></review>
+    </ng-container>
+  </section>
+</div>
+</common_page-component>

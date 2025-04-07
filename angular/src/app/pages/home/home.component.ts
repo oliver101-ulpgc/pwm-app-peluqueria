@@ -4,7 +4,7 @@ import {Subscription} from 'rxjs';
 import {HomeService} from '../../services/homeService/home.Service';
 import {CommonPageComponent} from '../../components/common_page/common_page';
 import {Service} from '../../models/interfaces.model';
-import {ServiceCardComponent} from '../../components/service-card/service-card/service-card.component';
+import {ServiceCardComponent} from '../../components/service-card/service-card.component';
 
 @Component({
   selector: 'home-component',

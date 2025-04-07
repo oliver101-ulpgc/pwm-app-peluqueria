@@ -8,7 +8,6 @@ import {HttpClient} from '@angular/common/http';
 })
 
 export class HomeService {
-  private servicesUrl = "/assets/data/data.json";
   constructor(private http: HttpClient) { }
 
   getServices(): Observable<Service[]> {

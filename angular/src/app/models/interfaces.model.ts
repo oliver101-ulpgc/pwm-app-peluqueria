@@ -28,8 +28,6 @@ export interface Review {
   }
 }
 
-export interface Graph {}
-
 export interface Hairdresser {
   "id": number;
   "name": string;

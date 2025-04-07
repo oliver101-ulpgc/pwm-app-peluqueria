@@ -3,25 +3,11 @@
     <main>
       <h2 class="Servicios">Cortes de cabello para hombres</h2>
       <div id="main_section">
-        <div *ngFor="let item of portfolios_main">
-          <div class="card">
-            <img class="gallery-image" src="{{item.image}}">
-            <div class="card-body">
-              <h3>{{ item.name }}</h3>
-            </div>
-          </div>
-        </div>
+        <portfolio-card-component *ngFor="let item of portfolios_main" [item]="item"></portfolio-card-component>
       </div>
       <h2 class="Servicios">Cortes de cabello para mujeres</h2>
       <div id="secondary_section">
-        <div *ngFor="let item of portfolios_secondary">
-          <div class="card">
-            <img class="gallery-image" src="{{item.image}}">
-            <div class="card-body">
-              <h3>{{ item.name }}</h3>
-            </div>
-          </div>
-        </div>
+        <portfolio-card-component *ngFor="let item of portfolios_secondary" [item]="item"></portfolio-card-component>
       </div>
     </main>
   </common_page-component>

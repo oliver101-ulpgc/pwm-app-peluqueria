@@ -23,21 +23,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sub = this.homeService.getServices().subscribe({
       next: (services: Service[]) => {
-        console.log("Hola", services);
-        if (!Array.isArray(services)) {
-          console.warn('La respuesta no es un array:', services);
-          return;
-        }
-
-        // Filtra los servicios por tipo
         this.primary_services = services.filter(s => s.type === 'service');
         this.secondary_services = services.filter(s => s.type === 'other_service');
       },
-      error: (err) => {
-        console.error('Error:', err);
-        this.primary_services = [];
-        this.secondary_services = [];
-      }
     });
   }
 

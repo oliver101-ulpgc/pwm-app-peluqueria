@@ -10,5 +10,5 @@ import {CommonModule} from '@angular/common';
 })
 export class GraphRowComponent {
   @Input() bar: any;
-  @Input() totalReviews: number = 254;
+  @Input() meta: any;
 }

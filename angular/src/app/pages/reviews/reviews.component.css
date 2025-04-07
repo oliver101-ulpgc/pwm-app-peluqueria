@@ -1,4 +1,4 @@
-:root {
+:host {
   --review-graph-background: var(--card-bg1-color);
   --review-graph-color: #ff9800;
   --avatar-border-color: gray;
@@ -12,14 +12,14 @@
   --small-border-radius: 10px;
 }
 
+#graph {
+  align-items: center;
+}
+
 .central-section {
   max-width: var(--central-section-max-width);
   margin: 0 auto;
   width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: start;
 }
 
 .review-comments {

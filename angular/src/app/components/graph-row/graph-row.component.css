@@ -1,3 +1,11 @@
+:host {
+  --review-graph-background: var(--card-bg1-color);
+  --review-graph-color: #ff9800;
+  --small-spacing: 3px;
+  --big-border-radius: 20px;
+  --small-border-radius: 10px;
+}
+
 .side-bar {
   margin-top: var(--element-spacing);
   float: left;

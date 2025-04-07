@@ -1,3 +1,9 @@
+:host {
+  --graph-spacing: 20px;
+  --review-graph-max-width: 300px;
+  --element-spacing: 10px;
+}
+
 .half {
   width: 50%;
 }
@@ -8,7 +14,6 @@
 
   display: flex;
   flex-direction: column;
-  align-self: center;
   align-items: end;
 }
 
@@ -23,4 +28,13 @@
 .graph {
   margin-right: var(--graph-spacing);
   max-width: var(--review-graph-max-width);
+}
+
+.reviews-graph {
+  margin: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

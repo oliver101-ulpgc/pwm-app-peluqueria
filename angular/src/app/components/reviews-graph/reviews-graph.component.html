@@ -7,7 +7,7 @@
   </div>
   <div class="half graph">
     <ng-container *ngFor="let bar of data.bars">
-      <graph-row [bar]="bar"></graph-row>
+      <graph-row [bar]="bar" [meta]="data.meta"></graph-row>
     </ng-container>
   </div>
 </section>

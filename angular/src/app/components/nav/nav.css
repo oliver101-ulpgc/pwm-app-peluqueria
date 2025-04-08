@@ -14,7 +14,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #CDCECF;
+  background-color: var(--nav-bg-selected-color);
   border-radius: 5px;
 }
 

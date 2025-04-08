@@ -1,14 +1,15 @@
 :root {
-    --background-color: #ffffff;
-    --text-fg1-color: #000000;
-    --text-fg2-color: #eeeeee;
-    --text-button-hover: var(--text-fg2-color);
-    --button-bg1-color: #222;
-    --button-bg2-color: #000000;
-    --card-bg1-color: lightgray;
-    --input-bg1-color: var(--card-bg1-color);
-    --input-fg1-color: var(--text-fg1-color);
-    --input-fg2-color: #222;
-    --accent-color: #0048FE;
-    --accent-color-hover: #1542b5;
+  --background-color: #ffffff;
+  --text-fg1-color: #000000;
+  --text-fg2-color: #eeeeee;
+  --text-button-hover: var(--text-fg2-color);
+  --button-bg1-color: #222;
+  --button-bg2-color: #000000;
+  --card-bg1-color: lightgray;
+  --nav-bg-selected-color: #CDCECF;
+  --input-bg1-color: var(--card-bg1-color);
+  --input-fg1-color: var(--text-fg1-color);
+  --input-fg2-color: #222;
+  --accent-color: #0048FE;
+  --accent-color-hover: #1542b5;
 }

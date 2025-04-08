@@ -1,0 +1,19 @@
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.cita {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+}
+.cancelar {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}

@@ -1,5 +1,6 @@
 .menu-container {
-  width: 15%;
+  width: 35%;
+  max-width: 250px;
   height: 100vh;
   background-color: #949393;
   visibility: hidden;

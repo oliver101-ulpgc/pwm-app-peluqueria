@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: 'reviews', component: ReviewsComponent},
   { path: 'booking', component: BookingComponent},
   { path: 'sign-up', component: SingUpComponent},
-  { path: 'log-in', component: LogInComponent}
+  { path: 'log-in', component: LogInComponent},
   { path: 'policies', component: PoliciesComponent},
 ];
 

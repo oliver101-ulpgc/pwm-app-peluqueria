@@ -20,7 +20,11 @@ export class ReviewsComponent implements OnInit {
   constructor(private reviewsService: ReviewsService) { }
 
   ngOnInit() {
-    this.reviewsService.getReviews().subscribe(data => this.reviews = data);
-    this.reviewsService.getGraphData().subscribe(data => this.graphData = data);
+    this.reviewsService.getReviews().subscribe((data: Review[]) => {
+      this.reviews = data;
+    });
+    this.reviewsService.getGraphData().subscribe((data) => {
+      this.graphData = data;
+    });
   }
 }

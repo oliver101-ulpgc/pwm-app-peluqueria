@@ -15,10 +15,8 @@ export class ReviewsService {
     );
   }
 
-  getGraphData(): Observable<Review[]> {
-    return this.http.get<{data: Review[]}>('/assets/data/reviews-graph.json').pipe(
-      map(response => response.data),
-    );
+  getGraphData(): Observable<any> {
+    return this.http.get<{data: any}>('/assets/data/reviews-graph.json');
   }
 }
 

@@ -1,7 +1,11 @@
 :host {
-  --graph-spacing: 20px;
+  --graph-spacing: 40px;
   --review-graph-max-width: 300px;
   --element-spacing: 10px;
+}
+
+p {
+  margin: 2px;
 }
 
 .half {
@@ -15,6 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: end;
+  justify-content: center;
 }
 
 .graph-info div {
@@ -27,7 +32,6 @@
 
 .graph {
   margin-right: var(--graph-spacing);
-  max-width: var(--review-graph-max-width);
 }
 
 .reviews-graph {

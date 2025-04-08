@@ -11,6 +11,12 @@ import {CommonPageComponent} from '../../components/common_page/common_page';
 })
 
 export class BookingComponent {
+  ngAfterViewInit() {
+    this.peluqueroSeleccionadoEl.nativeElement.innerText = "Selecciona un peluquero";
+    this.fechaSeleccionadaEl.nativeElement.innerText = "Selecciona una fecha";
+    this.horasEl.nativeElement.innerHTML = "";
+  }
+
   peluqueroSeleccionado: string | null = null;
   fechaSeleccionada: string | null = null;
   horaSeleccionada: string | null = null;

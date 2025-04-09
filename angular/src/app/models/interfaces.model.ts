@@ -34,3 +34,8 @@ export interface Hairdresser {
   image: string;
 }
 
+export interface Faq {
+  id: number;
+  question: string;
+  answer: string;
+}

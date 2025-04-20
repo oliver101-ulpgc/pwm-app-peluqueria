@@ -1,7 +1,8 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router} from '@angular/router';
 import {MenuService} from './menu.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
     selector: 'menu-component',
@@ -13,6 +14,7 @@ import {MenuService} from './menu.service';
 
 export class MenuComponent {
   isOpen = false;
+  private authService = inject(AuthService);
   @ViewChild('menuContainer') menuContainer!: ElementRef;
   @ViewChild('overlay') overlay!: ElementRef;
 
@@ -32,7 +34,7 @@ export class MenuComponent {
   }
 
   logout() {
-    localStorage.setItem("isLogged", "false");
+    this.authService
     this.router.navigate(['']);
   }
 }

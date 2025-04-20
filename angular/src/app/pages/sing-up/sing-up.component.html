@@ -3,25 +3,53 @@
     <h1 class="text-section-title-heading">Crea tu cuenta</h1>
     <h2 class="text-section-subtitle-heading">Ingresa tus datos para continuar</h2>
   </header>
-  <form id="registration-form" method="post">
+  <form id="registration-form" method="post" [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-field">
-      <input id="name" type="text" name="username" placeholder="username"
-             title="Nombre de usuario (entre 4 y 60 caracteres)" minlength="4" maxlength="60" required>
+      <input id="name"
+             type="text"
+             name="username"
+             placeholder="username"
+             title="Nombre de usuario (entre 4 y 60 caracteres)"
+             minlength="4"
+             maxlength="60"
+             formControlName="username"
+             required>
       <label for="name">Nombre de usuario*</label>
     </div>
     <div class="form-field">
-      <input id="email" type="email" name="email" placeholder="you@domain.com"
-             title="Email" required>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        placeholder="you@domain.com"
+        title="Email"
+        formControlName="email"
+        required
+      />
       <label for="email">Email*</label>
     </div>
     <div class="form-field">
-      <input id="password" type="password" name="password" placeholder=""
-             title="Contraseña" minlength="6" maxlength="255" required>
+      <input id="password"
+             type="password"
+             name="password"
+             placeholder=""
+             title="Contraseña"
+             minlength="6"
+             maxlength="255"
+             formControlName="password"
+             required
+      />
       <label for="password">Contraseña*</label>
     </div>
     <div class="form-field">
-      <input id="phone" pattern="[0-9]{9}" type="tel" name="phone" placeholder="123456789"
-             title="9 números seguidos" required>
+      <input id="phone"
+             pattern="[0-9]{9}"
+             type="tel"
+             name="phone"
+             placeholder="123456789"
+             title="9 números seguidos"
+             formControlName="telephone"
+             required>
       <label for="phone">Número de teléfono*</label>
     </div>
     <button class="form-button text-submit-form-button" type="submit">Crear cuenta</button>
@@ -29,7 +57,7 @@
   <section class="register-callout">
     <strong>¿Ya tienes una cuenta?</strong>
     <wbr>
-    <a href="log-in">Iniciar sesión</a>
+    <a routerLink="/log-in">Iniciar sesión</a>
   </section>
 </div>
 <footer>

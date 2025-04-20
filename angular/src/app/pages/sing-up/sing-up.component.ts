@@ -1,38 +1,60 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {toast} from 'ngx-sonner';
+import {Router, RouterLink} from '@angular/router';
+
+interface FormSingUp {
+  username: FormControl<string | null>;
+  email: FormControl<string | null>;
+  password: FormControl<string | null>;
+  telephone: FormControl<string | null>;
+}
 
 @Component({
   selector: 'app-sing-up',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   standalone: true,
   templateUrl: './sing-up.component.html',
   styleUrl: './sing-up.component.css'
 })
 export class SingUpComponent {
-  /*
-  inputListener(input: any) {
-    return function () {
-      if (!input.validity.valid) {
-        input.reportValidity();
-      }
-    };
+
+  private formBuilder = inject(FormBuilder);
+  private authService = inject(AuthService);
+
+  constructor(private router: Router) {
   }
 
-  private nameInput = document.getElementById("name");
-  private emailInput = document.getElementById("email");
-  private passwordInput = document.getElementById("password");
-  private phoneInput = document.getElementById("phone");
+  form = this.formBuilder.group<FormSingUp>({
+    username: this.formBuilder.control('', [Validators.required]),
+    email: this.formBuilder.control('', Validators.required),
+    password: this.formBuilder.control('', Validators.required),
+    telephone: this.formBuilder.control('', Validators.required),
+  })
 
-  nameInput.addEventListener('change', inputListener(nameInput));
-  emailInput.addEventListener('change', inputListener(emailInput));
-  passwordInput.addEventListener('change', inputListener( passwordInput));
-  phoneInput.addEventListener('change', inputListener(phoneInput));
+  async submit() {
+    if (this.form.invalid) {
+      return
+    }
 
-  document.getElementById('registration-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+    try {
+      const username = this.form.get('username')?.value;
+      const email = this.form.get('email')?.value;
+      const password = this.form.get('password')?.value;
+      const telephone = this.form.get('telephone')?.value;
 
-    localStorage.setItem('isLogged', 'true');
-    window.location.href = '../home/index.html';
-  });
-  */
+      if (!email || !password || !telephone || !username) {
+        return;
+      }
+
+      await this.authService.signUp({username, email, password, telephone})
+      toast.success('Sing up successfully.');
+      await this.router.navigate(['']);
+    } catch (error) {
+      toast.error('Sing up failed');
+    }
+  };
+
 }

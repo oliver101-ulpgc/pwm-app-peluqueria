@@ -112,6 +112,7 @@ input:focus::placeholder {
   border-width: 0;
   text-align: center;
   width: 100%;
+  cursor: pointer;
 }
 
 .text-submit-form-button {

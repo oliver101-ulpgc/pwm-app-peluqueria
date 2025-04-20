@@ -1,12 +1,4 @@
 #header {
-  height: 250px;
-  width: 100%;
-  background: url("/assets/Images/Header.jpg") no-repeat center;
-  background-size: cover;
-}
-
-/*
-#header {
   position: relative;
   height: 250px;
   width: 100%;
@@ -28,7 +20,6 @@ menu-component {
   position: relative;
   z-index: 1;
 }
-*/
 
 #iniciar_sesion {
   color: white;

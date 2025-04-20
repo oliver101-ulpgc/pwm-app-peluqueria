@@ -70,4 +70,6 @@ export class BookingComponent {
     }
     alert(`Reserva confirmada para Peluquero ${this.peluqueroSeleccionado} el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
   }
+
+    protected readonly window = window;
 }

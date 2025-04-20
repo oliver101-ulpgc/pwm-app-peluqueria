@@ -4,15 +4,18 @@
     Tu navegador no soporta video HTML5.
   </video>
 
-  <div id="botones">
-    <button id="iniciar_sesion" onclick="window.location.href='log-in';">Iniciar
-      sesión
-    </button>
-    <button id="registrarse" onclick="window.location.href='sign-up';">Registrarse
-    </button>
+  <ng-container *ngIf="(authState$ | async) === null; else loggedIn">
+    <div id="botones">
+      <button routerLink="/log-in">Iniciar sesión</button>
+      <button routerLink="/sign-up">Registrarse</button>
+    </div>
+  </ng-container>
+
+  <ng-template #loggedIn>
     <div class="profile-pic">
       <img src="/assets/Images/profile.png" (click)="toggleMenu()" alt="Foto de perfil">
     </div>
-  </div>
+  </ng-template>
+
   <menu-component></menu-component>
 </div>

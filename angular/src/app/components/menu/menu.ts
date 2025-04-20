@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {Router} from '@angular/router';
 import {MenuService} from './menu.service';
 import {AuthService} from '../../services/auth.service';
+import {AuthStateService} from '../../services/auth-state.service';
 
 @Component({
     selector: 'menu-component',
@@ -14,7 +15,7 @@ import {AuthService} from '../../services/auth.service';
 
 export class MenuComponent {
   isOpen = false;
-  private authService = inject(AuthService);
+  private authStateService = inject(AuthStateService);
   @ViewChild('menuContainer') menuContainer!: ElementRef;
   @ViewChild('overlay') overlay!: ElementRef;
 
@@ -34,7 +35,7 @@ export class MenuComponent {
   }
 
   logout() {
-    this.authService
-    this.router.navigate(['']);
+    this.authStateService.logOut();
+    this.router.navigate(['/log-in']);
   }
 }

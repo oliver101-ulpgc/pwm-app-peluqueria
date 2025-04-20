@@ -6,8 +6,8 @@
 
   <ng-container *ngIf="(authState$ | async) === null; else loggedIn">
     <div id="botones">
-      <button routerLink="/log-in">Iniciar sesión</button>
-      <button routerLink="/sign-up">Registrarse</button>
+      <button routerLink="/log-in" class="boton">Iniciar sesión</button>
+      <button routerLink="/sign-up" class="boton">Registrarse</button>
     </div>
   </ng-container>
 

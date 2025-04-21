@@ -1,6 +1,6 @@
 import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {MenuService} from './menu.service';
 import {AuthService} from '../../services/auth.service';
 import {AuthStateService} from '../../services/auth-state.service';
@@ -10,7 +10,7 @@ import {AuthStateService} from '../../services/auth-state.service';
     styleUrl: 'menu.css',
     templateUrl: './menu.html',
     standalone: true,
-    imports: [CommonModule]
+  imports: [CommonModule, RouterLink]
 })
 
 export class MenuComponent {

@@ -7,7 +7,7 @@ import {RouterLink} from '@angular/router';
 
 @Component({
     selector: 'header-component',
-    styleUrls: ['header.css', '../../../assets/common_style/common.css'],
+    styleUrls: ['header.css', '../common_page/common.css'],
     templateUrl: './header.html',
     standalone: true,
   imports: [CommonModule, MenuComponent, RouterLink]

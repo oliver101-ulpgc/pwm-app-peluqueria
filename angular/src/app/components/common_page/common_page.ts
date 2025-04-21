@@ -9,7 +9,7 @@ import {HeaderComponent} from "../header/header";
     selector: 'common_page-component',
     templateUrl: './common_page.html',
     standalone: true,
-    styleUrls: ['../../../assets/common_style/common.css'],
+    styleUrls: ['./common.css'],
     imports: [CommonModule, FooterComponent, MenuComponent, NavComponent, HeaderComponent]
 })
 

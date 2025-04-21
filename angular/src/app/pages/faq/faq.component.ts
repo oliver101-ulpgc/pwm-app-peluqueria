@@ -18,8 +18,8 @@ import {Subscription} from 'rxjs';
 })
 export class FaqComponent implements OnInit, OnDestroy {
   constructor(private faqsService: FaqsService) {}
-  faqs: Faq[] = [];
 
+  faqs: Faq[] = [];
   private faqsSubscription?: Subscription;
 
   ngOnInit(): void {

@@ -13,7 +13,7 @@
 
   <ng-template #loggedIn>
     <div class="profile-pic">
-      <img src="/assets/Images/profile.png" (click)="toggleMenu()" alt="Foto de perfil">
+      <img [src]="photoUrl" (click)="toggleMenu()" alt="Foto de perfil">
     </div>
   </ng-template>
 

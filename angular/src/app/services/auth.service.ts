@@ -1,5 +1,5 @@
-import {inject, Injectable} from '@angular/core';
-import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@angular/fire/auth';
+import { inject, Injectable } from '@angular/core';
+import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile} from '@angular/fire/auth';
 
 export interface UserSignUp {
   username: string;
@@ -20,8 +20,17 @@ export class AuthService {
 
   private auth = inject(Auth);
 
-  signUp(user: UserSignUp) {
-    return createUserWithEmailAndPassword(this.auth, user.email, user.password);
+  async signUp(user: UserSignUp) {
+
+    const credential = await createUserWithEmailAndPassword(this.auth, user.email, user.password);
+
+    if (credential.user) {
+      await updateProfile(credential.user, {
+        displayName: user.username
+      });
+    }
+
+    return credential;
   }
 
   signIn(user: UserSignIn) {

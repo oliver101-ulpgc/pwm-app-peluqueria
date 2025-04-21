@@ -38,7 +38,6 @@ export class MyProfileComponent implements OnInit{
       const userDocRef = doc(this.firestore, `clients/${this.user?.uid}`);
       await setDoc(userDocRef, { photoURL: this.photoUrl }, { merge: true });
 
-      // Opcional: recargar auth user y local userProfile
       await this.user?.reload();
       if (this.userProfile) {
         this.userProfile.photoURL = this.photoUrl;

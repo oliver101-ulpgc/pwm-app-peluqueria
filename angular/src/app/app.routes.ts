@@ -11,6 +11,7 @@ import {PoliciesComponent} from './pages/policies/policies.component';
 import {AppointmentsComponent} from './pages/appointments/appointments.component';
 import {FaqComponent} from './pages/faq/faq.component';
 import {privateGuard, publicGuard} from './core/auth.guard';
+import {MyProfileComponent} from './pages/my-profile/my-profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,7 +23,8 @@ export const routes: Routes = [
   { path: 'log-in', component: LogInComponent, canActivate: [publicGuard] },
   { path: 'policies', component: PoliciesComponent },
   { path: 'appointments', component: AppointmentsComponent, canActivate: [privateGuard]},
-  { path: 'faq', component: FaqComponent }
+  { path: 'faq', component: FaqComponent },
+  { path: 'myprofile', component: MyProfileComponent },
 ];
 
 @NgModule({

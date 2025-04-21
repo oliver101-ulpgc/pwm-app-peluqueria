@@ -1,39 +1,43 @@
-<main class="profile-container">
-  <section class="profile-info">
-    <div class="profile-pic-large">
-      <img src="../../../../angular/src/assets/Images/profile.png" alt="Foto de perfil">
-    </div>
-    <h1>Nombre de Usuario</h1>
-  </section>
+<common_page-component>
+  <ng-container>
+    <main class="profile-container">
+      <section class="profile-info">
+        <div class="profile-pic-large">
+          <img src="../../../../angular/src/assets/Images/profile.png" alt="Foto de perfil">
+        </div>
+        <h1>Nombre de Usuario</h1>
+      </section>
 
-  <section class="profile-details">
-    <div class="detail">
-      <label>Nombre:</label>
-      <span class="name">Juan Pérez</span>
-      <input type="text" class="edit-input" value="${value}" style="display: none;">
-      <button class="btn">Cambiar</button>
-    </div>
-    <div class="detail">
-      <label>Email:</label>
-      <span class="email">correo_ejemplo&#64;gmail.com</span>
-      <input type="text" class="edit-input" value="${value}" style="display: none;">
-      <button class="btn">Cambiar</button>
-    </div>
-    <div class="detail">
-      <label>Teléfono:</label>
-      <span class="phone_number">987 654 321</span>
-      <input type="text" class="edit-input" value="${value}" style="display: none;">
-      <button class="btn">Cambiar</button>
-    </div>
-    <div class="detail">
-      <label>Contraseña:</label>
-      <span class="password">************</span>
-      <input type="text" class="edit-input" value="${value}" style="display: none;">
-      <button class="btn">Cambiar</button>
-    </div>
-  </section>
+      <section class="profile-details">
+        <div class="detail">
+          <label>Nombre:</label>
+          <span class="name">{{ currentUser?.displayName }}</span>
+          <input type="text" class="edit-input" value="${value}" style="display: none;">
+          <button class="btn">Cambiar</button>
+        </div>
+        <div class="detail">
+          <label>Email:</label>
+          <span class="email">{{ currentUser?.email }}</span>
+          <input type="text" class="edit-input" value="${value}" style="display: none;">
+          <button class="btn">Cambiar</button>
+        </div>
+        <div class="detail">
+          <label>Teléfono:</label>
+          <span class="phone_number">{{ currentUser?.phoneNumber }}</span>
+          <input type="text" class="edit-input" value="${value}" style="display: none;">
+          <button class="btn">Cambiar</button>
+        </div>
+        <div class="detail">
+          <label>Contraseña:</label>
+          <span class="password">************</span>
+          <input type="text" class="edit-input" value="${value}" style="display: none;">
+          <button class="btn">Cambiar</button>
+        </div>
+      </section>
 
-  <section class="profile-actions">
-    <button class="btn delete_account">Eliminar cuenta</button>
-  </section>
-</main>
+      <section class="profile-actions">
+        <button class="btn delete_account">Eliminar cuenta</button>
+      </section>
+    </main>
+  </ng-container>
+</common_page-component>

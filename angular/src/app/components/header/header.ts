@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit{
     if (user == null){
       return;
     }
-    const userProfile = await this.authService.getUserProfile(user.uid)
+
+    const userProfile = await this.authService.getUserProfile(user.uid);
     if(userProfile){
       this.photoUrl = userProfile.photoURL;
     }

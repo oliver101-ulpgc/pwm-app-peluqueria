@@ -20,21 +20,27 @@ menu-component {
   z-index: 1;
 }
 
-#iniciar_sesion {
+.iniciar_sesion {
   color: white;
   background-color: black;
   border-color: white;
   cursor: pointer;
 }
 
-#registrarse {
+.registrarse {
   color: black;
-  background-color: #CFCFCF;
+  background-color: white;
   border-color: white;
   cursor: pointer;
 }
 
-#botones, .profile-pic {
+.boton {
+  min-height: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.profile-pic {
   position: relative;
   z-index: 2;
 }

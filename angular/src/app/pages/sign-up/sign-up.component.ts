@@ -13,13 +13,13 @@ interface FormSingUp {
 }
 
 @Component({
-  selector: 'app-sing-up',
+  selector: 'app-sign-up',
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   standalone: true,
-  templateUrl: './sing-up.component.html',
-  styleUrl: './sing-up.component.css'
+  templateUrl: './sign-up.component.html',
+  styleUrl: './sign-up.component.css'
 })
-export class SingUpComponent {
+export class SignUpComponent {
 
   private formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CommonPageComponent} from '../../components/common_page/common_page';
-import {AppoinmentsService} from '../../services/appoinments.service';
-import {Appoinment, Portfolio} from '../../models/interfaces.model';
+import {AppointmentsService} from '../../services/appoinments.service';
+import {Appointment, Portfolio} from '../../models/interfaces.model';
 
 @Component({
   selector: 'appointments-component',
@@ -14,13 +14,13 @@ import {Appoinment, Portfolio} from '../../models/interfaces.model';
 
 export class AppointmentsComponent implements OnInit{
 
-  appoinments: Appoinment[] = [];
+  appoinments: Appointment[] = [];
 
-  constructor(private appointmentService: AppoinmentsService) {}
+  constructor(private appointmentService: AppointmentsService) {}
 
   ngOnInit(): void {
     this.appointmentService.getAppointments().subscribe({
-      next: (appointment: Appoinment[]) => {
+      next: (appointment: Appointment[]) => {
         this.appoinments = appointment;
       },
     });

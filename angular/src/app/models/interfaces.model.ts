@@ -40,7 +40,7 @@ export interface Faq {
   answer: string;
 }
 
-export interface Appoinment{
+export interface Appointment {
   client: string;
   date: Date;
   hairdresser: string;

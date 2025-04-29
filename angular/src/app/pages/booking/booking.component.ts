@@ -1,7 +1,7 @@
 import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CommonPageComponent} from '../../components/common_page/common_page';
-import {AppoinmentsService} from '../../services/appoinments.service';
+import {AppointmentsService} from '../../services/appoinments.service';
 import {RouterLink} from '@angular/router';
 
 @Component({
@@ -23,7 +23,7 @@ export class BookingComponent {
   fechaSeleccionada: string | null = null;
   horaSeleccionada: string | null = null;
   horasDisponibles: string[] = [];
-  private appointmentService = inject(AppoinmentsService);
+  private appointmentService = inject(AppointmentsService);
 
   @ViewChild('peluqueroSeleccionado', { static: true }) peluqueroSeleccionadoEl!: ElementRef;
   @ViewChild('fechaSeleccionada', { static: true }) fechaSeleccionadaEl!: ElementRef;

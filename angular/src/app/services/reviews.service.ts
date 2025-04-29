@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import {map, Observable} from 'rxjs';
 import {Review} from '../models/interfaces.model';
+import {collection, collectionData, Firestore} from '@angular/fire/firestore';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewsService {
-  constructor(private http: HttpClient) { }
+  constructor(private firestore: Firestore, private http: HttpClient) { }
 
   getReviews(): Observable<Review[]> {
-    return this.http.get<{data: Review[]}>('/assets/data/reviews.json').pipe(
-      map(response => response.data),
-    );
+    return collectionData(collection(this.firestore, 'reviews'), {idField: 'id'}) as Observable<Review[]>;
   }
 
   getGraphData(): Observable<any> {
+
     return this.http.get<{data: any}>('/assets/data/reviews-graph.json');
   }
 }

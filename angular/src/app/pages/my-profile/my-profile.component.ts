@@ -1,7 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommonPageComponent } from '../../components/common_page/common_page';
-import { AuthStateService } from '../../services/auth-state.service';
 import { Observable, firstValueFrom } from 'rxjs';
 import { updateProfile, User } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
@@ -17,8 +16,7 @@ import {doc, Firestore, setDoc} from '@angular/fire/firestore'; // 🟡 IMPORTAN
 })
 export class MyProfileComponent implements OnInit{
   private authService = inject(AuthService);
-  private authState = inject(AuthStateService);
-  protected currentUser$: Observable<User | null> = this.authState.authState$;
+  protected currentUser$: Observable<User | null> = this.authService.authState$;
   private firestore = inject(Firestore);
   userProfile: UserProfile |null = null;
   user: User | null = null;

@@ -1,9 +1,8 @@
 import {Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink} from '@angular/router';
-import {MenuService} from './menu.service';
+import {MenuService} from '../../services/menu.service';
 import {AuthService} from '../../services/auth.service';
-import {AuthStateService} from '../../services/auth-state.service';
 import {firstValueFrom, Observable} from 'rxjs';
 import {User} from '@angular/fire/auth';
 
@@ -15,11 +14,10 @@ import {User} from '@angular/fire/auth';
   imports: [CommonModule, RouterLink]
 })
 
-export class MenuComponent implements OnInit{
+export class MenuComponent implements OnInit {
   isOpen = false;
-  private authStateService = inject(AuthStateService);
   private authService = inject(AuthService);
-  authState$ = this.authStateService.authState$;
+  authState$ = this.authService.authState$;
   protected currentUser$: Observable<User | null> = this.authState$;
   @ViewChild('menuContainer') menuContainer!: ElementRef;
   @ViewChild('overlay') overlay!: ElementRef;
@@ -51,8 +49,13 @@ export class MenuComponent implements OnInit{
     this.menuService.toggleMenu();
   }
 
+  closeMenu() {
+    this.menuService.closeMenu();
+  }
+
   logout() {
-    this.authStateService.logOut();
-    this.router.navigate(['/log-in']);
+    this.authService.logOut().then(r => {});
+    this.router.navigate(['']).then(r => {});
+    this.closeMenu();
   }
 }

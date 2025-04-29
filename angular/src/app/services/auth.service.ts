@@ -1,6 +1,13 @@
 import { inject, Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import {
+  Auth, authState,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, signOut,
+  updateProfile,
+  User
+} from '@angular/fire/auth';
 import {Firestore, doc, setDoc, getDoc} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 export interface UserSignUp {
   username: string;
@@ -54,8 +61,8 @@ export class AuthService {
     return credential;
   }
 
-  signIn(user: UserSignIn) {
-    return signInWithEmailAndPassword(this.auth, user.email, user.password);
+  async logIn(user: UserSignIn) {
+    return await signInWithEmailAndPassword(this.auth, user.email, user.password);
   }
 
   async getUserProfile(uid: string): Promise<UserProfile | null> {
@@ -67,5 +74,13 @@ export class AuthService {
     } else {
       return null;
     }
+  }
+
+  get authState$(): Observable<User | null> {
+    return authState(this.auth);
+  }
+
+  logOut() {
+    return signOut(this.auth);
   }
 }

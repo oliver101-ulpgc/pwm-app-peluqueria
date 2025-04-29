@@ -42,7 +42,7 @@ export class LogInComponent {
         return;
       }
 
-      await this.authService.signIn({email, password})
+      await this.authService.logIn({email, password})
       toast.success('Hello again');
       await this.router.navigate(['']);
     } catch (error) {

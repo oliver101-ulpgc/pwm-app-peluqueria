@@ -10,6 +10,9 @@ export class MenuService {
 
   toggleMenu() {
     this.isMenuOpen.next(!this.isMenuOpen.value);
-    console.log("click")
+  }
+
+  closeMenu() {
+    this.isMenuOpen.next(false);
   }
 }

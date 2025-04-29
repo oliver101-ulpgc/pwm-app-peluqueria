@@ -1,8 +1,7 @@
 import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MenuService} from '../menu/menu.service';
+import {MenuService} from '../../services/menu.service';
 import {MenuComponent} from '../menu/menu';
-import {AuthStateService} from '../../services/auth-state.service';
 import {RouterLink} from '@angular/router';
 import {firstValueFrom, Observable} from 'rxjs';
 import {User} from '@angular/fire/auth';
@@ -19,9 +18,8 @@ import {AuthService} from '../../services/auth.service';
 export class HeaderComponent implements OnInit{
 
   private authService = inject(AuthService);
-  private authStateService = inject(AuthStateService);
   private menuService = inject(MenuService);
-  authState$ = this.authStateService.authState$;
+  authState$ = this.authService.authState$;
   protected currentUser$: Observable<User | null> = this.authState$;
 
   photoUrl: string = '';

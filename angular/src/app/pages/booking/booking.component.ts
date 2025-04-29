@@ -1,10 +1,12 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CommonPageComponent} from '../../components/common_page/common_page';
+import {AppoinmentsService} from '../../services/appoinments.service';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'booking-component',
-  imports: [CommonModule, CommonPageComponent],
+  imports: [CommonModule, CommonPageComponent, RouterLink],
   standalone: true,
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
@@ -21,6 +23,7 @@ export class BookingComponent {
   fechaSeleccionada: string | null = null;
   horaSeleccionada: string | null = null;
   horasDisponibles: string[] = [];
+  private appointmentService = inject(AppoinmentsService);
 
   @ViewChild('peluqueroSeleccionado', { static: true }) peluqueroSeleccionadoEl!: ElementRef;
   @ViewChild('fechaSeleccionada', { static: true }) fechaSeleccionadaEl!: ElementRef;
@@ -69,7 +72,6 @@ export class BookingComponent {
       return;
     }
     alert(`Reserva confirmada para Peluquero ${this.peluqueroSeleccionado} el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
+    /*this.appointmentService.addAppoinment({})*/
   }
-
-    protected readonly window = window;
 }

@@ -39,3 +39,10 @@ export interface Faq {
   question: string;
   answer: string;
 }
+
+export interface Appoinment{
+  client: string;
+  date: Date;
+  hairdresser: string;
+  services: string;
+}

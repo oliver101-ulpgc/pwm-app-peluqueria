@@ -14,25 +14,20 @@ import {PortfolioCardComponent} from '../../components/portfolio-card/portfolio-
   styleUrl: './portfolio.component.css'
 })
 
-export class PortfolioComponent implements OnInit, OnDestroy {
+export class PortfolioComponent implements OnInit {
 
   portfolios_main: Portfolio[] = [];
   portfolios_secondary: Portfolio[] = [];
-  private sub: Subscription = new Subscription();
 
   constructor(private portfolioService: PortfolioService) {
   }
 
   ngOnInit(): void {
-    this.sub = this.portfolioService.getImages().subscribe({
+    this.portfolioService.getImages().subscribe({
       next: (portfolio: Portfolio[]) => {
         this.portfolios_main = portfolio.filter(p => p.type === 'hombre');
         this.portfolios_secondary = portfolio.filter(p => p.type === 'mujer');
       },
     });
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
   }
 }

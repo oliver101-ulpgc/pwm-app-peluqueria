@@ -1,24 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Service} from '../../models/interfaces.model';
-import {catchError, map, Observable, of} from 'rxjs';
+import {catchError, firstValueFrom, map, Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {collection, collectionData, Firestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class HomeService {
-  constructor(private http: HttpClient) { }
 
-  getServices(): Observable<Service[]> {
-    return this.http.get<{ data: Service[] }>('/assets/data/data.json').pipe(
-      map(response => response.data),
-      catchError(error => {
-        console.error('Error loading services:', error);
-        return of([]); // Devuelve array vacío si hay error
-      })
-    );
+  constructor(private http: HttpClient, private firestore: Firestore) { }
+
+  getServices(){
+    const serviceRef = collection(this.firestore, 'services');
+    return collectionData(serviceRef, { idField: 'id' }) as Observable<Service[]>;
   }
-
 
 }

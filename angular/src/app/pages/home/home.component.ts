@@ -13,23 +13,19 @@ import {ServiceCardComponent} from '../../components/service-card/service-card.c
   imports: [CommonModule, CommonPageComponent, ServiceCardComponent],
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   primary_services: Service[] = [];
   secondary_services: Service[] = [];
-  private sub: Subscription = new Subscription();
 
   constructor(private homeService: HomeService) {}
 
   ngOnInit(): void {
-    this.sub = this.homeService.getServices().subscribe({
+
+    this.homeService.getServices().subscribe({
       next: (services: Service[]) => {
         this.primary_services = services.filter(s => s.type === 'service');
         this.secondary_services = services.filter(s => s.type === 'other_service');
       },
     });
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
   }
 }

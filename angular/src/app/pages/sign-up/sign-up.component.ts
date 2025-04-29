@@ -36,7 +36,7 @@ export class SignUpComponent {
 
   async submit() {
     if (this.form.invalid) {
-      return
+      return;
     }
 
     try {
@@ -50,10 +50,10 @@ export class SignUpComponent {
       }
 
       await this.authService.signUp({username, email, password, telephone})
-      toast.success('Sing up successfully.');
+      toast.success('Sign up successfully.');
       await this.router.navigate(['']);
     } catch (error) {
-      toast.error('Sing up failed');
+      toast.error('Sign up failed');
     }
   };
 

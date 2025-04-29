@@ -16,14 +16,12 @@ export interface Portfolio {
 }
 
 export interface Review {
-  id: number;
+  id: string;
   text: string;
   stars: number;
   client: {
-    id: number;
+    id: string;
     username: string;
-    email: string;
-    phone_number: number;
     image: string;
   }
 }

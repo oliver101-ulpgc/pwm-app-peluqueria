@@ -1,0 +1,7 @@
+<div class="row-item">
+  <button class="row-button" (click)="toggle()">{{ buttonText }}</button>
+  <div class="row-content" *ngIf="showContent">
+    <ng-content></ng-content>
+  </div>
+</div>
+

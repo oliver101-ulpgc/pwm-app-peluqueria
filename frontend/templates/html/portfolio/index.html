@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio</title>
-    <script src="../../../../js/contentLoader.js"></script>
-    <script src="../../../../js/menu.js"></script>
+    <link rel="icon" href="../../../../angular/src/assets/Images/icono.ico" type="image/x-icon">
     <link rel="stylesheet" href="../../styles/light-theme.css" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="../../styles/dark-theme.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="../../styles/portfolio.css">
@@ -12,43 +12,27 @@
 </head>
 <body>
 <div id="container">
-    <header id="header" xlu-include-file="../../common_html/header.html">
+    <header id="header"> </header>
 
-    </header>
+    <nav id="nav"> </nav>
 
-    <nav id="nav" xlu-include-file="../../common_html/nav.html">
+    <main>
 
-    </nav>
+    <h2 class="Servicios">Cortes de cabello para hombres</h2>
+    <div id="main_section"></div>
 
-    <div id="menu" xlu-include-file="../../common_html/menu.html" >
+    <h2 class="Servicios">Cortes de cabello para mujeres</h2>
+    <div id="secondary_section"></div>
 
-    </div>
+    </main>
 
-    <div id="title1" xlu-include-file="title1.html">
-
-    </div>
-
-    <div id="main_section" xlu-include-file="main.html">
-
-    </div>
-
-    <div id="title2" xlu-include-file="title2.html">
-
-    </div>
-
-    <div id="secondary_section" xlu-include-file="secondary.html">
-
-    </div>
-
-    <footer id="foot" xlu-include-file="../../common_html/footer.html">
-
-    </footer>
+    <footer id="foot"> </footer>
+    <div id="menu"> </div>
 </div>
 
-<script>
-    xLuIncludeFile()
-    toggleMenu()
-</script>
-
+<script src="../../../../js/contentLoader.js"></script>
+<script src="../../../../js/menu.js"></script>
+<script src="../../../../js/portfolio.js"></script>
+<script src="../../../../js/common.js"></script>
 </body>
 </html>

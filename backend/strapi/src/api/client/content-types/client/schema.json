@@ -43,6 +43,9 @@
       "relation": "oneToMany",
       "target": "api::review.review",
       "mappedBy": "client"
+    },
+    "image": {
+      "type": "string"
     }
   }
 }

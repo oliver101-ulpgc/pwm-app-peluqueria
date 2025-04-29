@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="side-bar">
+    <div class="row-stars">{{ bar.stars }}</div>
+  </div>
+  <div class="middle-bar">
+    <div class="bar-container">
+      <div class="bar" [ngStyle]="{'width': (100 * bar.count / meta.total_reviews) + '%'}"></div>
+    </div>
+  </div>
+  <div class="side-bar right-bar">
+    <div class="row-count">{{ bar.count }}</div>
+  </div>
+</div>

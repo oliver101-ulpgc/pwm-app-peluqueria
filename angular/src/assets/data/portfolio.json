@@ -1,0 +1,172 @@
+{
+  "data": [
+    {
+      "id": 4,
+      "documentId": "w6n3gmkbp6oly8578ol67kx3",
+      "image": "https://hips.hearstapps.com/hmg-prod/images/cortes-pelo-largo-elle-09-1603093466.jpg?resize=980:*",
+      "name": "Corte recto",
+      "createdAt": "2025-03-18T09:31:00.241Z",
+      "updatedAt": "2025-03-18T09:31:00.241Z",
+      "publishedAt": "2025-03-18T09:31:00.246Z",
+      "type": "mujer"
+    },
+    {
+      "id": 7,
+      "documentId": "l588vdjpodf79x3ar5u4nn5x",
+      "image": "https://hips.hearstapps.com/hmg-prod/images/mullet-largo-6718c5b5c7eb5.jpg?crop=0.9790408525754886xw:1xh;center,top&resize=980:*",
+      "name": "Corte mullet largo",
+      "createdAt": "2025-03-18T09:32:32.692Z",
+      "updatedAt": "2025-03-18T09:32:32.692Z",
+      "publishedAt": "2025-03-18T09:32:32.696Z",
+      "type": "mujer"
+    },
+    {
+      "id": 8,
+      "documentId": "xp71s8ctob1fmyufa1mbzhil",
+      "image": "https://haircutday.com/b/wp-content/uploads/2024/01/cortes-de-pelo-pixie-otono-invierno-2021-2022-FOTO-pelo-tenido-istock-840x1024.jpg",
+      "name": "Corte pixie y tinte rosa",
+      "createdAt": "2025-03-18T09:30:30.792Z",
+      "updatedAt": "2025-03-18T09:32:45.954Z",
+      "publishedAt": "2025-03-18T09:32:45.960Z",
+      "type": "mujer"
+    },
+    {
+      "id": 10,
+      "documentId": "ebq09e54x3e0k58whvqv1n9i",
+      "image": "https://tahecosmetics.com/trends/wp-content/uploads/2025/01/11-Bob-texturizado-580x769.jpg",
+      "name": "Corte bob y mechas",
+      "createdAt": "2025-03-18T09:33:22.269Z",
+      "updatedAt": "2025-03-18T09:33:22.269Z",
+      "publishedAt": "2025-03-18T09:33:22.273Z",
+      "type": "mujer"
+    },
+    {
+      "id": 12,
+      "documentId": "scrqoxo9l2jezrhx76ejv3xa",
+      "image": "https://tahecosmetics.com/trends/wp-content/uploads/2025/01/39-Butterfly-cut-580x769.jpg",
+      "name": "Corte mariposa",
+      "createdAt": "2025-03-18T09:34:13.589Z",
+      "updatedAt": "2025-03-18T09:34:13.589Z",
+      "publishedAt": "2025-03-18T09:34:13.593Z",
+      "type": "mujer"
+    },
+    {
+      "id": 14,
+      "documentId": "vc1l59ckxrhvbndr8nt5l3u9",
+      "image": "https://content20.lecturas.com/medio/2024/09/03/lob-con-puntas-hacia-dentro_00000000_240904053410_936x1165.jpg",
+      "name": "Corte lob",
+      "createdAt": "2025-03-18T09:34:31.016Z",
+      "updatedAt": "2025-03-18T09:34:31.016Z",
+      "publishedAt": "2025-03-18T09:34:31.021Z",
+      "type": "mujer"
+    },
+    {
+      "id": 16,
+      "documentId": "c17abfsjgp75eh5vfutqbejr",
+      "image": "https://i.pinimg.com/736x/47/ba/7e/47ba7eaa0b57b3934cd24308550d8ac1.jpg",
+      "name": "Corte en capas",
+      "createdAt": "2025-03-18T09:35:15.895Z",
+      "updatedAt": "2025-03-18T09:35:15.895Z",
+      "publishedAt": "2025-03-18T09:35:15.900Z",
+      "type": "mujer"
+    },
+    {
+      "id": 18,
+      "documentId": "bede3hq6ebw63euc8rc87fie",
+      "image": "https://www.ferminpeluqueros.com/wp-content/uploads/2024/09/bob-rubio-fermin-peluqueros-peluqueria-oviedo.png",
+      "name": "Corte recto y tinte",
+      "createdAt": "2025-03-18T09:38:41.145Z",
+      "updatedAt": "2025-03-18T09:38:41.145Z",
+      "publishedAt": "2025-03-18T09:38:41.149Z",
+      "type": "mujer"
+    },
+    {
+      "id": 20,
+      "documentId": "diwb9z9pk5etf50mboiccfnh",
+      "image": "https://i.pinimg.com/736x/31/dc/22/31dc226710cfb3de74d51f921d5065e3.jpg",
+      "name": "Corte mullet largo y tinte",
+      "createdAt": "2025-03-18T09:40:12.720Z",
+      "updatedAt": "2025-03-18T09:40:12.720Z",
+      "publishedAt": "2025-03-18T09:40:12.726Z",
+      "type": "hombre"
+    },
+    {
+      "id": 22,
+      "documentId": "o3o8ropjkvrvflwnsddz70bx",
+      "image": "https://content.clara.es/medio/2024/06/17/corte_713bbee7_240617145931_800x1119.webp",
+      "name": "Corte rapado y barba",
+      "createdAt": "2025-03-18T09:40:43.051Z",
+      "updatedAt": "2025-03-18T09:40:43.051Z",
+      "publishedAt": "2025-03-18T09:40:43.056Z",
+      "type": "hombre"
+    },
+    {
+      "id": 26,
+      "documentId": "zapdsg3us542dvmltjv97udc",
+      "image": "https://content.clara.es/medio/2024/05/31/cortes-de-pelo-para-hombre-joven-fade-con-linea_664f4da0_240531120804_800x1000.webp",
+      "name": "Corte degradado y tinte",
+      "createdAt": "2025-03-18T09:42:27.434Z",
+      "updatedAt": "2025-03-18T09:43:22.933Z",
+      "publishedAt": "2025-03-18T09:43:22.938Z",
+      "type": "hombre"
+    },
+    {
+      "id": 28,
+      "documentId": "ih4a23prmq32xe0wo5hq94pw",
+      "image": "https://i.pinimg.com/736x/d5/55/40/d5554045789d07d46cab34ef9f4cf6bf.jpg",
+      "name": "Corte degradado y barba",
+      "createdAt": "2025-03-18T09:44:14.524Z",
+      "updatedAt": "2025-03-18T09:44:14.524Z",
+      "publishedAt": "2025-03-18T09:44:14.529Z",
+      "type": "hombre"
+    },
+    {
+      "id": 30,
+      "documentId": "c92gn5kzyh18ywrq3hie699h",
+      "image": "https://blog.newoldman.com.br/wp-content/uploads/2022/09/Cortes-de-Cabelo-FAUX-HAWX-Ondulado-Cacheado-Masculino-4.jpg",
+      "name": "Corte ondulado",
+      "createdAt": "2025-03-18T09:45:12.013Z",
+      "updatedAt": "2025-03-18T09:45:12.013Z",
+      "publishedAt": "2025-03-18T09:45:12.018Z",
+      "type": "hombre"
+    },
+    {
+      "id": 32,
+      "documentId": "orp66ugar7f9d66o7t78mg44",
+      "image": "https://www.infobae.com/resizer/v2/KMPVVRYGVFA4TJRRRHYN2SH5BQ.jpg?auth=62c08f746c46478f9e5c93b6a38b0c0dd2ea652a2e743d7fe324c8eb2c026283&smart=true&width=350&height=467&quality=85",
+      "name": "Corte mullet",
+      "createdAt": "2025-03-18T09:45:35.917Z",
+      "updatedAt": "2025-03-18T09:45:35.917Z",
+      "publishedAt": "2025-03-18T09:45:35.921Z",
+      "type": "hombre"
+    },
+    {
+      "id": 34,
+      "documentId": "nodvf94fj807wlvji2fyaq6u",
+      "image": "https://i.pinimg.com/236x/bd/74/a6/bd74a69d4d109555a0e6ab50bb72fd6c.jpg",
+      "name": "Corte degradado",
+      "createdAt": "2025-03-18T09:45:54.104Z",
+      "updatedAt": "2025-03-18T09:45:54.104Z",
+      "publishedAt": "2025-03-18T09:45:54.108Z",
+      "type": "hombre"
+    },
+    {
+      "id": 36,
+      "documentId": "g7cfgtkfds7u5076xzewugme",
+      "image": "https://www.kmax-espana.es/blog/wp-content/uploads/2023/06/Black-male-fade-haircut-tonejohnson-1024x1024-1.jpg",
+      "name": "Corte afro",
+      "createdAt": "2025-03-18T09:47:42.892Z",
+      "updatedAt": "2025-03-18T09:47:42.892Z",
+      "publishedAt": "2025-03-18T09:47:42.896Z",
+      "type": "hombre"
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 16
+    }
+  }
+}

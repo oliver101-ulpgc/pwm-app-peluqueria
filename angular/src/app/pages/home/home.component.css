@@ -1,0 +1,13 @@
+#main_section, #secondary_section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px; /* Espacio entre columnas */
+  justify-content: center;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h2{
+  text-align: center;
+}

@@ -1,0 +1,10 @@
+<common_page-component>
+  <div class="main_section">
+    <main class="faq-container">
+      <h1>Preguntas Frecuentes</h1>
+      <section class="faq-questions">
+        <expanding-row *ngFor="let faq of faqs" [buttonText]="faq.question"><p>{{ faq.answer }}</p></expanding-row>
+      </section>
+    </main>
+  </div>
+</common_page-component>

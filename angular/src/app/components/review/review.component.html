@@ -1,0 +1,11 @@
+<article class="review">
+  <div>
+    <div class="review-avatar" [ngStyle]="{'backgroundImage': 'url(' + review.client.image + ')'}"></div>
+    <h3 class="review-username">{{ review.client.username }}</h3>
+    <h3 class="stars-display">{{ '⭐'.repeat(review.stars) }}</h3>
+  </div>
+  <div>
+    <p class="review-description">{{ review.text }}</p>
+  </div>
+</article>
+

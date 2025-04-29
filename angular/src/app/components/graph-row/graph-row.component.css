@@ -1,0 +1,39 @@
+:host {
+  --review-graph-background: var(--card-bg1-color);
+  --review-graph-color: #ff9800;
+  --small-spacing: 3px;
+  --big-border-radius: 20px;
+  --small-border-radius: 10px;
+}
+
+.side-bar {
+  margin-top: var(--element-spacing);
+  float: left;
+  width: 10%;
+}
+
+.middle-bar {
+  margin-top: var(--element-spacing);
+  float: left;
+  width: 80%;
+}
+
+.right-bar {
+  margin-top: var(--element-spacing);
+  text-align: right;
+  width: 10%;
+}
+
+.bar-container {
+  width: 100%;
+  background-color: var(--review-graph-background);
+  border-radius: var(--small-border-radius);
+  text-align: center;
+}
+
+.bar {
+  background-color: var(--review-graph-color);
+  border-radius: var(--small-border-radius) var(--small-spacing) var(--small-spacing) var(--small-border-radius);
+
+  height: 18px;
+}

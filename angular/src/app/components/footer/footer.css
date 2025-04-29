@@ -1,0 +1,35 @@
+#foot {
+  width: 100%;
+  height: auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--card-bg1-color, #CDCECF);
+  margin-top: 50px;
+  padding-bottom: 20px;
+}
+
+#foot p {
+  text-align: center;
+}
+
+#foot img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#social {
+  text-align: center;
+}
+
+#log {
+  text-align: center;
+}
+
+#log img{
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}

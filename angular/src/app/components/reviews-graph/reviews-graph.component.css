@@ -1,0 +1,44 @@
+:host {
+  --graph-spacing: 40px;
+  --review-graph-max-width: 300px;
+  --element-spacing: 10px;
+}
+
+p {
+  margin: 2px;
+}
+
+.half {
+  width: 50%;
+}
+
+.graph-info {
+  margin-right: var(--graph-spacing);
+  gap: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+
+.graph-info div {
+  gap: var(--element-spacing);
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.graph {
+  margin-right: var(--graph-spacing);
+}
+
+.reviews-graph {
+  margin: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

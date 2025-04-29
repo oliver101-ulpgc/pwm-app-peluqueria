@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --central-section-max-width: 1000px;
+  font-optical-sizing: auto;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-fg1-color);
+
+  font-family: Inter, sans-serif;
+  margin: 0;
+}

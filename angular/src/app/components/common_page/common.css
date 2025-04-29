@@ -1,0 +1,84 @@
+:root {
+    color: var(--text-fg1-color);
+
+    font-family: Inter, Helvetica, 'Noto Sans', Arial, sans-serif;
+    font-optical-sizing: auto;
+}
+
+body {
+    background-color: var(--background-color);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--accent-color);
+}
+
+a:hover {
+    color: var(--accent-color-hover);
+}
+
+button {
+    color: var(--text-fg2-color);
+    background-color: var(--button-bg2-color);
+    border-color: var(--button-bg2-color);
+    border-radius: 10px;
+    border-width: 3px;
+    padding: 10px;
+    text-align: center;
+    border-style: solid;
+}
+
+button:hover {
+    color: var(--text-button-hover);
+    background-color: var(--button-bg1-color, #333);
+    border-color: var(--accent-color);
+}
+
+.text-section-title-heading {
+    color: var(--text-fg1-color);
+    margin: 10px 0 20px 0;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.text-section-subtitle-heading {
+    color: var(--text-fg1-color);
+    margin: 10px 0 20px 0;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#botones {
+    position: absolute;
+    top: 0;
+    right: 0;
+    justify-content: flex-end;
+    display: flex;
+    gap: 35px;
+    padding-top: 30px;
+    padding-right: 30px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 22px;
+    line-height: 24px;
+}
+
+h3 {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 30px;
+}

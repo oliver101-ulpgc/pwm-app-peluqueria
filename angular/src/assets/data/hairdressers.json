@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "documentId": "jtlip998934a8n5ir28tqrfs",
+      "name": "Sara",
+      "image": "https://cdn-images.livecareer.es/pages/foto_cv_lc_es_9.jpg",
+      "createdAt": "2025-03-11T20:25:39.919Z",
+      "updatedAt": "2025-03-11T20:25:39.919Z",
+      "publishedAt": "2025-03-11T20:25:39.934Z"
+    },
+    {
+      "id": 4,
+      "documentId": "n8czwit6dnlnrxtw5suaeruk",
+      "name": "Miguel",
+      "image": "https://cdn-images.livecareer.es/pages/foto_cv_lc_es_11.jpg",
+      "createdAt": "2025-03-16T13:07:44.194Z",
+      "updatedAt": "2025-03-18T09:18:43.713Z",
+      "publishedAt": "2025-03-18T09:18:43.706Z"
+    },
+    {
+      "id": 5,
+      "documentId": "g5lk6zqy64y49l5h1irmyj64",
+      "name": "Alejandra",
+      "image": "https://media.istockphoto.com/id/465479132/es/foto/retrato-de-mujer-de-negocios-foto.jpg?s=612x612&w=0&k=20&c=PTZ6ZK5AjzNG8ecO1mARIDVUnbq0QR9kuB_xcsNnNKc=",
+      "createdAt": "2025-03-18T09:21:25.331Z",
+      "updatedAt": "2025-03-18T09:21:25.331Z",
+      "publishedAt": "2025-03-18T09:21:25.328Z"
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 3
+    }
+  }
+}

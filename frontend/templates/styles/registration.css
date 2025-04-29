@@ -1,5 +1,6 @@
 :root {
-    --form-min-width: 400px;
+    --form-min-width: 300px; /* Ajustar a un tamaño más pequeño para pantallas pequeñas */
+    --form-max-width: 400px; /* Ancho máximo para pantallas más grandes */
     --form-field-left-padding: 20px;
     --form-element-height: 60px;
     --form-element-border-radius: 10px;
@@ -14,11 +15,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 5%;
 }
 
 footer {
     padding: 20px;
     margin-top: 70px;
+    background-color: var(--background-color);
     color: var(--text-fg1-color);
     font-weight: normal;
 }
@@ -82,6 +85,8 @@ input:focus + label,
 input:not(:placeholder-shown) + label {
     transform: translateX(var(--form-field-left-padding)) translateY(-70%);
 }
+
+input:invalid:not(:placeholder-shown) {border: 1px solid red}
 
 input::placeholder {
     color: transparent;

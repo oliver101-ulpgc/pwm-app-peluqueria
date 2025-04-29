@@ -1,0 +1,21 @@
+<div id="header">
+  <video autoplay muted loop playsinline [muted]="true" id="video-fondo">
+    <source src="/assets/Videos/video_header.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <ng-container *ngIf="(authState$ | async) === null; else loggedIn">
+    <div id="botones">
+      <button routerLink="/log-in" class="boton iniciar_sesion">Iniciar sesión</button>
+      <button routerLink="/sign-up" class="boton registrarse">Registrarse</button>
+    </div>
+  </ng-container>
+
+  <ng-template #loggedIn>
+    <div class="profile-pic">
+      <img [src]="photoUrl" (click)="toggleMenu()" alt="Foto de perfil">
+    </div>
+  </ng-template>
+
+  <menu-component></menu-component>
+</div>

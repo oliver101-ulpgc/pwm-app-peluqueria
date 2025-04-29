@@ -1,0 +1,37 @@
+:host {
+  --graph-spacing: 20px;
+  --review-graph-max-width: 300px;
+  --element-spacing: 10px;
+}
+
+#graph {
+  align-items: center;
+}
+
+.review-avatar {
+  background: var(--avatar-background-color) url("/assets/Images/avatar.png") no-repeat;
+  border: var(--avatar-border-color) solid var(--small-spacing);
+  background-size: cover;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.review-description {
+  margin-left: 50px;
+}
+
+.review div {
+  gap: var(--element-spacing);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.review {
+  border-radius: var(--big-border-radius);
+  background-color: var(--card-bg1-color);
+  padding: 18px;
+  margin: 0 20px;
+}

@@ -1,41 +1,47 @@
 async function addReviews(data) {
-    let reviewTemplate = await fetchTemplate('./review.html',);
-    let reviewsParent = document.getElementById('reviews');
-    [...data.data].forEach((review) => {
-        const reviewElement = reviewTemplate.cloneNode(true);
+    const reviewsParent = document.getElementById('reviews');
+    if (!reviewsParent) return;
 
-        const username = reviewElement.querySelector('.review-username');
-        if (username) {
-            username.textContent = review.client.username;
-        }
-        const description = reviewElement.querySelector('.review-description');
-        if (description) {
-            description.textContent = review.text;
-        }
-        const starsDisplay = reviewElement.querySelector('.stars-display');
-        if (starsDisplay) {
-            starsDisplay.textContent = '⭐'.repeat(parseInt(review.stars));
-        }
-        // TODO: add user avatar and stars
-        const stars = reviewElement.querySelector('.star');
-        if (stars) {
-            // TODO
-        }
-        const avatar = reviewElement.querySelector('.review-avatar');
-        if (avatar) {
-            // TODO
-        }
-
-        reviewsParent.appendChild(reviewElement);
+    const reviewTemplate = await fetchTemplate('./review.html');
+    data.data.forEach(review => {
+        const reviewNode = reviewTemplate.cloneNode(true);
+        reviewNode.querySelector('.review-avatar').style.backgroundImage = `url(${review.client.image})`;
+        reviewNode.querySelector('.review-username').textContent = review.client.username;
+        reviewNode.querySelector('.review-description').textContent = review.text;
+        reviewNode.querySelector('.stars-display').textContent = '⭐'.repeat(parseInt(review.stars));
+        reviewsParent.appendChild(reviewNode);
     });
 }
+
+async function addGraph(data) {
+    const graphContainer = document.getElementById('graph');
+    if (!graphContainer) return;
+    const graphSections = await fetchTemplate('./reviews-graph.html');
+    graphSections.querySelector('.reviews-mean').textContent = `${data.meta.average_rating} ⭐`;
+    graphSections.querySelector('.reviews-count').textContent = data.meta.total_reviews;
+
+    const graphParent = graphSections.querySelector('.graph');
+    const rowTemplate = await fetchTemplate('./graph-row.html');
+    data.bars.forEach(bar => {
+        const rowNode = rowTemplate.cloneNode(true);
+        rowNode.querySelector('.row-stars').textContent = bar.stars;
+        rowNode.querySelector('.bar').style.width = `${100 * bar.count / data.meta.total_reviews}%`;
+        rowNode.querySelector('.row-count').textContent = bar.count;
+        graphParent.appendChild(rowNode);
+    });
+    graphSections.appendChild(graphParent);
+    graphContainer.appendChild(graphSections);
+}
+
 
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
 
-    const data = await fetchData('../../../data/reviews.json');
-    if (!data) return;
+    const graphData = await fetchData('../../../data/reviews-graph.json');
+    if (!graphData) return;
+    await addGraph(graphData);
 
-    await loadTemplate('./graph.html', 'graph');
-    await addReviews(data);
+    const reviewData = await fetchData('../../../data/reviews.json');
+    if (!reviewData) return;
+    await addReviews(reviewData);
 });

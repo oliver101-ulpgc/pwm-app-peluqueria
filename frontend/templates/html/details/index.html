@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles</title>
+    <link rel="icon" href="../../../../angular/src/assets/Images/icono.ico" type="image/x-icon">
     <script src="../../../../js/contentLoader.js"></script>
     <script src="../../../../js/menu.js"></script>
     <link rel="stylesheet" href="../../styles/light-theme.css" media="(prefers-color-scheme: light)">
@@ -11,36 +13,27 @@
     <link rel="stylesheet" href="../../styles/common.css">
 </head>
 <body>
-  <div id="container">
-    <header id="header" xlu-include-file="../../common_html/header.html">
+<div id="container">
+    <header id="header"></header>
 
-    </header>
+    <nav id="nav"></nav>
 
-    <nav id="nav" xlu-include-file="../../common_html/nav.html">
+    <div id="main"></div>
 
-    </nav>
-
-    <div id="main_section" xlu-include-file="main.html">
-
+    <div id="secondary">
+        <h2>Conoce a nuestros trabajadores</h2>
+        <div class="trabajadores">
+        </div>
     </div>
 
-    <div id="secundary_section" xlu-include-file="secundary.html">
+    <footer id="foot"></footer>
 
-    </div>
+    <div id="menu"></div>
+</div>
 
-    <footer id="foot" xlu-include-file="../../common_html/footer.html">
-
-    </footer>
-
-    <div id="menu" xlu-include-file="../../common_html/menu.html" >
-
-    </div>
-  </div>
-
-<script>
-  xLuIncludeFile()
-  toggleMenu()
-</script>
-
+<script src="../../../../js/contentLoader.js"></script>
+<script src="../../../../js/menu.js"></script>
+<script src="../../../../js/details.js"></script>
+<script src="../../../../js/common.js"></script>
 </body>
 </html>

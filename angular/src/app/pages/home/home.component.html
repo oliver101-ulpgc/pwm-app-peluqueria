@@ -1,0 +1,15 @@
+<div id="container">
+  <common_page-component>
+    <main>
+      <h2 class="Servicios">Servicios más populares</h2>
+      <div id="main_section">
+        <service-card-component *ngFor="let services of primary_services" [services]="services"></service-card-component>
+      </div>
+
+      <h2 class="Servicios">Otros servicios</h2>
+      <div id="secondary_section">
+        <service-card-component *ngFor="let services of secondary_services" [services]="services"></service-card-component>
+      </div>
+    </main>
+  </common_page-component>
+</div>

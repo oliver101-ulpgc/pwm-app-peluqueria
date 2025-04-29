@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cut_examples",
+  "info": {
+    "singularName": "cut-example",
+    "pluralName": "cut-examples",
+    "displayName": "Cut example",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "image": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

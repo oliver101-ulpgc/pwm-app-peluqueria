@@ -1,15 +1,13 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {map, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Faq} from '../models/interfaces.model';
+import {collection, collectionData, Firestore} from '@angular/fire/firestore';
 
 @Injectable({providedIn: 'root'})
 export class FaqsService {
-  constructor(private http: HttpClient) {}
+  constructor(private firestore: Firestore) {}
 
   getFaqs(): Observable<Faq[]> {
-    return this.http.get<{ data: Faq[] }>('/assets/data/faq.json').pipe(
-      map(response => response.data),
-    );
+    return collectionData(collection(this.firestore, 'faqs'), {idField: 'id'}) as Observable<Faq[]>;
   }
 }

@@ -37,7 +37,7 @@ export class ReviewsService {
   }
 
   getGraphData(): Observable<any> {
-
+    // TODO: use firestore
     return this.http.get<{ data: any }>('/assets/data/reviews-graph.json');
   }
 

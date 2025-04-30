@@ -1,69 +1,44 @@
-import {Component, ElementRef, inject, ViewChild} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {CommonPageComponent} from '../../components/common_page/common_page';
-import {AppointmentsService} from '../../services/appoinments.service';
-import {RouterLink} from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CommonPageComponent } from '../../components/common_page/common_page';
+import { AppointmentsService } from '../../services/appoinments.service';
+import { HairdressersService } from '../../services/hairdressers.service';
+import { Hairdresser } from '../../models/interfaces.model';
+import {Router} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'booking-component',
-  imports: [CommonModule, CommonPageComponent, RouterLink],
   standalone: true,
+  imports: [CommonModule, CommonPageComponent, FormsModule],
   templateUrl: './booking.component.html',
-  styleUrl: './booking.component.css'
+  styleUrl: './booking.component.css',
 })
-
 export class BookingComponent {
-  ngAfterViewInit() {
-    this.peluqueroSeleccionadoEl.nativeElement.innerText = "Selecciona un peluquero";
-    this.fechaSeleccionadaEl.nativeElement.innerText = "Selecciona una fecha";
-    this.horasEl.nativeElement.innerHTML = "";
-  }
+  private appointmentsService = inject(AppointmentsService);
+  private hairdressersService = inject(HairdressersService);
+  private router = inject(Router);
 
+  hairdressers: Hairdresser[] = [];
   peluqueroSeleccionado: string | null = null;
   fechaSeleccionada: string | null = null;
   horaSeleccionada: string | null = null;
   horasDisponibles: string[] = [];
-  private appointmentService = inject(AppointmentsService);
 
-  @ViewChild('peluqueroSeleccionado', { static: true }) peluqueroSeleccionadoEl!: ElementRef;
-  @ViewChild('fechaSeleccionada', { static: true }) fechaSeleccionadaEl!: ElementRef;
-  @ViewChild('horas', { static: true }) horasEl!: ElementRef;
+  async ngOnInit() {
+    this.hairdressers = await this.hairdressersService.getHairdressers();
+  }
 
   seleccionarPeluquero(id: string) {
     this.peluqueroSeleccionado = id;
-    this.peluqueroSeleccionadoEl.nativeElement.innerText = `Peluquero ${id} seleccionado`;
-    this.resetHoraSeleccionada();
+    const selected = this.hairdressers.find(h => h.id === id);
+    this.horasDisponibles = selected?.hours || [];
+    this.horaSeleccionada = null; // reinicia hora
   }
 
   cargarHoras(event: Event) {
     this.fechaSeleccionada = (event.target as HTMLInputElement).value;
-    this.fechaSeleccionadaEl.nativeElement.innerText = this.fechaSeleccionada ? `Fecha: ${this.fechaSeleccionada}` : "Selecciona una fecha";
-
-    // Simulación de horas disponibles
-    this.horasDisponibles = ["10:00", "11:00", "12:00", "14:00", "15:00"];
-    this.renderizarHoras();
-  }
-
-  renderizarHoras() {
-    this.horasEl.nativeElement.innerHTML = "";
-    this.horasDisponibles.forEach(hora => {
-      const div = document.createElement("div");
-      div.className = "hour";
-      div.innerText = hora;
-      div.onclick = () => this.seleccionarHora(div, hora);
-      this.horasEl.nativeElement.appendChild(div);
-    });
-  }
-
-  seleccionarHora(div: HTMLDivElement, hora: string) {
-    this.resetHoraSeleccionada();
-    div.classList.add('selected');
-    this.horaSeleccionada = hora;
-  }
-
-  resetHoraSeleccionada() {
-    this.horaSeleccionada = null;
-    document.querySelectorAll('.hour').forEach(el => el.classList.remove('selected'));
+    this.horaSeleccionada = null; // reinicia hora
   }
 
   confirmarReserva() {
@@ -71,7 +46,13 @@ export class BookingComponent {
       alert("Por favor, selecciona un peluquero, una fecha y una hora.");
       return;
     }
-    alert(`Reserva confirmada para Peluquero ${this.peluqueroSeleccionado} el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
-    /*this.appointmentService.addAppoinment({})*/
+
+    const peluquero = this.hairdressers.find(h => h.id === this.peluqueroSeleccionado);
+    const nombre = peluquero?.name || 'desconocido';
+
+    alert(`Reserva confirmada con el peluquero ${nombre}, el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
+    // this.appointmentsService.addAppoinment({...})
+    this.router.navigateByUrl('');
   }
 }
+

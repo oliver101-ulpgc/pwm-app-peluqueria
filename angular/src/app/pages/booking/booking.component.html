@@ -3,28 +3,32 @@
     <h1>Reserva una cita con uno de nuestros peluqueros:</h1>
 
     <div id="peluqueros">
-      <div class="peluquero" (click)="seleccionarPeluquero('1')">
-        <img src="/assets/Images/avatar.png" alt="Peluquero 1"> <span>Peluquero 1</span>
-      </div>
-      <div class="peluquero" (click)="seleccionarPeluquero('2')">
-        <img src="/assets/Images/avatar.png" alt="Peluquero 2"> <span>Peluquero 2</span>
-      </div>
-      <div class="peluquero" (click)="seleccionarPeluquero('3')">
-        <img src="/assets/Images/avatar.png" alt="Peluquero 3"> <span>Peluquero 3</span>
+      <div
+        class="peluquero"
+        *ngFor="let peluquero of hairdressers"
+        [class.selected]="peluqueroSeleccionado === peluquero.id"
+        (click)="seleccionarPeluquero(peluquero.id)">
+        <img [src]="peluquero.image" alt="Foto de {{ peluquero.name }}">
+        <span>{{ peluquero.name }}</span>
       </div>
     </div>
-    <div #peluqueroSeleccionado class="highlight">Selecciona un peluquero</div>
 
     <div class="section">
+      <label for="fecha">Selecciona una fecha:</label>
       <input type="date" id="fecha" (change)="cargarHoras($event)">
-      <div #fechaSeleccionada class="highlight">Selecciona una fecha</div>
-
     </div>
 
-    <div class="hours" #horas></div>
+    <div class="section" *ngIf="peluqueroSeleccionado && fechaSeleccionada && horasDisponibles.length > 0">
+      <label for="hora">Selecciona una hora:</label>
+      <select id="hora" [(ngModel)]="horaSeleccionada">
+        <option value="">-- Selecciona una hora --</option>
+        <option *ngFor="let hora of horasDisponibles" [value]="hora">{{ hora }}</option>
+      </select>
+    </div>
 
     <div class="button-container">
-      <button (click)="confirmarReserva()" routerLink="">Reservar</button>
+      <button (click)="confirmarReserva()">Reservar</button>
     </div>
   </main>
 </common_page-component>
+

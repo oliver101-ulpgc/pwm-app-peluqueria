@@ -30,7 +30,6 @@
 
 .peluquero.selected {
   background-color: #007BFF;
-  color: white;
 }
 
 .peluquero:hover {
@@ -45,16 +44,26 @@
 }
 
 .hour {
-  padding: 10px;
-  background: #ddd;
-  border-radius: 5px;
+  padding: 10px 16px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s;
+  min-width: 60px;
+  text-align: center;
+  user-select: none;
+}
+
+.hour:hover {
+  background-color: #e0e0e0;
 }
 
 .hour.selected {
-  background: #007BFF;
+  background-color: #007BFF;
   color: white;
+  font-weight: bold;
+  border-color: #0056b3;
 }
 
 .section {

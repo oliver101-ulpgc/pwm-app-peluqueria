@@ -25,8 +25,10 @@ export class BookingComponent {
   horaSeleccionada: string | null = null;
   horasDisponibles: string[] = [];
 
-  async ngOnInit() {
-    this.hairdressers = await this.hairdressersService.getHairdressers();
+  ngOnInit() {
+    this.hairdressersService.getHairdressers().subscribe(data => {
+      this.hairdressers = data;
+    });
   }
 
   seleccionarPeluquero(id: string) {
@@ -52,7 +54,6 @@ export class BookingComponent {
 
     alert(`Reserva confirmada con el peluquero ${nombre}, el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
     // this.appointmentsService.addAppoinment({...})
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/');
   }
 }
-

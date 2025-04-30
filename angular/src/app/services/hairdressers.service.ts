@@ -11,6 +11,7 @@ export class HairdressersService {
   constructor(private firestore: Firestore) { }
 
   getHairdressers(): Observable<Hairdresser[]> {
-    return collectionData(collection(this.firestore, 'hairdressers')) as Observable<Hairdresser[]>;
+    const ref = collection(this.firestore, 'hairdressers');
+    return collectionData(ref, { idField: 'id' }) as Observable<Hairdresser[]>;
   }
 }

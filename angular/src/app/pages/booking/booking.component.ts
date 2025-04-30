@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommonPageComponent } from '../../components/common_page/common_page';
 import { AppointmentsService } from '../../services/appoinments.service';
@@ -6,6 +6,7 @@ import { HairdressersService } from '../../services/hairdressers.service';
 import { Hairdresser } from '../../models/interfaces.model';
 import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'booking-component',
@@ -14,9 +15,10 @@ import {FormsModule} from '@angular/forms';
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css',
 })
-export class BookingComponent {
+export class BookingComponent implements OnInit, OnDestroy {
   private appointmentsService = inject(AppointmentsService);
   private hairdressersService = inject(HairdressersService);
+  private hairdressersSubscription?: Subscription;
   private router = inject(Router);
 
   hairdressers: Hairdresser[] = [];
@@ -26,9 +28,13 @@ export class BookingComponent {
   horasDisponibles: string[] = [];
 
   ngOnInit() {
-    this.hairdressersService.getHairdressers().subscribe(data => {
+    this.hairdressersSubscription = this.hairdressersService.getHairdressers().subscribe(data => {
       this.hairdressers = data;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.hairdressersSubscription?.unsubscribe();
   }
 
   seleccionarPeluquero(id: string) {

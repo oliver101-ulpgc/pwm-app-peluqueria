@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import {Component, input, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {GraphRowComponent} from '../graph-row/graph-row.component';
+import {ReviewGraphData} from '../../models/interfaces.model';
 
 @Component({
     selector: 'reviews-graph',
@@ -10,5 +11,5 @@ import {GraphRowComponent} from '../graph-row/graph-row.component';
     imports: [CommonModule, GraphRowComponent]
 })
 export class ReviewsGraphComponent {
-  @Input() data: any = { meta: {}, bars: [] };
+  @Input() graphData!: ReviewGraphData;
 }

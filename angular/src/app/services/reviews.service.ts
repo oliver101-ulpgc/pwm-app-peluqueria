@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {catchError, forkJoin, from, map, Observable, of, switchMap} from 'rxjs';
-import {Review} from '../models/interfaces.model';
-import {collection, collectionData, DocumentReference, Firestore, getDoc} from '@angular/fire/firestore';
-import {HttpClient} from '@angular/common/http';
+import {catchError, combineLatest, forkJoin, from, map, Observable, of, switchMap} from 'rxjs';
+import {Review, ReviewGraphData} from '../models/interfaces.model';
+import {collection, collectionData, doc, docData, DocumentReference, Firestore, getDoc} from '@angular/fire/firestore';
 
 interface FirestoreReviewClient {
   id: string,
@@ -17,11 +16,21 @@ interface FirestoreReview {
   text: string
 }
 
+interface FirestoreGraphBar {
+  stars: number,
+  count: number
+}
+
+interface FirestoreGraphData {
+  average_rating: number,
+  total_reviews: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewsService {
-  constructor(private firestore: Firestore, private http: HttpClient) {}
+  constructor(private firestore: Firestore) {}
 
   getReviews(): Observable<Review[]> {
     return collectionData(collection(this.firestore, 'reviews'), {idField: 'id'})
@@ -36,9 +45,18 @@ export class ReviewsService {
       );
   }
 
-  getGraphData(): Observable<any> {
-    // TODO: use firestore
-    return this.http.get<{ data: any }>('/assets/data/reviews-graph.json');
+  getGraphData(): Observable<ReviewGraphData> {
+    const graphData$ = docData(doc(this.firestore, 'reviews-graph/data')) as Observable<FirestoreGraphData>;
+    const bars$ = collectionData(collection(this.firestore, 'reviews-graph/data/bars')) as Observable<FirestoreGraphBar[]>;
+    return combineLatest([graphData$, bars$])
+      .pipe(
+        map(([meta, bars]) => (
+          {
+            bars: bars,
+            meta: meta
+          } as ReviewGraphData
+        ))
+      );
   }
 
   private addClientToReview(review: FirestoreReview): Observable<Review> {
@@ -68,14 +86,14 @@ export class ReviewsService {
     };
   }
 
-  private makeReviewWithoutClient(review: FirestoreReview, clientUsername: string): Review {
+  private makeReviewWithoutClient(review: FirestoreReview, usernameToDisplay: string): Review {
     return {
       id: review.id,
       text: review.text,
       stars: review.stars,
       client: {
         id: '',
-        username: clientUsername,
+        username: usernameToDisplay,
         image: ''
       }
     };

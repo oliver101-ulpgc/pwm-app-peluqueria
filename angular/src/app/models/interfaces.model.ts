@@ -26,6 +26,17 @@ export interface Review {
   }
 }
 
+export interface ReviewGraphData {
+  bars: {
+    stars: number,
+    count: number,
+  }[],
+  meta: {
+    total_reviews: number,
+    average_rating: number
+  }
+}
+
 export interface Hairdresser {
   id: string;
   name: string;

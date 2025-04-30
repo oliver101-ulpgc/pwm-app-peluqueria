@@ -1,13 +1,13 @@
 <section class="reviews-graph">
   <div class="half graph-info">
     <div>
-      <p class="reviews-mean">{{ data.meta.average_rating }} ⭐ de media</p>
-      <p class="reviews-count">{{ data.meta.total_reviews }} reseñas</p>
+      <p class="reviews-mean">{{ graphData.meta.average_rating }} ⭐ de media</p>
+      <p class="reviews-count">{{ graphData.meta.total_reviews }} reseñas</p>
     </div>
   </div>
   <div class="half graph">
-    <ng-container *ngFor="let bar of data.bars">
-      <graph-row [bar]="bar" [meta]="data.meta"></graph-row>
+    <ng-container *ngFor="let bar of graphData.bars">
+      <graph-row [bar]="bar" [meta]="graphData.meta"></graph-row>
     </ng-container>
   </div>
 </section>

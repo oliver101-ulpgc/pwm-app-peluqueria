@@ -34,7 +34,7 @@ export interface Hairdresser {
 }
 
 export interface Faq {
-  id: number;
+  id: string;
   question: string;
   answer: string;
 }

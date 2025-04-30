@@ -23,9 +23,7 @@ export class SignUpComponent {
 
   private formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
-
-  constructor(private router: Router) {
-  }
+  private router = inject(Router);
 
   form = this.formBuilder.group<FormSingUp>({
     username: this.formBuilder.control('', [Validators.required]),

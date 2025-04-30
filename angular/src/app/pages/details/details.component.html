@@ -14,7 +14,7 @@
         <h2>Conoce a nuestros trabajadores</h2>
         <div class="trabajadores">
           <div class="trabajador" *ngFor="let hairdresser of hairdressers">
-            <img src="{{hairdresser.image}}">
+            <img [src]="hairdresser.image" alt="Foto de {{ hairdresser.name }}">
             <p class="name">{{ hairdresser.name }}</p>
           </div>
         </div>

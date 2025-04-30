@@ -27,9 +27,10 @@ export interface Review {
 }
 
 export interface Hairdresser {
-  id: number;
+  id: string;
   name: string;
   image: string;
+  hours: Array<string>;
 }
 
 export interface Faq {

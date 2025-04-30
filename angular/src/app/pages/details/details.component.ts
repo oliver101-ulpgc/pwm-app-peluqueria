@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CommonPageComponent} from '../../components/common_page/common_page';
 import {CommonModule} from '@angular/common';
 import {Hairdresser} from '../../models/interfaces.model';
+import {HairdressersService} from '../../services/hairdressers.service';
 
 @Component({
   selector: 'details-component',
@@ -13,21 +14,13 @@ import {Hairdresser} from '../../models/interfaces.model';
 export class DetailsComponent implements OnInit {
   hairdressers: Hairdresser[] = [];
 
-  async FetchHairdressers(): Promise<void> {
-    try{
-      const response = await fetch('/assets/data/hairdressers.json');
-      if(!response.ok){
-        throw new Error(response.statusText);
-      }
-      const data = await response.json();
-      this.hairdressers = data.data;
-    }
-    catch(error){
-      console.error(error);
-    }
-  }
+  constructor(private hairdressersService: HairdressersService) {}
 
-  ngOnInit() {
-    this.FetchHairdressers()
+  async ngOnInit(): Promise<void> {
+    try {
+      this.hairdressers = await this.hairdressersService.getHairdressers();
+    } catch (error) {
+      console.error('Error fetching hairdressers:', error);
+    }
   }
 }

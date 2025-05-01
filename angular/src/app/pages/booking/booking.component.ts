@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { CommonPageComponent } from '../../components/common_page/common_page';
 import { AppointmentsService } from '../../services/appoinments.service';
 import { HairdressersService } from '../../services/hairdressers.service';
-import { Hairdresser } from '../../models/interfaces.model';
-import {Router} from '@angular/router';
+import {Appointment, Hairdresser} from '../../models/interfaces.model';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import {Subscription} from 'rxjs';
+import {firstValueFrom, Observable, Subscription} from 'rxjs';
+import {AuthService} from '../../services/auth.service';
+import {User} from '@angular/fire/auth';
+import {HomeService} from '../../services/homeService/home.Service';
 
 @Component({
   selector: 'booking-component',
@@ -19,7 +22,13 @@ export class BookingComponent implements OnInit, OnDestroy {
   private appointmentsService = inject(AppointmentsService);
   private hairdressersService = inject(HairdressersService);
   private hairdressersSubscription?: Subscription;
+  private homeService = inject(HomeService);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private authService = inject(AuthService);
+  authState$ = this.authService.authState$;
+  protected currentUser$: Observable<User | null> = this.authState$;
+  service: string | null = null;
 
   hairdressers: Hairdresser[] = [];
   peluqueroSeleccionado: string | null = null;
@@ -27,7 +36,8 @@ export class BookingComponent implements OnInit, OnDestroy {
   horaSeleccionada: string | null = null;
   horasDisponibles: string[] = [];
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.service = this.route.snapshot.paramMap.get('serviceId');
     this.hairdressersSubscription = this.hairdressersService.getHairdressers().subscribe(data => {
       this.hairdressers = data;
     });
@@ -49,17 +59,42 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.horaSeleccionada = null; // reinicia hora
   }
 
-  confirmarReserva() {
+  async confirmarReserva() {
     if (!this.peluqueroSeleccionado || !this.fechaSeleccionada || !this.horaSeleccionada) {
       alert("Por favor, selecciona un peluquero, una fecha y una hora.");
       return;
     }
 
-    const peluquero = this.hairdressers.find(h => h.id === this.peluqueroSeleccionado);
-    const nombre = peluquero?.name || 'desconocido';
+    const user = await firstValueFrom(this.currentUser$);
+    if (user == null){
+      alert('Debes iniciar sesión para reservar.');
+      return;
+    }
 
-    alert(`Reserva confirmada con el peluquero ${nombre}, el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
-    // this.appointmentsService.addAppoinment({...})
-    this.router.navigateByUrl('/');
+    if (this.service == null){
+      alert('Debes elegir un servicio para reservar.');
+      return;
+    }
+
+    const peluquero = this.hairdressers.find(h => h.id === this.peluqueroSeleccionado);
+    const nombrePeluquero = peluquero?.name || 'desconocido';
+    const servicioObj = await firstValueFrom(this.homeService.getServiceById(this.service));
+    const nombreServicio = servicioObj?.title || 'desconocido';
+    const fechaHoraStr = `${this.fechaSeleccionada}T${this.horaSeleccionada}`;
+
+    const appointment: Appointment = {
+      hairdresser: nombrePeluquero,
+      date: new Date(fechaHoraStr),
+      service: nombreServicio
+    };
+
+    try {
+      await this.appointmentsService.addAppointmentForUser(user.uid, appointment);
+      alert(`Reserva confirmada para ${nombreServicio} con el peluquero ${nombrePeluquero}, el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
+      this.router.navigateByUrl('/');
+    } catch (error) {
+      console.error('Error al guardar la reserva:', error);
+      alert('Hubo un problema al guardar la reserva. Inténtalo de nuevo.');
+    }
   }
 }

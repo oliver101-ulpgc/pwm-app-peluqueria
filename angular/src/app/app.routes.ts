@@ -18,7 +18,7 @@ export const routes: Routes = [
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'details', component: DetailsComponent },
   { path: 'reviews', component: ReviewsComponent },
-  { path: 'booking', component: BookingComponent, canActivate: [privateGuard] },
+  { path: 'booking/:serviceId', component: BookingComponent, canActivate: [privateGuard] },
   { path: 'sign-up', component: SignUpComponent, canActivate: [publicGuard] },
   { path: 'log-in', component: LogInComponent, canActivate: [publicGuard] },
   { path: 'policies', component: PoliciesComponent },

@@ -1,5 +1,5 @@
 export interface Service {
-  id: number;
+  id: string;
   type: string;
   image: string;
   title: string;
@@ -51,8 +51,7 @@ export interface Faq {
 }
 
 export interface Appointment {
-  client: string;
   date: Date;
   hairdresser: string;
-  services: string;
+  service: string;
 }

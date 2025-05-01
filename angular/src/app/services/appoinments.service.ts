@@ -11,13 +11,13 @@ export class AppointmentsService {
 
   constructor(private firestore: Firestore) { }
 
-  addAppointment(appointment: Appointment) {
-    const appointmentRef = collection(this.firestore, 'appointments');
-    return addDoc(appointmentRef, appointment);
+  async addAppointmentForUser(uid: string, appointment: Appointment) {
+    const appointmentRef = collection(this.firestore, `clients/${uid}/appointments`);
+    return await addDoc(appointmentRef, appointment);
   }
 
-  getAppointments(){
-    const appointmentRef = collection(this.firestore, 'appointments');
+  getAppointments(uid: string){
+    const appointmentRef = collection(this.firestore, `clients/${uid}/appointments`);
     return collectionData(appointmentRef, {idField: 'id'}) as Observable<Appointment[]>
   }
 }

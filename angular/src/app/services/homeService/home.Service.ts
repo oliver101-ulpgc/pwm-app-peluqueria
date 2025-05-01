@@ -17,4 +17,11 @@ export class HomeService {
     return collectionData(serviceRef, { idField: 'id' }) as Observable<Service[]>;
   }
 
+  getServiceById(id: string): Observable<Service | undefined> {
+    return this.getServices().pipe(
+      map(services => services.find(s => s.id === id))
+    );
+  }
+
+
 }

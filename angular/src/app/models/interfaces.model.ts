@@ -51,6 +51,7 @@ export interface Faq {
 }
 
 export interface Appointment {
+  id?: string;
   date: Date;
   hairdresser: string;
   service: string;

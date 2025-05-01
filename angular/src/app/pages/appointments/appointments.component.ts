@@ -14,25 +14,60 @@ import {User} from '@angular/fire/auth';
   templateUrl: './appointments.component.html',
   styleUrl: './appointments.component.css'
 })
+export class AppointmentsComponent implements OnInit {
 
-export class AppointmentsComponent implements OnInit{
-
-  appoinments: Appointment[] = [];
+  appointments: Appointment[] = [];
+  upcomingAppointments: Appointment[] = [];
+  pastAppointments: Appointment[] = [];
   private authService = inject(AuthService);
   authState$ = this.authService.authState$;
   protected currentUser$: Observable<User | null> = this.authState$;
+  private currentUserId: string | null = null;
 
   constructor(private appointmentService: AppointmentsService) {}
 
   async ngOnInit(): Promise<void> {
     const user = await firstValueFrom(this.currentUser$);
+
     if (user == null){
       return;
     }
+    this.currentUserId = user.uid;
+
     this.appointmentService.getAppointments(user.uid).subscribe({
-      next: (appointment: Appointment[]) => {
-        this.appoinments = appointment;
+      next: (appointments: Appointment[]) => {
+        const now = new Date();
+
+        const processedAppointments = appointments.map(a => {
+          const citaDate = (a.date instanceof Date) ? a.date : (a.date as any).toDate();
+          return { ...a, date: citaDate };
+        });
+
+        this.upcomingAppointments = processedAppointments.filter(a => {
+          return a.date > now;
+        });
+
+        this.pastAppointments = processedAppointments.filter(a => {
+          return a.date <= now;
+        });
       },
     });
+  }
+
+  async cancelarCita(appointment: Appointment) {
+    if (!this.currentUserId) {
+      alert('No se puede cancelar la cita: usuario no identificado.');
+      return;
+    }
+
+    try {
+      await this.appointmentService.cancelAppointmentForUser(this.currentUserId, appointment);
+      // Eliminamos la cita del array local para actualizar la vista
+      this.upcomingAppointments = this.upcomingAppointments.filter(a => a !== appointment);
+      alert('Cita cancelada correctamente.');
+    } catch (error) {
+      console.error('Error al cancelar la cita:', error);
+      alert('Hubo un problema al cancelar la cita. Inténtalo de nuevo.');
+    }
   }
 }

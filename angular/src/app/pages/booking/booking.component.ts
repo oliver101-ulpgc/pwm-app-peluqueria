@@ -90,7 +90,7 @@ export class BookingComponent implements OnInit, OnDestroy {
 
     try {
       await this.appointmentsService.addAppointmentForUser(user.uid, appointment);
-      alert(`Reserva confirmada para ${nombreServicio} con el peluquero ${nombrePeluquero}, el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
+      alert(`Reserva confirmada para el servicio ${nombreServicio} con el peluquero ${nombrePeluquero}, el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
       this.router.navigateByUrl('/');
     } catch (error) {
       console.error('Error al guardar la reserva:', error);

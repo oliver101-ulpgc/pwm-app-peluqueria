@@ -54,15 +54,6 @@
   height: 50px;
 }
 
-.review-username {
-  font-weight: bold;
-  color: #333;
-}
-
-.review-body {
-  margin-top: 10px;
-}
-
 .review-textarea {
   width: 90%;
   height: 100px;
@@ -75,9 +66,7 @@
   box-sizing: border-box;
 }
 
-
 .review-textarea:focus {
-  border-color: #ff9800;
   outline: none;
 }
 
@@ -105,7 +94,7 @@
 }
 
 .stars label:hover::before {
-  transform: scale(1.2);
+  transform: scale(1.05);
 }
 
 .stars label:has(input:checked)::before {

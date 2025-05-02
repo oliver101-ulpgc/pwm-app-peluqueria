@@ -5,7 +5,8 @@ import { Observable, firstValueFrom } from 'rxjs';
 import { updateProfile, User } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import {AuthService, UserProfile} from '../../services/auth.service';
-import {doc, Firestore, setDoc} from '@angular/fire/firestore'; // 🟡 IMPORTANTE
+import {doc, Firestore, setDoc} from '@angular/fire/firestore';
+import {Router} from '@angular/router'; // 🟡 IMPORTANTE
 
 @Component({
   selector: 'app-my-profile',
@@ -23,6 +24,7 @@ export class MyProfileComponent implements OnInit{
 
 
   photoUrl: string = '';
+  private router= inject(Router);
 
   async ngOnInit() {
     this.user = await firstValueFrom(this.currentUser$);
@@ -40,6 +42,29 @@ export class MyProfileComponent implements OnInit{
       if (this.userProfile) {
         this.userProfile.photoURL = this.photoUrl;
       }
+    }
+  }
+
+  async onDeleteAccount() {
+    const confirmDelete = confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.');
+
+    if (!confirmDelete) {
+      return;
+    }
+
+    const user = await firstValueFrom(this.authService.authState$);
+
+    if (!user) {
+      alert('No hay usuario autenticado.');
+      return;
+    }
+
+    try {
+      await this.authService.deleteAccount(user);
+      alert('Tu cuenta ha sido eliminada con éxito.');
+      this.router.navigateByUrl('/');  // Redirige a la página principal u otra página
+    } catch (error) {
+      alert('Hubo un error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
     }
   }
 }

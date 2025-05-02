@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import {
   Auth, authState,
-  createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword, deleteUser,
   signInWithEmailAndPassword, signOut,
   updateProfile,
   User
 } from '@angular/fire/auth';
-import {Firestore, doc, setDoc, getDoc} from '@angular/fire/firestore';
+import {Firestore, doc, setDoc, getDoc, deleteDoc} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 
 export interface UserSignUp {
@@ -78,6 +78,18 @@ export class AuthService {
 
   get authState$(): Observable<User | null> {
     return authState(this.auth);
+  }
+
+  async deleteAccount(user: User) {
+    try {
+      const userDocRef = doc(this.firestore, `clients/${user.uid}`);
+      await deleteDoc(userDocRef);
+
+      await deleteUser(user);
+
+    } catch (error) {
+      throw error;
+    }
   }
 
   logOut() {

@@ -1,7 +1,17 @@
 import {Injectable} from '@angular/core';
 import {catchError, combineLatest, forkJoin, from, map, Observable, of, switchMap} from 'rxjs';
 import {Review, ReviewGraphData} from '../models/interfaces.model';
-import {collection, collectionData, doc, docData, DocumentReference, Firestore, getDoc} from '@angular/fire/firestore';
+import {
+  addDoc,
+  collection,
+  collectionData,
+  doc,
+  docData,
+  DocumentReference,
+  Firestore,
+  getDoc
+} from '@angular/fire/firestore';
+import {User} from '@angular/fire/auth';
 
 interface FirestoreReviewClient {
   id: string,
@@ -97,6 +107,15 @@ export class ReviewsService {
         image: ''
       }
     };
+  }
+
+  addReview(data: { text: string; stars: number; user: User }) {
+    const reviewRef = collection(this.firestore, 'reviews');
+    return addDoc(reviewRef, {
+      clientId: doc(this.firestore, 'clients', data.user.uid),
+      stars: data.stars,
+      text: data.text
+    });
   }
 }
 

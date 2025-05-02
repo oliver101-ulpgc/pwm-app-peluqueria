@@ -4,6 +4,21 @@
 </div>
 <div class="central-section">
   <section class="review-comments" id="reviews">
+    <div class="new-review" *ngIf="user">
+      <div class="review-header">
+        <img [src]="userProfile?.photoURL || null" alt="Tu foto">
+        <h3>{{ userProfile?.username || userProfile?.email }}</h3>
+        <h3 class="stars">
+          <label *ngFor="let star of starsArray; let i = index">
+            <input type="radio" name="stars" [value]="i+1" [(ngModel)]="newReviewStars">
+          </label>
+        </h3>
+      </div>
+      <div class="review-body">
+        <textarea class="review-textarea" [(ngModel)]="newReviewText" placeholder="Escribe tu reseña..."></textarea>
+        <button class="review-button" (click)="submitReview()">Publicar</button>
+      </div>
+    </div>
     <ng-container *ngFor="let review of reviews">
       <review [review]="review"></review>
     </ng-container>

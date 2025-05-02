@@ -27,7 +27,106 @@
   margin-top: 50px;
   width: 100%;
   flex-grow: 1;
-
   display: flex;
   flex-direction: column;
+}
+
+.new-review {
+  background-color: var(--card-bg1-color);
+  border-radius: var(--big-border-radius);
+  padding: 18px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: var(--element-spacing);
+}
+
+.review-header img {
+  background: var(--avatar-background-color) url("/assets/Images/avatar.png") no-repeat;
+  border: var(--avatar-border-color) solid var(--small-spacing);
+  background-size: cover;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.review-username {
+  font-weight: bold;
+  color: #333;
+}
+
+.review-body {
+  margin-top: 10px;
+}
+
+.review-textarea {
+  width: 90%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: var(--small-border-radius);
+  resize: none;
+  margin-left: 5%;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+
+.review-textarea:focus {
+  border-color: #ff9800;
+  outline: none;
+}
+
+.stars {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.stars input[type="radio"] {
+  display: none;
+}
+
+.stars label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.stars label::before {
+  content: '⭐';
+  font-size: 30px;
+  display: inline-block;
+  color: #ff9800;
+  transition: all 0.2s ease;
+}
+
+.stars label:hover::before {
+  transform: scale(1.2);
+}
+
+.stars label:has(input:checked)::before {
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+}
+
+.review-button {
+  margin-left: 5%;
+  background-color: black;
+  border: none;
+  color: white;
+  border-radius: var(--small-border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+}
+
+.review-button:hover {
+  color: var(--text-button-hover);
+  background-color: var(--button-bg1-color, #333);
+  border-color: var(--accent-color);
 }

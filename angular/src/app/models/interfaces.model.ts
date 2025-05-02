@@ -56,3 +56,11 @@ export interface Appointment {
   hairdresser: string;
   service: string;
 }
+
+export interface Details {
+  id: string;
+  image: string;
+  address: string;
+  telephone: string;
+  email: string;
+}

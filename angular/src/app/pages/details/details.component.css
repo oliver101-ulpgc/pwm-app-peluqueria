@@ -7,8 +7,8 @@
 
 .image-location {
   margin-right: 20px;       /* Espacio entre la imagen y los datos */
-  width: 200px;             /* Establecemos un tamaño fijo para la imagen */
-  height: 200px;            /* Ajustamos la altura de la imagen */
+  width: 100px;             /* Establecemos un tamaño fijo para la imagen */
+  height: 100px;            /* Ajustamos la altura de la imagen */
 }
 
 .location-details {

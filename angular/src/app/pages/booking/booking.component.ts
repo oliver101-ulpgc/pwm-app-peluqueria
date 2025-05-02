@@ -81,6 +81,12 @@ export class BookingComponent implements OnInit, OnDestroy {
     const servicioObj = await firstValueFrom(this.homeService.getServiceById(this.service));
     const nombreServicio = servicioObj?.title || 'desconocido';
     const fechaHoraStr = `${this.fechaSeleccionada}T${this.horaSeleccionada}`;
+    const now = new Date();
+
+    if (new Date(fechaHoraStr) <= now) {
+      alert("Por favor, selecciona una fecha y hora futuras.");
+      return;
+    }
 
     const appointment: Appointment = {
       hairdresser: nombrePeluquero,

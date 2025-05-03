@@ -4,11 +4,11 @@
   <div id="peluqueros">
     <div
       class="peluquero"
-      *ngFor="let peluquero of hairdressers"
-      [class.selected]="selectedHairdresserId === peluquero.id"
-      (click)="selectHairdresser(peluquero.id)">
-      <img [src]="peluquero.image" alt="Foto de {{ peluquero.name }}">
-      <span>{{ peluquero.name }}</span>
+      *ngFor="let hairdresser of hairdressers"
+      [class.selected]="selectedHairdresserId === hairdresser.id"
+      (click)="selectHairdresser(hairdresser.id)">
+      <img [src]="hairdresser.image" alt="Foto de {{ hairdresser.name }}">
+      <span>{{ hairdresser.name }}</span>
     </div>
   </div>
 
@@ -21,7 +21,7 @@
     <label for="hora">Selecciona una hora:</label>
     <select id="hora" [(ngModel)]="selectedHour">
       <option value="">-- Selecciona una hora --</option>
-      <option *ngFor="let hora of availableHours" [value]="hora">{{ hora }}</option>
+      <option *ngFor="let hour of availableHours" [value]="hour">{{ hour }}</option>
     </select>
   </div>
 

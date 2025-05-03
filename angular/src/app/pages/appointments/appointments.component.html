@@ -11,7 +11,7 @@
         {{ cita.hairdresser }} -
         {{ cita.date | date: "d 'de' MMMM 'a las' HH:mm'.'" }}
       </span>
-    <button class="cancelar" (click)="cancelarCita(cita)">Cancelar</button>
+    <button class="cancelar" (click)="cancelAppointment(cita)">Cancelar</button>
   </div>
 
   <h2>Citas Anteriores</h2>

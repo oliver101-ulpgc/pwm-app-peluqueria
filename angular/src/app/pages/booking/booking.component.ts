@@ -1,8 +1,7 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CommonPageComponent } from '../../components/common_page/common_page';
-import { AppointmentsService } from '../../services/appoinments.service';
-import { HairdressersService } from '../../services/hairdressers.service';
+import {CommonModule} from '@angular/common';
+import {AppointmentsService} from '../../services/appoinments.service';
+import {HairdressersService} from '../../services/hairdressers.service';
 import {Appointment, Hairdresser} from '../../models/interfaces.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
@@ -14,11 +13,17 @@ import {HomeService} from '../../services/homeService/home.Service';
 @Component({
   selector: 'booking-component',
   standalone: true,
-  imports: [CommonModule, CommonPageComponent, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css',
 })
 export class BookingComponent implements OnInit, OnDestroy {
+  service: string | null = null;
+  hairdressers: Hairdresser[] = [];
+  selectedHairdresserId: string | null = null;
+  selectedDate: string | null = null;
+  selectedHour: string | null = null;
+  availableHours: string[] = [];
   private appointmentsService = inject(AppointmentsService);
   private hairdressersService = inject(HairdressersService);
   private hairdressersSubscription?: Subscription;
@@ -28,13 +33,6 @@ export class BookingComponent implements OnInit, OnDestroy {
   private authService = inject(AuthService);
   authState$ = this.authService.authState$;
   protected currentUser$: Observable<User | null> = this.authState$;
-  service: string | null = null;
-
-  hairdressers: Hairdresser[] = [];
-  peluqueroSeleccionado: string | null = null;
-  fechaSeleccionada: string | null = null;
-  horaSeleccionada: string | null = null;
-  horasDisponibles: string[] = [];
 
   async ngOnInit() {
     this.service = this.route.snapshot.paramMap.get('serviceId');
@@ -47,40 +45,40 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.hairdressersSubscription?.unsubscribe();
   }
 
-  seleccionarPeluquero(id: string) {
-    this.peluqueroSeleccionado = id;
+  selectHairdresser(id: string) {
+    this.selectedHairdresserId = id;
     const selected = this.hairdressers.find(h => h.id === id);
-    this.horasDisponibles = selected?.hours || [];
-    this.horaSeleccionada = null; // reinicia hora
+    this.availableHours = selected?.hours || [];
+    this.selectedHour = null; // reinicia hora
   }
 
-  cargarHoras(event: Event) {
-    this.fechaSeleccionada = (event.target as HTMLInputElement).value;
-    this.horaSeleccionada = null; // reinicia hora
+  loadHour(event: Event) {
+    this.selectedDate = (event.target as HTMLInputElement).value;
+    this.selectedHour = null; // reinicia hora
   }
 
-  async confirmarReserva() {
-    if (!this.peluqueroSeleccionado || !this.fechaSeleccionada || !this.horaSeleccionada) {
+  async confirmBooking() {
+    if (!this.selectedHairdresserId || !this.selectedDate || !this.selectedHour) {
       alert("Por favor, selecciona un peluquero, una fecha y una hora.");
       return;
     }
 
     const user = await firstValueFrom(this.currentUser$);
-    if (user == null){
+    if (user == null) {
       alert('Debes iniciar sesión para reservar.');
       return;
     }
 
-    if (this.service == null){
+    if (this.service == null) {
       alert('Debes elegir un servicio para reservar.');
       return;
     }
 
-    const peluquero = this.hairdressers.find(h => h.id === this.peluqueroSeleccionado);
+    const peluquero = this.hairdressers.find(h => h.id === this.selectedHairdresserId);
     const nombrePeluquero = peluquero?.name || 'desconocido';
     const servicioObj = await firstValueFrom(this.homeService.getServiceById(this.service));
     const nombreServicio = servicioObj?.title || 'desconocido';
-    const fechaHoraStr = `${this.fechaSeleccionada}T${this.horaSeleccionada}`;
+    const fechaHoraStr = `${this.selectedDate}T${this.selectedHour}`;
     const now = new Date();
 
     if (new Date(fechaHoraStr) <= now) {
@@ -96,7 +94,7 @@ export class BookingComponent implements OnInit, OnDestroy {
 
     try {
       await this.appointmentsService.addAppointmentForUser(user.uid, appointment);
-      alert(`Reserva confirmada para el servicio ${nombreServicio} con el peluquero ${nombrePeluquero}, el ${this.fechaSeleccionada} a las ${this.horaSeleccionada}.`);
+      alert(`Reserva confirmada para el servicio ${nombreServicio} con el peluquero ${nombrePeluquero}, el ${this.selectedDate} a las ${this.selectedHour}.`);
       this.router.navigateByUrl('/');
     } catch (error) {
       console.error('Error al guardar la reserva:', error);

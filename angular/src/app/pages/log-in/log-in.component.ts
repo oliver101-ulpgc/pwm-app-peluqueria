@@ -21,8 +21,7 @@ export class LogInComponent {
   private formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   form = this.formBuilder.group<FormSingIn>({
     email: this.formBuilder.control('', Validators.required),

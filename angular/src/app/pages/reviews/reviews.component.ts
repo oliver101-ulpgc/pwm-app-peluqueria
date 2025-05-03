@@ -1,6 +1,5 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ReviewsService} from '../../services/reviews.service';
-import {CommonPageComponent} from '../../components/common_page/common_page';
 import {CommonModule} from '@angular/common';
 import {ReviewComponent} from '../../components/review/review.component';
 import {ReviewsGraphComponent} from '../../components/reviews-graph/reviews-graph.component';
@@ -15,7 +14,7 @@ import {FormsModule} from '@angular/forms';
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.css'],
   standalone: true,
-  imports: [CommonModule, CommonPageComponent, ReviewComponent, ReviewsGraphComponent, FormsModule]
+  imports: [CommonModule, ReviewComponent, ReviewsGraphComponent, FormsModule]
 })
 export class ReviewsComponent implements OnInit, OnDestroy {
   reviews: Review[] = [];
@@ -26,21 +25,23 @@ export class ReviewsComponent implements OnInit, OnDestroy {
       average_rating: 0
     }
   };
-
-  private graphDataSubscription?: Subscription;
-  private reviewsSubscription?: Subscription;
-  private authService = inject(AuthService);
-  authState$ = this.authService.authState$;
-  protected currentUser$: Observable<User | null> = this.authState$;
-  userProfile: UserProfile |null = null;
+  userProfile: UserProfile | null = null;
   user: User | null = null;
   public newReviewText: string = '';
   public newReviewStars: number = 0;
   public starsArray = [1, 2, 3, 4, 5];
+  private authService = inject(AuthService);
+  authState$!: Observable<User | null>;
+  protected currentUser$!: Observable<User | null>;
+  private graphDataSubscription?: Subscription;
+  private reviewsSubscription?: Subscription;
 
   constructor(private reviewsService: ReviewsService) {}
 
   async ngOnInit() {
+    this.authState$ = this.authService.authState$;
+    this.currentUser$ = this.authState$;
+
     this.reviewsSubscription = this.reviewsService.getReviews().subscribe((data: Review[]) => {
       this.reviews = data;
     });
@@ -49,7 +50,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     });
     this.user = await firstValueFrom(this.currentUser$);
     if (this.user) {
-        this.userProfile = await this.authService.getUserProfile(this.user.uid);
+      this.userProfile = await this.authService.getUserProfile(this.user.uid);
     }
   }
 

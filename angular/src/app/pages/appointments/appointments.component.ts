@@ -1,15 +1,14 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CommonPageComponent} from '../../components/common_page/common_page';
 import {AppointmentsService} from '../../services/appoinments.service';
-import {Appointment, Portfolio} from '../../models/interfaces.model';
+import {Appointment} from '../../models/interfaces.model';
 import {AuthService} from '../../services/auth.service';
 import {firstValueFrom, Observable} from 'rxjs';
 import {User} from '@angular/fire/auth';
 
 @Component({
   selector: 'appointments-component',
-  imports: [CommonModule, CommonPageComponent],
+  imports: [CommonModule],
   standalone: true,
   templateUrl: './appointments.component.html',
   styleUrl: './appointments.component.css'
@@ -29,7 +28,7 @@ export class AppointmentsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const user = await firstValueFrom(this.currentUser$);
 
-    if (user == null){
+    if (user == null) {
       return;
     }
     this.currentUserId = user.uid;
@@ -39,8 +38,8 @@ export class AppointmentsComponent implements OnInit {
         const now = new Date();
 
         const processedAppointments = appointments.map(a => {
-          const citaDate = (a.date instanceof Date) ? a.date : (a.date as any).toDate();
-          return { ...a, date: citaDate };
+          const appointmentDate = a.date;
+          return {...a, date: appointmentDate};
         });
 
         this.upcomingAppointments = processedAppointments.filter(a => {
@@ -54,7 +53,7 @@ export class AppointmentsComponent implements OnInit {
     });
   }
 
-  async cancelarCita(appointment: Appointment) {
+  async cancelAppointment(appointment: Appointment) {
     if (!this.currentUserId) {
       alert('No se puede cancelar la cita: usuario no identificado.');
       return;

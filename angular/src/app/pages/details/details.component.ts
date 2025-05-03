@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CommonPageComponent} from '../../components/common_page/common_page';
 import {CommonModule} from '@angular/common';
 import {Details, Hairdresser} from '../../models/interfaces.model';
 import {HairdressersService} from '../../services/hairdressers.service';
@@ -8,16 +7,15 @@ import {DetailsService} from '../../services/details.service';
 
 @Component({
   selector: 'details-component',
-  imports: [CommonModule, CommonPageComponent],
+  imports: [CommonModule],
   standalone: true,
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
 export class DetailsComponent implements OnInit, OnDestroy {
   hairdressers: Hairdresser[] = [];
-
-  private hairdressersSubscription?: Subscription;
   details: Details | null = null;
+  private hairdressersSubscription?: Subscription;
 
   constructor(private hairdressersService: HairdressersService, private detailsService: DetailsService) {}
 

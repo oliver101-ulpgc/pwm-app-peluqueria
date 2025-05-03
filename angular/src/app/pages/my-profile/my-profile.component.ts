@@ -1,30 +1,27 @@
 import {Component, inject, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CommonPageComponent } from '../../components/common_page/common_page';
-import { Observable, firstValueFrom } from 'rxjs';
-import { updateProfile, User } from '@angular/fire/auth';
-import { FormsModule } from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {firstValueFrom, Observable} from 'rxjs';
+import {User} from '@angular/fire/auth';
+import {FormsModule} from '@angular/forms';
 import {AuthService, UserProfile} from '../../services/auth.service';
 import {doc, Firestore, setDoc} from '@angular/fire/firestore';
-import {Router} from '@angular/router'; // 🟡 IMPORTANTE
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-profile',
   standalone: true,
-  imports: [CommonModule, CommonPageComponent, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './my-profile.component.html',
   styleUrl: './my-profile.component.css'
 })
-export class MyProfileComponent implements OnInit{
+export class MyProfileComponent implements OnInit {
+  userProfile: UserProfile | null = null;
+  user: User | null = null;
+  photoUrl: string = '';
   private authService = inject(AuthService);
   protected currentUser$: Observable<User | null> = this.authService.authState$;
   private firestore = inject(Firestore);
-  userProfile: UserProfile |null = null;
-  user: User | null = null;
-
-
-  photoUrl: string = '';
-  private router= inject(Router);
+  private router = inject(Router);
 
   async ngOnInit() {
     this.user = await firstValueFrom(this.currentUser$);
@@ -36,7 +33,7 @@ export class MyProfileComponent implements OnInit{
   async updatePhoto() {
     if (this.userProfile) {
       const userDocRef = doc(this.firestore, `clients/${this.user?.uid}`);
-      await setDoc(userDocRef, { photoURL: this.photoUrl }, { merge: true });
+      await setDoc(userDocRef, {photoURL: this.photoUrl}, {merge: true});
 
       await this.user?.reload();
       if (this.userProfile) {

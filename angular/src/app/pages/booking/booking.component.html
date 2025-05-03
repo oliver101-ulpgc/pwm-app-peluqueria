@@ -6,8 +6,8 @@
       <div
         class="peluquero"
         *ngFor="let peluquero of hairdressers"
-        [class.selected]="peluqueroSeleccionado === peluquero.id"
-        (click)="seleccionarPeluquero(peluquero.id)">
+        [class.selected]="selectedHairdresserId === peluquero.id"
+        (click)="selectHairdresser(peluquero.id)">
         <img [src]="peluquero.image" alt="Foto de {{ peluquero.name }}">
         <span>{{ peluquero.name }}</span>
       </div>
@@ -15,19 +15,19 @@
 
     <div class="section">
       <label for="fecha">Selecciona una fecha:</label>
-      <input type="date" id="fecha" (change)="cargarHoras($event)">
+      <input type="date" id="fecha" (change)="loadHour($event)">
     </div>
 
-    <div class="section" *ngIf="peluqueroSeleccionado && fechaSeleccionada && horasDisponibles.length > 0">
+    <div class="section" *ngIf="selectedHairdresserId && selectedDate && availableHours.length > 0">
       <label for="hora">Selecciona una hora:</label>
-      <select id="hora" [(ngModel)]="horaSeleccionada">
+      <select id="hora" [(ngModel)]="selectedHour">
         <option value="">-- Selecciona una hora --</option>
-        <option *ngFor="let hora of horasDisponibles" [value]="hora">{{ hora }}</option>
+        <option *ngFor="let hora of availableHours" [value]="hora">{{ hora }}</option>
       </select>
     </div>
 
     <div class="button-container">
-      <button (click)="confirmarReserva()">Reservar</button>
+      <button (click)="confirmBooking()">Reservar</button>
     </div>
   </main>
 </common_page-component>

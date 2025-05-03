@@ -1,32 +1,30 @@
-<common_page-component>
-  <main class="container">
-    <h2>Mis Citas</h2>
+<main class="container">
+  <h2>Mis Citas</h2>
 
-    <div *ngIf="upcomingAppointments.length === 0">
-      <p>No tienes citas próximas.</p>
-    </div>
+  <div *ngIf="upcomingAppointments.length === 0">
+    <p>No tienes citas próximas.</p>
+  </div>
 
-    <div *ngFor="let cita of upcomingAppointments" class="cita">
+  <div *ngFor="let cita of upcomingAppointments" class="cita">
       <span>
         {{ cita.service }} -
         {{ cita.hairdresser }} -
         {{ cita.date | date: "d 'de' MMMM 'a las' HH:mm'.'" }}
       </span>
-      <button class="cancelar" (click)="cancelarCita(cita)">Cancelar</button>
-    </div>
+    <button class="cancelar" (click)="cancelarCita(cita)">Cancelar</button>
+  </div>
 
-    <h2>Citas Anteriores</h2>
-    <div id="historial">
-      <div *ngIf="pastAppointments.length === 0">
-        <p>No tienes citas anteriores.</p>
-      </div>
-      <div *ngFor="let cita of pastAppointments" class="cita">
+  <h2>Citas Anteriores</h2>
+  <div id="historial">
+    <div *ngIf="pastAppointments.length === 0">
+      <p>No tienes citas anteriores.</p>
+    </div>
+    <div *ngFor="let cita of pastAppointments" class="cita">
         <span>
           {{ cita.service }} -
           {{ cita.hairdresser }} -
           {{ cita.date | date: "d 'de' MMMM 'a las' HH:mm'.'" }}
         </span>
-      </div>
     </div>
-  </main>
-</common_page-component>
+  </div>
+</main>

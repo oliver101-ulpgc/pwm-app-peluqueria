@@ -1,41 +1,37 @@
-<common_page-component>
-  <ng-container>
-    <main class="profile-container">
-      <section class="profile-info">
-        <div class="profile-pic-large">
-          <img [src]="userProfile?.photoURL" alt="Foto de perfil">
-        </div>
-        <h1>{{ userProfile?.username || 'Nombre de Usuario' }}</h1>
+<main class="profile-container">
+  <section class="profile-info">
+    <div class="profile-pic-large">
+      <img [src]="userProfile?.photoURL" alt="Foto de perfil">
+    </div>
+    <h1>{{ userProfile?.username || 'Nombre de Usuario' }}</h1>
 
-        <div class="detail">
-          <label>Nueva URL de foto:</label>
-          <input type="text" [(ngModel)]="photoUrl" placeholder="https://ejemplo.com/mi-foto.jpg">
-          <button class="btn" (click)="updatePhoto()">Actualizar Foto</button>
-        </div>
-      </section>
+    <div class="detail">
+      <label>Nueva URL de foto:</label>
+      <input type="text" [(ngModel)]="photoUrl" placeholder="https://ejemplo.com/mi-foto.jpg">
+      <button class="btn" (click)="updatePhoto()">Actualizar Foto</button>
+    </div>
+  </section>
 
-      <section class="profile-details">
-        <div class="detail">
-          <label>Nombre:</label>
-          <span class="name">{{ userProfile?.username }}</span>
-        </div>
-        <div class="detail">
-          <label>Email:</label>
-          <span class="email">{{ userProfile?.email }}</span>
-        </div>
-        <div class="detail">
-          <label>Teléfono:</label>
-          <span class="phone_number">{{ userProfile?.telephone }}</span>
-        </div>
-        <div class="detail">
-          <label>Contraseña:</label>
-          <span class="password">*******</span>
-        </div>
-      </section>
+  <section class="profile-details">
+    <div class="detail">
+      <label>Nombre:</label>
+      <span class="name">{{ userProfile?.username }}</span>
+    </div>
+    <div class="detail">
+      <label>Email:</label>
+      <span class="email">{{ userProfile?.email }}</span>
+    </div>
+    <div class="detail">
+      <label>Teléfono:</label>
+      <span class="phone_number">{{ userProfile?.telephone }}</span>
+    </div>
+    <div class="detail">
+      <label>Contraseña:</label>
+      <span class="password">*******</span>
+    </div>
+  </section>
 
-      <section class="profile-actions">
-        <button class="btn delete_account" (click)="onDeleteAccount()">Eliminar cuenta</button>
-      </section>
-    </main>
-  </ng-container>
-</common_page-component>
+  <section class="profile-actions">
+    <button class="btn delete_account" (click)="onDeleteAccount()">Eliminar cuenta</button>
+  </section>
+</main>

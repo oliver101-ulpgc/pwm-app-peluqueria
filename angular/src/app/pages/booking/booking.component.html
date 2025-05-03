@@ -1,33 +1,31 @@
-<common_page-component>
-  <main class="booking-container">
-    <h1>Reserva una cita con uno de nuestros peluqueros:</h1>
+<main class="booking-container">
+  <h1>Reserva una cita con uno de nuestros peluqueros:</h1>
 
-    <div id="peluqueros">
-      <div
-        class="peluquero"
-        *ngFor="let peluquero of hairdressers"
-        [class.selected]="selectedHairdresserId === peluquero.id"
-        (click)="selectHairdresser(peluquero.id)">
-        <img [src]="peluquero.image" alt="Foto de {{ peluquero.name }}">
-        <span>{{ peluquero.name }}</span>
-      </div>
+  <div id="peluqueros">
+    <div
+      class="peluquero"
+      *ngFor="let peluquero of hairdressers"
+      [class.selected]="selectedHairdresserId === peluquero.id"
+      (click)="selectHairdresser(peluquero.id)">
+      <img [src]="peluquero.image" alt="Foto de {{ peluquero.name }}">
+      <span>{{ peluquero.name }}</span>
     </div>
+  </div>
 
-    <div class="section">
-      <label for="fecha">Selecciona una fecha:</label>
-      <input type="date" id="fecha" (change)="loadHour($event)">
-    </div>
+  <div class="section">
+    <label for="fecha">Selecciona una fecha:</label>
+    <input type="date" id="fecha" (change)="loadHour($event)">
+  </div>
 
-    <div class="section" *ngIf="selectedHairdresserId && selectedDate && availableHours.length > 0">
-      <label for="hora">Selecciona una hora:</label>
-      <select id="hora" [(ngModel)]="selectedHour">
-        <option value="">-- Selecciona una hora --</option>
-        <option *ngFor="let hora of availableHours" [value]="hora">{{ hora }}</option>
-      </select>
-    </div>
+  <div class="section" *ngIf="selectedHairdresserId && selectedDate && availableHours.length > 0">
+    <label for="hora">Selecciona una hora:</label>
+    <select id="hora" [(ngModel)]="selectedHour">
+      <option value="">-- Selecciona una hora --</option>
+      <option *ngFor="let hora of availableHours" [value]="hora">{{ hora }}</option>
+    </select>
+  </div>
 
-    <div class="button-container">
-      <button (click)="confirmBooking()">Reservar</button>
-    </div>
-  </main>
-</common_page-component>
+  <div class="button-container">
+    <button (click)="confirmBooking()">Reservar</button>
+  </div>
+</main>

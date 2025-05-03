@@ -1,14 +1,10 @@
-<div id="container">
-  <common_page-component>
-    <main>
-      <h2 class="Servicios">Cortes de cabello para hombres</h2>
-      <div id="main_section">
-        <portfolio-card-component *ngFor="let item of portfolios_main" [item]="item"></portfolio-card-component>
-      </div>
-      <h2 class="Servicios">Cortes de cabello para mujeres</h2>
-      <div id="secondary_section">
-        <portfolio-card-component *ngFor="let item of portfolios_secondary" [item]="item"></portfolio-card-component>
-      </div>
-    </main>
-  </common_page-component>
-</div>
+<main>
+  <h2 class="Servicios">Cortes de cabello para hombres</h2>
+  <div id="main_section">
+    <portfolio-card-component *ngFor="let item of portfolios_main" [item]="item"></portfolio-card-component>
+  </div>
+  <h2 class="Servicios">Cortes de cabello para mujeres</h2>
+  <div id="secondary_section">
+    <portfolio-card-component *ngFor="let item of portfolios_secondary" [item]="item"></portfolio-card-component>
+  </div>
+</main>

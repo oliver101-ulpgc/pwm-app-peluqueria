@@ -1,23 +1,19 @@
-<div id="container">
-  <common_page-component>
-    <div id="main">
-      <div class="image" *ngIf="details">
-        <img [src]="details.image" class="image-location">
-      </div>
-      <div class="location-details" *ngIf="details">
-        <p class="address">{{ details.address }}</p>
-        <p class="telephone">{{ details.telephone }}</p>
-        <p class="mail">{{ details.email }}</p>
-      </div>
+<div id="main">
+  <div class="image" *ngIf="details">
+    <img [src]="details.image" class="image-location">
+  </div>
+  <div class="location-details" *ngIf="details">
+    <p class="address">{{ details.address }}</p>
+    <p class="telephone">{{ details.telephone }}</p>
+    <p class="mail">{{ details.email }}</p>
+  </div>
+</div>
+<div id="secondary">
+  <h2>Conoce a nuestros trabajadores</h2>
+  <div class="trabajadores">
+    <div class="trabajador" *ngFor="let hairdresser of hairdressers">
+      <img [src]="hairdresser.image" alt="Foto de {{ hairdresser.name }}">
+      <p class="name">{{ hairdresser.name }}</p>
     </div>
-      <div id="secondary">
-        <h2>Conoce a nuestros trabajadores</h2>
-        <div class="trabajadores">
-          <div class="trabajador" *ngFor="let hairdresser of hairdressers">
-            <img [src]="hairdresser.image" alt="Foto de {{ hairdresser.name }}">
-            <p class="name">{{ hairdresser.name }}</p>
-          </div>
-        </div>
-      </div>
-  </common_page-component>
+  </div>
 </div>

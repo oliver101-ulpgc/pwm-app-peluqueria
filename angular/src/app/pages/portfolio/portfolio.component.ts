@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Portfolio} from '../../models/interfaces.model'
-import {PortfolioService} from '../../services/portfolioService/portfolio.Service';
+import {PortfolioService} from '../../services/portfolio.service';
 import {PortfolioCardComponent} from '../../components/portfolio-card/portfolio-card.component';
 
 @Component({

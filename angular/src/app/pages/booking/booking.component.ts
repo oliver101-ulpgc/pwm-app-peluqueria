@@ -8,7 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {firstValueFrom, Observable, Subscription} from 'rxjs';
 import {AuthService} from '../../services/auth.service';
 import {User} from '@angular/fire/auth';
-import {HomeService} from '../../services/homeService/home.Service';
+import {HomeService} from '../../services/home.service';
 
 @Component({
   selector: 'booking-component',

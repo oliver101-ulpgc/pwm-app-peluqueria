@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HomeService} from '../../services/homeService/home.Service';
+import {HomeService} from '../../services/home.service';
 import {Service} from '../../models/interfaces.model';
 import {ServiceCardComponent} from '../../components/service-card/service-card.component';
 

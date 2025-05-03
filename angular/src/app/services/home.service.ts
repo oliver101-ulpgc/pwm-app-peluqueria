@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Service} from '../../models/interfaces.model';
+import {Service} from '../models/interfaces.model';
 import {catchError, firstValueFrom, map, Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {collection, collectionData, Firestore} from '@angular/fire/firestore';

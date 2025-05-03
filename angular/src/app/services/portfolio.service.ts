@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Portfolio, Service} from '../../models/interfaces.model';
+import {Portfolio, Service} from '../models/interfaces.model';
 import {map, Observable} from 'rxjs';
 import {collection, collectionData, Firestore} from '@angular/fire/firestore';
 

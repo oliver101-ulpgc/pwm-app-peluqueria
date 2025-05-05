@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "932508723937",
+    "project_id": "pwm-peluqeria",
+    "storage_bucket": "pwm-peluqeria.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932508723937:android:ede03ad84ce479a533e5a0",
+        "android_client_info": {
+          "package_name": "es.ulpgc.pwmpeluqueria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn1od738cTFkp5d_gNO7mv--_BlPaS_ao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

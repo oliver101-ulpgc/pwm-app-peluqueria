@@ -57,3 +57,19 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Ionic
+
+ionic start ionic-firebase-crud blank --type=angular
+
+## Instalarlo dentro de ionic peluqueria
+npm install @capacitor/android
+npx capacitor init
+ionic capacitor add android
+
+## Ejecutarlo
+
+ionic build
+ionic capacitor sync
+ionic capacitor open android
+

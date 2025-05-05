@@ -73,3 +73,6 @@ ionic build
 ionic capacitor sync
 ionic capacitor open android
 
+## Correr el android studio
+
+ionic cap run android -l --external

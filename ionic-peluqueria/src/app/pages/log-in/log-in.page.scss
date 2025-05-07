@@ -1,0 +1,128 @@
+:host {
+  --form-min-width: 300px; /* Ajustar a un tamaño más pequeño para pantallas pequeñas */
+  --form-max-width: 400px; /* Ancho máximo para pantallas más grandes */
+  --form-field-left-padding: 20px;
+  --form-element-height: 60px;
+  --form-element-border-radius: 10px;
+  --text-form-size: 18px;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter-VariableFont_opsz,wght.ttf") format("opentype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+p {
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+}
+
+footer {
+  padding: 20px;
+  margin-top: 70px;
+  background-color: var(--background-color);
+  color: var(--text-fg1-color);
+  font-weight: normal;
+  text-align: center;
+}
+
+.central-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.central-section form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.central-section header {
+  min-width: var(--form-min-width);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  min-width: var(--form-min-width);
+  background-color: var(--input-bg1-color);
+  height: var(--form-element-height);
+  border-radius: var(--form-element-border-radius);
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.form-field input {
+  padding: 30px 15px 5px var(--form-field-left-padding);
+  border-radius: var(--form-element-border-radius);
+  background-color: transparent;
+  border: 0 transparent;
+  width: 100%;
+
+  color: var(--input-fg1-color);
+  font-size: var(--text-form-size);
+  font-weight: normal;
+}
+
+.form-field label {
+  position: absolute;
+  pointer-events: none;
+
+  color: var(--input-fg2-color);
+  font-size: var(--text-form-size);
+  font-weight: normal;
+  transition: transform 0.05s ease-in-out, font-size 0.05s ease-in-out;
+  transform: translateX(var(--form-field-left-padding));
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  transform: translateX(var(--form-field-left-padding)) translateY(-70%);
+}
+
+input:invalid:not(:placeholder-shown) {border: 1px solid red}
+
+input::placeholder {
+  color: transparent;
+}
+
+input:focus::placeholder {
+  color: var(--input-fg2-color);
+  opacity: 80%;
+}
+
+.form-button {
+  background-color: var(--button-bg2-color);
+  height: var(--form-element-height);
+  border-radius: var(--form-element-border-radius);
+  border-width: 0;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.text-submit-form-button {
+  color: var(--text-fg2-color);
+  font-size: var(--text-form-size);
+  font-weight: normal;
+}
+
+.register-callout {
+  color: var(--text-fg1-color);
+  margin: 20px 0;
+}

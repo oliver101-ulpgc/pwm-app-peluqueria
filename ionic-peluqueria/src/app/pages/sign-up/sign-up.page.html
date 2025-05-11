@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding central-section">
+  <ion-text color="medium"><h2 class="text-section-subtitle-heading">Ingresa tus datos para registrarte</h2></ion-text>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <ion-item class="form-field">
+      <ion-label position="floating">Nombre de usuario*</ion-label>
+      <ion-input type="text" formControlName="username" placeholder="usuario123" required></ion-input>
+    </ion-item>
+    <ion-item class="form-field">
+      <ion-label position="floating">Email*</ion-label>
+      <ion-input
+        type="email"
+        formControlName="email"
+        placeholder="you@domain.com"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="form-field">
+      <ion-label position="floating">Contraseña*</ion-label>
+      <ion-input
+        type="password"
+        formControlName="password"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="form-field">
+      <ion-label position="floating">Teléfono*</ion-label>
+      <ion-input
+        type="tel"
+        formControlName="telephone"
+        placeholder="123456789"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="form-button text-submit-form-button">
+      Crear cuenta
+    </ion-button>
+  </form>
+  <div class="register-callout ion-text-center"><strong>¿Ya tienes una cuenta?</strong>&nbsp; <a
+    [routerLink]="['/log-in']">Iniciar sesión</a></div>
+</ion-content>

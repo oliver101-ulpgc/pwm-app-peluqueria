@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Service} from '../models/interfaces.model';
-import {catchError, firstValueFrom, map, Observable, of} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {map, Observable} from 'rxjs';
 import {collection, collectionData, Firestore} from '@angular/fire/firestore';
 
 @Injectable({
@@ -10,7 +9,7 @@ import {collection, collectionData, Firestore} from '@angular/fire/firestore';
 
 export class HomeService {
 
-  constructor(private http: HttpClient, private firestore: Firestore) { }
+  constructor(private firestore: Firestore) { }
 
   getServices(){
     const serviceRef = collection(this.firestore, 'services');

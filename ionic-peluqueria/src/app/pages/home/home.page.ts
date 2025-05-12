@@ -1,13 +1,24 @@
 import {Component, OnInit} from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardHeader, IonCardTitle, IonList, IonItem, IonThumbnail, IonLabel
+} from '@ionic/angular/standalone';
 import {Service} from "../../models/interfaces.model";
 import {HomeService} from "../../services/home.service";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, NgForOf, IonList, IonItem, IonThumbnail, IonLabel],
   standalone: true
 })
 export class HomePage implements OnInit {

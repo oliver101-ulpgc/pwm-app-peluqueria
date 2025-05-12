@@ -76,3 +76,8 @@ ionic capacitor open android
 ## Correr el android studio
 
 ionic cap run android -l --external
+
+## Instalar sqlite
+
+npm install @capacitor-community/sqlite
+ionic cap sync

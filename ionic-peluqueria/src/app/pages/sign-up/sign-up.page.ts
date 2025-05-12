@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-//import {AuthService} from '../../services/auth.service';
+import {AuthService} from '../../services/auth.service';
 import {Router, RouterLink} from '@angular/router';
 import {
   IonButton,
@@ -32,7 +32,7 @@ interface FormSingUp {
 export class SignUpPage {
 
   private formBuilder = inject(FormBuilder);
-  //private authService = inject(AuthService);
+  private authService = inject(AuthService);
   private router = inject(Router);
 
   form = this.formBuilder.group<FormSingUp>({
@@ -57,7 +57,7 @@ export class SignUpPage {
         return;
       }
 
-      //await this.authService.signUp({username, email, password, telephone})
+      await this.authService.signUp({username, email, password, telephone})
       alert('Sign up successfully.');
       await this.router.navigate(['']);
     } catch (error) {

@@ -1,19 +1,51 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Service} from '../models/interfaces.model';
 import {map, Observable} from 'rxjs';
 import {collection, collectionData, Firestore} from '@angular/fire/firestore';
+import {DbService} from "./db.service";
+import {Capacitor} from "@capacitor/core";
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class HomeService {
+export class HomeService{
 
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore, private dbService: DbService) { }
 
-  getServices(){
-    const serviceRef = collection(this.firestore, 'services');
-    return collectionData(serviceRef, { idField: 'id' }) as Observable<Service[]>;
+  getServices() {
+    if (this.dbService.platform === 'web') {
+      // Si estamos en la web, obtener desde Firebase
+      const serviceRef = collection(this.firestore, 'services');
+      return collectionData(serviceRef, { idField: 'id' }) as Observable<Service[]>;
+    } else {
+      // Si es Android (nativa), obtener desde SQLite o LocalStorage
+      return new Observable<Service[]>(observer => {
+        // Primero obtenemos los servicios desde SQLite
+        this.dbService.getAllServices().then(services => {
+          if (services.length === 0) {
+            // Si no hay servicios en la base de datos SQLite, sincronizamos desde Firebase
+            this.dbService.syncFirebaseToSQLite().then(() => {
+              // Después de sincronizar, obtenemos los servicios nuevamente desde SQLite
+              this.dbService.getAllServices().then(updatedServices => {
+                observer.next(updatedServices);
+                observer.complete();
+              }).catch(err => {
+                observer.error(err);
+              });
+            }).catch(err => {
+              observer.error(err);
+            });
+          } else {
+            // Si ya hay servicios en SQLite, los retornamos directamente
+            observer.next(services);
+            observer.complete();
+          }
+        }).catch(err => {
+          observer.error(err);
+        });
+      });
+    }
   }
 
   getServiceById(id: string): Observable<Service | undefined> {

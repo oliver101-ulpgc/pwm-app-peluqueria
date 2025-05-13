@@ -1,18 +1,24 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, OnInit} from '@angular/core';
 import {SQLiteConnection, SQLiteDBConnection} from "@capacitor-community/sqlite";
 import {Service} from "../models/interfaces.model";
 import {HomeService} from "./home.service";
+import {Capacitor} from "@capacitor/core";
+import {collection, collectionData, Firestore} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
 })
-export class DbService {
+export class DbService implements OnInit{
 
-  private homeService  = inject(HomeService);
-  private sqlite: SQLiteConnection | undefined;
   private db: SQLiteDBConnection | null = null;
-  private platform?: 'native' | 'web';
+  public platform: 'native' | 'web' = Capacitor.getPlatform() === 'web' ? 'web' : 'native';
   private localStorageKey = "todos";
+  private firestore =  inject(Firestore);
+  private sqlite: SQLiteConnection | null = null;
+
+  ngOnInit(): void {
+    this.initLocalStorageIfEmpty();
+  }
 
   private initLocalStorageIfEmpty() {
     const data = localStorage.getItem(this.localStorageKey);
@@ -33,6 +39,23 @@ export class DbService {
         await this.sqlite!.createConnection('data.db', false, 'no-encryption', 1, false);
       await this.db.open();
       await this.db.execute("CREATE TABLE IF NOT EXIST SERVICES(id TEXT PRIMARY KEY AUTOINCREMENT, type TEXT,  image TEXT, title TEXT, price INTEGER, duration INTEGER, favorite TEXT)")
+    }
+  }
+
+  async syncFirebaseToSQLite(): Promise<void> {
+    if (this.platform === 'native') {
+      const serviceRef = collection(this.firestore, 'services');
+      const servicesSnapshot = await collectionData(serviceRef, { idField: 'id' }).toPromise();
+
+      await this.createSQLiteConnection();
+
+      // Insertar servicios en la base de datos SQLite
+      for (let service of servicesSnapshot!) {
+        await this.db!.run(
+          'INSERT OR REPLACE INTO SERVICES (id, type, image, title, price, duration, favorite) VALUES (?, ?, ?, ?, ?, ?, ?)',
+          [service['id'], service['type'], service['image'], service['title'], service['price'], service['duration'], service['favorite'] ? 'true' : 'false']
+        );
+      }
     }
   }
 
@@ -61,6 +84,18 @@ export class DbService {
       'INSERT INTO SERVICES (type, image, title, price, duration, favorite) VALUES (?, ?, ?, ?, ?, ?)', [type, image, title, price, duration, favorite]);
     return this.getAllServices();
   }
+
+  async deleteService(id: string): Promise<Service[]> {
+    if (this.platform === 'web') {
+      const todos = this.getLocalServices().filter(todo => todo.id !== id);
+      this.setLocalServices(todos);
+      return todos;
+    }
+    await this.createSQLiteConnection();
+    await this.db!.run('DELETE FROM SERVICES WHERE id = ?', [id]);
+    return this.getAllServices();
+  }
+
 
 
 

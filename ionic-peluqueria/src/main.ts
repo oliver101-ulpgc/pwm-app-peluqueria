@@ -7,11 +7,13 @@ import {AppComponent} from './app/app.component';
 import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
+import {SQLiteConnection} from "@capacitor-community/sqlite";
 
 bootstrapApplication(AppComponent, {
   providers: [
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     provideIonicAngular(),
+    SQLiteConnection,
     provideRouter(routes, withPreloading(PreloadAllModules)), provideFirebaseApp(() => initializeApp({
       projectId: "pwm-peluqeria",
       appId: "1:932508723937:web:e4329f7586d913d233e5a0",

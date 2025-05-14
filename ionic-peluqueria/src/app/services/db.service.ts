@@ -1,5 +1,5 @@
 import {inject, Injectable, OnInit} from '@angular/core';
-import {SQLiteConnection, SQLiteDBConnection} from "@capacitor-community/sqlite";
+import {CapacitorSQLite, SQLiteConnection, SQLiteDBConnection} from "@capacitor-community/sqlite";
 import {Service} from "../models/interfaces.model";
 import {HomeService} from "./home.service";
 import {Capacitor} from "@capacitor/core";
@@ -14,9 +14,10 @@ export class DbService implements OnInit{
   public platform: 'native' | 'web' = Capacitor.getPlatform() === 'web' ? 'web' : 'native';
   private localStorageKey = "todos";
   private firestore =  inject(Firestore);
-  private sqlite: SQLiteConnection | null = null;
+  private sqlite!: SQLiteConnection;
 
   ngOnInit(): void {
+    this.sqlite = new SQLiteConnection(CapacitorSQLite);
     this.initLocalStorageIfEmpty();
   }
 
@@ -38,7 +39,7 @@ export class DbService implements OnInit{
       this.db =
         await this.sqlite!.createConnection('data.db', false, 'no-encryption', 1, false);
       await this.db.open();
-      await this.db.execute("CREATE TABLE IF NOT EXIST SERVICES(id TEXT PRIMARY KEY AUTOINCREMENT, type TEXT,  image TEXT, title TEXT, price INTEGER, duration INTEGER, favorite TEXT)")
+      await this.db.execute("CREATE TABLE IF NOT EXISTS SERVICES(id TEXT PRIMARY KEY AUTOINCREMENT, type TEXT,  image TEXT, title TEXT, price INTEGER, duration INTEGER, favorite TEXT)")
     }
   }
 

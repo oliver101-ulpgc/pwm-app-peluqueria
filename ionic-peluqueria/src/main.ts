@@ -13,7 +13,6 @@ bootstrapApplication(AppComponent, {
   providers: [
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     provideIonicAngular(),
-    SQLiteConnection,
     provideRouter(routes, withPreloading(PreloadAllModules)), provideFirebaseApp(() => initializeApp({
       projectId: "pwm-peluqeria",
       appId: "1:932508723937:web:e4329f7586d913d233e5a0",

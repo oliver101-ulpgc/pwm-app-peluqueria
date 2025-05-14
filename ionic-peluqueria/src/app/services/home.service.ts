@@ -14,6 +14,7 @@ export class HomeService{
   constructor(private firestore: Firestore, private dbService: DbService) { }
 
   getServices() {
+    console.log(this.dbService.platform)
     if (this.dbService.platform === 'web') {
       // Si estamos en la web, obtener desde Firebase
       const serviceRef = collection(this.firestore, 'services');

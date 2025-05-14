@@ -8,7 +8,7 @@ import {collection, collectionData, Firestore} from "@angular/fire/firestore";
 @Injectable({
   providedIn: 'root'
 })
-export class DbService implements OnInit{
+export class DbService{
 
   private db: SQLiteDBConnection | null = null;
   public platform: 'native' | 'web' = Capacitor.getPlatform() === 'web' ? 'web' : 'native';
@@ -16,10 +16,15 @@ export class DbService implements OnInit{
   private firestore =  inject(Firestore);
   private sqlite!: SQLiteConnection;
 
-  ngOnInit(): void {
+  constructor() {
+    this.init();
+  }
+
+  private init() {
     this.sqlite = new SQLiteConnection(CapacitorSQLite);
     this.initLocalStorageIfEmpty();
   }
+
 
   private initLocalStorageIfEmpty() {
     const data = localStorage.getItem(this.localStorageKey);
@@ -39,7 +44,7 @@ export class DbService implements OnInit{
       this.db =
         await this.sqlite!.createConnection('data.db', false, 'no-encryption', 1, false);
       await this.db.open();
-      await this.db.execute("CREATE TABLE IF NOT EXISTS SERVICES(id TEXT PRIMARY KEY AUTOINCREMENT, type TEXT,  image TEXT, title TEXT, price INTEGER, duration INTEGER, favorite TEXT)")
+      await this.db.execute("CREATE TABLE IF NOT EXISTS SERVICES(id TEXT PRIMARY KEY, type TEXT,  image TEXT, title TEXT, price INTEGER, duration INTEGER, favorite TEXT)")
     }
   }
 

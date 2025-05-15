@@ -21,13 +21,13 @@ export class HomeService{
       return collectionData(serviceRef, { idField: 'id' }) as Observable<Service[]>;
     } else {
       // Si es Android (nativa), obtener desde SQLite o LocalStorage
+      console.log("Native")
       return new Observable<Service[]>(observer => {
         // Primero obtenemos los servicios desde SQLite
         this.dbService.getAllServices().then(services => {
           if (services.length === 0) {
-            // Si no hay servicios en la base de datos SQLite, sincronizamos desde Firebase
+            console.log("length=0")
             this.dbService.syncFirebaseToSQLite().then(() => {
-              // Después de sincronizar, obtenemos los servicios nuevamente desde SQLite
               this.dbService.getAllServices().then(updatedServices => {
                 observer.next(updatedServices);
                 observer.complete();

@@ -4,6 +4,7 @@ import {Service} from "../models/interfaces.model";
 import {HomeService} from "./home.service";
 import {Capacitor} from "@capacitor/core";
 import {collection, collectionData, Firestore} from "@angular/fire/firestore";
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -51,16 +52,35 @@ export class DbService{
   async syncFirebaseToSQLite(): Promise<void> {
     if (this.platform === 'native') {
       const serviceRef = collection(this.firestore, 'services');
-      const servicesSnapshot = await collectionData(serviceRef, { idField: 'id' }).toPromise();
+
+      let servicesSnapshot;
+      try {
+        servicesSnapshot = await firstValueFrom(collectionData(serviceRef, { idField: 'id' }));
+        console.log("Services from Firestore:", servicesSnapshot);
+      } catch (e) {
+        console.error("Error reading from Firestore", e);
+        return;
+      }
 
       await this.createSQLiteConnection();
 
-      // Insertar servicios en la base de datos SQLite
       for (let service of servicesSnapshot!) {
-        await this.db!.run(
-          'INSERT OR REPLACE INTO SERVICES (id, type, image, title, price, duration, favorite) VALUES (?, ?, ?, ?, ?, ?, ?)',
-          [service['id'], service['type'], service['image'], service['title'], service['price'], service['duration'], service['favorite'] ? 'true' : 'false']
-        );
+        try {
+          await this.db!.run(
+            'INSERT OR REPLACE INTO SERVICES (id, type, image, title, price, duration, favorite) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [
+              service['id'],
+              service['type'],
+              service['image'],
+              service['title'],
+              service['price'],
+              service['duration'],
+              service['favorite'] ? 'true' : 'false'
+            ]
+          );
+        } catch (err) {
+          console.error("Error inserting into SQLite", err, service);
+        }
       }
     }
   }

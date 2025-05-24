@@ -11,7 +11,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class DbService{
 
-  private db: SQLiteDBConnection | null = null;
+  db: SQLiteDBConnection | null = null;
   public platform: 'native' | 'web' = Capacitor.getPlatform() === 'web' ? 'web' : 'native';
   private localStorageKey = "todos";
   private firestore =  inject(Firestore);
@@ -32,15 +32,15 @@ export class DbService{
     if (!data)
       localStorage.setItem(this.localStorageKey, JSON.stringify([]));
   }
-  private getLocalServices(): Service[] {
+  getLocalServices(): Service[] {
     const data = localStorage.getItem(this.localStorageKey);
     return data ? JSON.parse(data) : [];
   }
-  private setLocalServices(services: Service[]) {
+  setLocalServices(services: Service[]) {
     localStorage.setItem(this.localStorageKey, JSON.stringify(services));
   }
 
-  private async createSQLiteConnection(): Promise<void> {
+  async createSQLiteConnection(): Promise<void> {
     if (!this.db) {
       this.db =
         await this.sqlite!.createConnection('data.db', false, 'no-encryption', 1, false);

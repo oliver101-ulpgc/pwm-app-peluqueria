@@ -2,22 +2,27 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
-      <ion-button>⭐</ion-button>
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon
+          name="star"
+          [style.color]="service.isFavorite ? 'gold' : 'black'"
+        ></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title>{{ service?.title  }}</ion-title>
+    <ion-title>{{ service.title  }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding">
-  <img [alt]="service?.title" [src]="service?.image" />
+  <img [alt]="service.title" [src]="service.image" />
   <ion-item>
     <ion-icon></ion-icon>
     <ion-label>Duración:</ion-label>
-    <h5>{{ service?.duration_minutes }} minutes</h5>
+    <h5>{{ service.duration_minutes }} minutes</h5>
   </ion-item>
   <ion-item>
     <ion-icon></ion-icon>
     <ion-label>Precio:</ion-label>
-    <h5>{{ service?.price_euro }} €</h5>
+    <h5>{{ service.price_euro }} €</h5>
   </ion-item>
 </ion-content>
 <ion-button slot="fixed" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">

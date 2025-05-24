@@ -29,7 +29,7 @@ export class FavoritesPage implements OnInit {
 
     this.homeService.getServices().subscribe({
       next: (services: Service[]) => {
-        this.services = services;
+        this.services = services.filter(s => s.isFavorite);
       },
     });
   }

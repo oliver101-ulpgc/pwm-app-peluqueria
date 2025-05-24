@@ -15,7 +15,7 @@ import {
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { Service } from "../../models/interfaces.model";
-import {DbService} from "../../services/db.service";
+import {DetailsService} from "../../services/details.service";
 import { addIcons } from 'ionicons';
 import { star } from 'ionicons/icons';
 
@@ -33,7 +33,7 @@ addIcons({
 export class ServiceDetailsPage implements OnInit {
   service!: Service;
 
-  constructor(private router: Router, private dbService: DbService) {
+  constructor(private router: Router, private detailsService: DetailsService) {
   }
 
   ngOnInit() {
@@ -48,20 +48,7 @@ export class ServiceDetailsPage implements OnInit {
 
   async toggleFavorite() {
     this.service.isFavorite = !this.service.isFavorite;
-
-    if (this.dbService.platform === 'web') {
-      const allServices = this.dbService.getLocalServices();
-      const updated = allServices.map(s =>
-        s.id === this.service.id ? this.service : s
-      );
-      this.dbService.setLocalServices(updated);
-    } else {
-      await this.dbService.createSQLiteConnection();
-      await this.dbService.db!.run(
-        'UPDATE SERVICES SET favorite = ? WHERE id = ?',
-        [this.service.isFavorite ? 'true' : 'false', this.service.id]
-      );
-    }
+    await this.detailsService.updateFavorite(this.service.id, this.service.isFavorite);
     console.log(this.service.isFavorite);
   }
 }

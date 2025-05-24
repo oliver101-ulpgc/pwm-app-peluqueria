@@ -32,15 +32,15 @@ export class DbService{
     if (!data)
       localStorage.setItem(this.localStorageKey, JSON.stringify([]));
   }
-  getLocalServices(): Service[] {
+  private getLocalServices(): Service[] {
     const data = localStorage.getItem(this.localStorageKey);
     return data ? JSON.parse(data) : [];
   }
-  setLocalServices(services: Service[]) {
+  private setLocalServices(services: Service[]) {
     localStorage.setItem(this.localStorageKey, JSON.stringify(services));
   }
 
-  async createSQLiteConnection(): Promise<void> {
+  private async createSQLiteConnection(): Promise<void> {
     if (!this.db) {
       this.db =
         await this.sqlite!.createConnection('data.db', false, 'no-encryption', 1, false);
@@ -122,7 +122,16 @@ export class DbService{
     return this.getAllServices();
   }
 
-
+  async updateFavoriteStatus(id: string, isFavorite: boolean) {
+    if (this.platform === 'web') {
+      const allServices = this.getLocalServices();
+      const updated = allServices.map(s => s.id === id ? { ...s, isFavorite } : s);
+      this.setLocalServices(updated);
+    } else {
+      await this.createSQLiteConnection();
+      await this.db!.run('UPDATE SERVICES SET favorite = ? WHERE id = ?', [isFavorite ? 'true' : 'false', id]);
+    }
+  }
 
 
 }

@@ -4,20 +4,20 @@
       <ion-back-button defaultHref="home"></ion-back-button>
       <ion-button>⭐</ion-button>
     </ion-buttons>
-    <ion-title>Nombre del Servicio</ion-title>
+    <ion-title>{{ service?.title  }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding">
-  <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+  <img [alt]="service?.title" [src]="service?.image" />
   <ion-item>
     <ion-icon></ion-icon>
     <ion-label>Duración:</ion-label>
-    <h5>30 minutes</h5>
+    <h5>{{ service?.duration_minutes }} minutes</h5>
   </ion-item>
   <ion-item>
     <ion-icon></ion-icon>
     <ion-label>Precio:</ion-label>
-    <h5>50$</h5>
+    <h5>{{ service?.price_euro }} €</h5>
   </ion-item>
 </ion-content>
 <ion-button slot="fixed" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">

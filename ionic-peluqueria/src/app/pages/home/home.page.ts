@@ -13,6 +13,7 @@ import {
 import {Service} from "../../models/interfaces.model";
 import {HomeService} from "../../services/home.service";
 import {NgForOf} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,7 @@ export class HomePage implements OnInit {
   primary_services: Service[] = [];
   secondary_services: Service[] = [];
 
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeService, private router: Router) {}
   ngOnInit(): void {
 
     this.homeService.getServices().subscribe({
@@ -34,5 +35,9 @@ export class HomePage implements OnInit {
         this.secondary_services = services.filter(s => s.type === 'other_service');
       },
     });
+  }
+
+  goToDetails(service: Service) {
+    this.router.navigate(['/service-details'], { state: { service } });
   }
 }

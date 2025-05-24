@@ -13,6 +13,8 @@ import {
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
+import { Router } from '@angular/router';
+import { Service } from "../../models/interfaces.model";
 
 @Component({
   selector: 'app-service-details',
@@ -22,11 +24,19 @@ import {
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonBackButton, IonButtons, IonButton, IonIcon, IonItem, IonLabel]
 })
 export class ServiceDetailsPage implements OnInit {
+  service!: Service;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
+    const nav = this.router.getCurrentNavigation();
+    this.service = nav?.extras.state?.['service'];
+
+    if (!this.service) {
+      // redirigir si se accede sin datos
+      this.router.navigate(['/home']);
+    }
   }
 
 }

@@ -1,6 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {IonButton, IonIcon, IonItem, IonLabel, IonThumbnail} from "@ionic/angular/standalone";
 import {Service} from "../../../models/service.model";
+import {AppServicesService} from "../../../services/app-services.service";
+import {AuthService} from "../../../services/auth.service";
+import {Subscription} from "rxjs";
+import {User} from "@angular/fire/auth";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-service-item',
@@ -11,16 +16,29 @@ import {Service} from "../../../models/service.model";
     IonItem,
     IonLabel,
     IonThumbnail,
-    IonButton
+    IonButton,
+    NgIf
   ]
 })
-export class ServiceItemComponent {
+export class ServiceItemComponent implements OnInit, OnDestroy{
   @Input() service!: Service;
+  private authSubscription?: Subscription;
+  protected authState: User | null = null;
 
-  constructor() {}
+  constructor(private appServices: AppServicesService, private authService: AuthService) {}
+
+  ngOnInit() {
+    this.authSubscription = this.authService.authState$.subscribe(
+      authState => this.authState = authState
+    );
+  }
+
+  ngOnDestroy() {
+    this.authSubscription?.unsubscribe();
+  }
 
   onStarClick(event: MouseEvent) {
     event.stopPropagation();
-    console.log('Clicking in star button!');
+    this.appServices.updateServiceIsFavorite(this.service.id, !this.service.isFavorite);
   }
 }

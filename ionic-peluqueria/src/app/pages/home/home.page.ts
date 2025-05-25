@@ -1,19 +1,23 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import {IonContent, IonHeader, IonList, IonTitle, IonToolbar, IonButton, IonAvatar} from '@ionic/angular/standalone';
+import {IonButton, IonContent, IonHeader, IonList, IonTitle, IonToolbar} from '@ionic/angular/standalone';
 import {Service} from "../../models/service.model";
-import {HomeService} from "../../services/home.service";
 import {NgForOf, NgIf} from "@angular/common";
-import {Router} from "@angular/router";
+import {Router, RouterModule} from "@angular/router";
 import {ServiceItemComponent} from "../../components/service/service-item/service-item.component";
 import {Subscription} from "rxjs";
 import {AppServicesService} from "../../services/app-services.service";
-import { RouterModule } from '@angular/router';
+import {addIcons} from "ionicons";
+import {star} from "ionicons/icons";
+
+addIcons({
+  star,
+});
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonAvatar, NgForOf, IonList, ServiceItemComponent, RouterModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, NgForOf, IonList, ServiceItemComponent, RouterModule],
   standalone: true
 })
 export class HomePage implements OnInit, OnDestroy {
@@ -27,7 +31,6 @@ export class HomePage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userEmail = localStorage.getItem('user_email');
-
     this.servicesSubscription = this.servicesService.getServices().subscribe({
       next: (services: Service[]) => {
         this.primary_services = services.filter(s => s.type === 'service');

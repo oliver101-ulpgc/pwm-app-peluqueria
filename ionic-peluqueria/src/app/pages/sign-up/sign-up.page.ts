@@ -9,7 +9,6 @@ import {
   IonHeader,
   IonInput,
   IonItem,
-  IonLabel,
   IonText,
   IonTitle,
   IonToolbar
@@ -26,7 +25,7 @@ interface FormSingUp {
   selector: 'app-sign-up',
   templateUrl: './sign-up.page.html',
   styleUrl: './sign-up.page.scss',
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink, ReactiveFormsModule, IonText, IonItem, IonLabel, IonInput, IonButton],
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink, ReactiveFormsModule, IonText, IonItem, IonInput, IonButton],
   standalone: true
 })
 export class SignUpPage {

@@ -1,5 +1,5 @@
-import {Component, inject, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
   IonButton,
@@ -7,22 +7,20 @@ import {
   IonHeader,
   IonInput,
   IonItem,
-  IonLabel,
   IonText,
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
 import {Router, RouterLink} from "@angular/router";
-import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.page.html',
   styleUrls: ['./log-in.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink, ReactiveFormsModule, IonText, IonItem, IonLabel, IonInput, IonButton]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink, ReactiveFormsModule, IonText, IonItem, IonInput, IonButton]
 })
-export class LogInPage{
+export class LogInPage {
 
   private formBuilder = inject(FormBuilder);
 

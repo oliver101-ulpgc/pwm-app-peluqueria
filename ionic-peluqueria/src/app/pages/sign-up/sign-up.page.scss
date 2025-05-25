@@ -7,11 +7,9 @@
   --text-form-size: 18px;
 }
 
-@font-face {
-  font-family: "Inter";
-  src: url("/assets/fonts/Inter-VariableFont_opsz,wght.ttf") format("opentype");
-  font-weight: 100 900;
-  font-style: normal;
+ion-content {
+  max-width: 500px;
+  align-self: center;
 }
 
 p {
@@ -92,7 +90,7 @@ footer {
 
 input:focus + label,
 input:not(:placeholder-shown) + label {
-  transform: translateX(var(--form-field-left-padding)) translateY(-70%);
+  transform: translateX(var(--form-field-left-padding)) translateY(-100%);
 }
 
 input:invalid:not(:placeholder-shown) {border: 1px solid red}

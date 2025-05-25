@@ -18,6 +18,9 @@ import {Service} from "../../models/service.model";
 import {addIcons} from 'ionicons';
 import {star} from 'ionicons/icons';
 import {AppServicesService} from "../../services/app-services.service";
+import {AuthService} from "../../services/auth.service";
+import {Subscription} from "rxjs";
+import {User} from "@angular/fire/auth";
 
 addIcons({
   star,
@@ -32,8 +35,10 @@ addIcons({
 })
 export class ServiceDetailsPage implements OnInit {
   service!: Service;
+  private authSubscription?: Subscription;
+  protected authState: User | null = null;
 
-  constructor(private router: Router, private appServices: AppServicesService) {}
+  constructor(private router: Router, private appServices: AppServicesService, private authService: AuthService) {}
 
   ngOnInit() {
     const nav = this.router.getCurrentNavigation();
@@ -42,6 +47,13 @@ export class ServiceDetailsPage implements OnInit {
     if (!this.service) {
       this.router.navigate(['/home']).then();
     }
+    this.authSubscription = this.authService.authState$.subscribe(
+      authState => this.authState = authState
+    );
+  }
+
+  ngOnDestroy() {
+    this.authSubscription?.unsubscribe();
   }
 
   async toggleFavorite() {

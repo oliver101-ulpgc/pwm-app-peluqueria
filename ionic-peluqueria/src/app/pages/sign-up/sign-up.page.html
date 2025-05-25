@@ -7,12 +7,19 @@
   <ion-text color="medium"><h2 class="text-section-subtitle-heading">Ingresa tus datos para registrarte</h2></ion-text>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <ion-item class="form-field">
-      <ion-label position="floating">Nombre de usuario*</ion-label>
-      <ion-input type="text" formControlName="username" placeholder="usuario123" required></ion-input>
+      <ion-input
+        labelPlacement="stacked"
+        label="Nombre de usuario*"
+        type="text"
+        formControlName="username"
+        placeholder="usuario123"
+        required
+      ></ion-input>
     </ion-item>
     <ion-item class="form-field">
-      <ion-label position="floating">Email*</ion-label>
       <ion-input
+        labelPlacement="stacked"
+        label="Email*"
         type="email"
         formControlName="email"
         placeholder="you@domain.com"
@@ -21,8 +28,9 @@
     </ion-item>
 
     <ion-item class="form-field">
-      <ion-label position="floating">Contraseña*</ion-label>
       <ion-input
+        labelPlacement="stacked"
+        label="Contraseña*"
         type="password"
         formControlName="password"
         required
@@ -30,8 +38,9 @@
     </ion-item>
 
     <ion-item class="form-field">
-      <ion-label position="floating">Teléfono*</ion-label>
       <ion-input
+        labelPlacement="stacked"
+        label="Teléfono*"
         type="tel"
         formControlName="telephone"
         placeholder="123456789"

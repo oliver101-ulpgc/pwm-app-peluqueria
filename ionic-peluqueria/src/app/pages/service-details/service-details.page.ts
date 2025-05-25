@@ -15,9 +15,9 @@ import {
 } from '@ionic/angular/standalone';
 import {Router} from '@angular/router';
 import {Service} from "../../models/service.model";
-import {DetailsService} from "../../services/details.service";
 import {addIcons} from 'ionicons';
 import {star} from 'ionicons/icons';
+import {AppServicesService} from "../../services/app-services.service";
 
 addIcons({
   star,
@@ -33,7 +33,7 @@ addIcons({
 export class ServiceDetailsPage implements OnInit {
   service!: Service;
 
-  constructor(private router: Router, private detailsService: DetailsService) {}
+  constructor(private router: Router, private appServices: AppServicesService) {}
 
   ngOnInit() {
     const nav = this.router.getCurrentNavigation();
@@ -46,6 +46,6 @@ export class ServiceDetailsPage implements OnInit {
 
   async toggleFavorite() {
     this.service.isFavorite = !this.service.isFavorite;
-    await this.detailsService.updateFavorite(this.service.id, this.service.isFavorite);
+    this.appServices.updateServiceIsFavorite(this.service.id, this.service.isFavorite);
   }
 }

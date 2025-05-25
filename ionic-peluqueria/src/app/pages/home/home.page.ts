@@ -1,7 +1,6 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {IonContent, IonHeader, IonList, IonTitle, IonToolbar, IonButton, IonAvatar} from '@ionic/angular/standalone';
 import {Service} from "../../models/service.model";
-import {HomeService} from "../../services/home.service";
 import {NgForOf} from "@angular/common";
 import {Router} from "@angular/router";
 import {ServiceItemComponent} from "../../components/service/service-item/service-item.component";

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
   IonContent,
   IonHeader,
@@ -10,8 +10,9 @@ import {
   IonToolbar
 } from '@ionic/angular/standalone';
 import {Service} from "../../models/service.model";
-import {HomeService} from "../../services/home.service";
 import {NgForOf} from "@angular/common";
+import {AppServicesService} from "../../services/app-services.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -20,17 +21,19 @@ import {NgForOf} from "@angular/common";
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, NgForOf, IonList, IonItem, IonThumbnail, IonLabel],
   standalone: true
 })
-export class FavoritesPage implements OnInit {
+export class FavoritesPage implements OnInit, OnDestroy {
   services: Service[] = [];
+  private servicesSubscription?: Subscription;
 
-  constructor(private homeService: HomeService) {}
+  constructor(private appServices: AppServicesService) {}
 
   ngOnInit(): void {
+    this.servicesSubscription = this.appServices.getServices().subscribe(
+      services => this.services = services.filter(s => s.isFavorite)
+    );
+  }
 
-    this.homeService.getServices().subscribe({
-      next: (services: Service[]) => {
-        this.services = services.filter(s => s.isFavorite);
-      },
-    });
+  ngOnDestroy(): void {
+    this.servicesSubscription?.unsubscribe();
   }
 }

@@ -58,6 +58,7 @@ export class SignUpPage {
       }
 
       await this.authService.signUp({username, email, password, telephone})
+      localStorage.setItem('user_email', email);
       alert('Sign up successfully.');
       await this.router.navigate(['']);
     } catch (error) {

@@ -46,6 +46,7 @@ export class LogInPage{
         return;
       }
 
+      localStorage.setItem('user_email', email);
       await this.router.navigate(['']);
     } catch (error) {
     }

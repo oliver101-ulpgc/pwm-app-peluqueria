@@ -2,7 +2,7 @@ import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {IonContent, IonHeader, IonList, IonTitle, IonToolbar, IonButton, IonAvatar} from '@ionic/angular/standalone';
 import {Service} from "../../models/service.model";
 import {HomeService} from "../../services/home.service";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {Router} from "@angular/router";
 import {ServiceItemComponent} from "../../components/service/service-item/service-item.component";
 import {Subscription} from "rxjs";
@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonAvatar, NgForOf, IonList, ServiceItemComponent, RouterModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonAvatar, NgForOf, NgIf, IonList, ServiceItemComponent, RouterModule],
   standalone: true
 })
 export class HomePage implements OnInit, OnDestroy {
@@ -27,6 +27,7 @@ export class HomePage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userEmail = localStorage.getItem('user_email');
+    console.log("Holaaaaaaaaaaa", this.userEmail);
 
     this.servicesSubscription = this.servicesService.getServices().subscribe({
       next: (services: Service[]) => {

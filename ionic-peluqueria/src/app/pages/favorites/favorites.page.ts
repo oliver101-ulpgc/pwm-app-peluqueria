@@ -6,10 +6,12 @@ import {
   IonLabel,
   IonList,
   IonThumbnail,
+  IonAvatar,
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
 import {Service} from "../../models/service.model";
+import { RouterModule } from '@angular/router';
 import {HomeService} from "../../services/home.service";
 import {NgForOf} from "@angular/common";
 
@@ -17,7 +19,7 @@ import {NgForOf} from "@angular/common";
   selector: 'app-home',
   templateUrl: 'favorites.page.html',
   styleUrls: ['favorites.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, NgForOf, IonList, IonItem, IonThumbnail, IonLabel],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, NgForOf, IonList, IonAvatar, IonItem, IonThumbnail, IonLabel, RouterModule],
   standalone: true
 })
 export class FavoritesPage implements OnInit {

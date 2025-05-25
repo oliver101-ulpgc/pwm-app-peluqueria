@@ -2,9 +2,15 @@
   <ion-toolbar>
     <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
       <ion-title style="margin: 0;">Servicios</ion-title>
-      <div style="display: flex; gap: 8px;">
+
+      <div *ngIf="userEmail === null" style="display: flex; gap: 8px;">
         <ion-button size="small" routerLink="/log-in">Iniciar Sesión</ion-button>
         <ion-button size="small" routerLink="/sign-up">Registrarse</ion-button>
+      </div>
+
+      <div *ngIf="userEmail !== null" style="display: flex; gap: 8px;">
+        <ion-button size="small" routerLink="/favorites">Lista de favoritos</ion-button>
+        <ion-button size="small" routerLink="/log-in" style="--background: red">Cerrar Sesión</ion-button>
       </div>
     </div>
   </ion-toolbar>

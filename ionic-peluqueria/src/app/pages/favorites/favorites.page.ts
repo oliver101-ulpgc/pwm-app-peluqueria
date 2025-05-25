@@ -8,11 +8,10 @@ import {
   IonThumbnail,
   IonAvatar,
   IonTitle,
-  IonToolbar
+  IonToolbar, IonBackButton
 } from '@ionic/angular/standalone';
 import {Service} from "../../models/service.model";
 import { RouterModule } from '@angular/router';
-import {HomeService} from "../../services/home.service";
 import {NgForOf} from "@angular/common";
 import {AppServicesService} from "../../services/app-services.service";
 import {Subscription} from "rxjs";
@@ -21,7 +20,7 @@ import {Subscription} from "rxjs";
   selector: 'app-home',
   templateUrl: 'favorites.page.html',
   styleUrls: ['favorites.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, NgForOf, IonList, IonAvatar, IonItem, IonThumbnail, IonLabel, RouterModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, NgForOf, IonList, IonAvatar, IonItem, IonThumbnail, IonLabel, RouterModule, IonBackButton],
   standalone: true
 })
 export class FavoritesPage implements OnInit, OnDestroy {

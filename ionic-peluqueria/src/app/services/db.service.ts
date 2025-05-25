@@ -1,7 +1,6 @@
-import {inject, Injectable, OnInit} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {CapacitorSQLite, SQLiteConnection, SQLiteDBConnection} from "@capacitor-community/sqlite";
-import {Service} from "../models/interfaces.model";
-import {HomeService} from "./home.service";
+import {Service} from "../models/service.model";
 import {Capacitor} from "@capacitor/core";
 import {collection, collectionData, Firestore} from "@angular/fire/firestore";
 import { firstValueFrom } from 'rxjs';
@@ -25,7 +24,6 @@ export class DbService{
     this.sqlite = new SQLiteConnection(CapacitorSQLite);
     this.initLocalStorageIfEmpty();
   }
-
 
   private initLocalStorageIfEmpty() {
     const data = localStorage.getItem(this.localStorageKey);

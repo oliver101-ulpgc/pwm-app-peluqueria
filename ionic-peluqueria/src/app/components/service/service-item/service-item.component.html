@@ -1,0 +1,14 @@
+<ion-item class="service-item" lines="full">
+  <ion-thumbnail slot="start">
+    <img [src]="service.image" alt="{{ service.title }}">
+  </ion-thumbnail>
+  <ion-button shape="round" (click)="onStarClick($event)">
+    <ion-icon
+      name="star"
+      [style.color]="service.isFavorite ? 'gold' : 'black'"
+    ></ion-icon>
+  </ion-button>
+  <ion-label>
+    {{ service.title }}
+  </ion-label>
+</ion-item>

@@ -5,34 +5,17 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-
   <div class="section">
     <h2 class="section-title">Servicios Principales</h2>
     <ion-list>
-      <ion-item *ngFor="let service of primary_services" lines="full" (click)="goToDetails(service)">
-        <ion-thumbnail slot="start">
-          <img [src]="service.image" alt="{{ service.title }}">
-        </ion-thumbnail>
-        <ion-label>
-          {{ service.title }}
-        </ion-label>
-      </ion-item>
+      <app-service-item *ngFor="let service of primary_services" [service]="service" (click)="goToDetails(service)"/>
     </ion-list>
   </div>
-
   <div class="section">
     <h2 class="section-title">Otros Servicios</h2>
     <ion-list>
-      <ion-item *ngFor="let service of secondary_services" lines="full" (click)="goToDetails(service)">
-        <ion-thumbnail slot="start">
-          <img [src]="service.image" alt="{{ service.title }}">
-        </ion-thumbnail>
-        <ion-label>
-          {{ service.title }}
-        </ion-label>
-      </ion-item>
+      <app-service-item *ngFor="let service of secondary_services" [service]="service" (click)="goToDetails(service)"/>
     </ion-list>
   </div>
 </ion-content>

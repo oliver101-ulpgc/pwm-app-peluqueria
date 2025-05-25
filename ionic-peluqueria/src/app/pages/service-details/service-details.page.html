@@ -13,7 +13,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding">
-  <img [alt]="service.title" [src]="service.image" />
+  <div class="service-details-image">
+   <img [alt]="service.title" [src]="service.image" />
+  </div>
   <ion-item>
     <ion-icon></ion-icon>
     <ion-label>Duración:</ion-label>

@@ -1,16 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonCard,
-  IonCardHeader, IonCardTitle, IonList, IonItem, IonThumbnail, IonLabel
+  IonHeader,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonThumbnail,
+  IonTitle,
+  IonToolbar
 } from '@ionic/angular/standalone';
-import {Service} from "../../models/interfaces.model";
+import {Service} from "../../models/service.model";
 import {HomeService} from "../../services/home.service";
 import {NgForOf} from "@angular/common";
 
@@ -18,13 +17,14 @@ import {NgForOf} from "@angular/common";
   selector: 'app-home',
   templateUrl: 'favorites.page.html',
   styleUrls: ['favorites.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, NgForOf, IonList, IonItem, IonThumbnail, IonLabel],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, NgForOf, IonList, IonItem, IonThumbnail, IonLabel],
   standalone: true
 })
 export class FavoritesPage implements OnInit {
   services: Service[] = [];
 
   constructor(private homeService: HomeService) {}
+
   ngOnInit(): void {
 
     this.homeService.getServices().subscribe({

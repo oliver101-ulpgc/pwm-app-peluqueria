@@ -1,5 +1,5 @@
-import {Injectable, OnInit} from '@angular/core';
-import {Service} from '../models/interfaces.model';
+import {Injectable} from '@angular/core';
+import {Service} from '../models/service.model';
 import {DbService} from "./db.service";
 
 @Injectable({

@@ -13,11 +13,11 @@ import {
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
-import { Router } from '@angular/router';
-import { Service } from "../../models/interfaces.model";
+import {Router} from '@angular/router';
+import {Service} from "../../models/service.model";
 import {DetailsService} from "../../services/details.service";
-import { addIcons } from 'ionicons';
-import { star } from 'ionicons/icons';
+import {addIcons} from 'ionicons';
+import {star} from 'ionicons/icons';
 
 addIcons({
   star,
@@ -33,22 +33,19 @@ addIcons({
 export class ServiceDetailsPage implements OnInit {
   service!: Service;
 
-  constructor(private router: Router, private detailsService: DetailsService) {
-  }
+  constructor(private router: Router, private detailsService: DetailsService) {}
 
   ngOnInit() {
     const nav = this.router.getCurrentNavigation();
     this.service = nav?.extras.state?.['service'];
 
     if (!this.service) {
-      // redirigir si se accede sin datos
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']).then();
     }
   }
 
   async toggleFavorite() {
     this.service.isFavorite = !this.service.isFavorite;
     await this.detailsService.updateFavorite(this.service.id, this.service.isFavorite);
-    console.log(this.service.isFavorite);
   }
 }

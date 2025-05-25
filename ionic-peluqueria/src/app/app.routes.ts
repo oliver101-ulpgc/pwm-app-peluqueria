@@ -18,13 +18,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/favorites/favorites.page').then((m) => m.FavoritesPage),
   },
   {
+    path: 'service-details',
+    loadComponent: () => import('./pages/service-details/service-details.page').then( m => m.ServiceDetailsPage)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  {
-    path: 'service-details',
-    loadComponent: () => import('./pages/service-details/service-details.page').then( m => m.ServiceDetailsPage)
-  }
-
 ];

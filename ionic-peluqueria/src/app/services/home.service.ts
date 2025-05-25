@@ -1,24 +1,23 @@
-import {Injectable, OnInit} from '@angular/core';
-import {Service} from '../models/interfaces.model';
+import {Injectable} from '@angular/core';
+import {Service} from '../models/service.model';
 import {map, Observable} from 'rxjs';
 import {collection, collectionData, Firestore} from '@angular/fire/firestore';
 import {DbService} from "./db.service";
-import {Capacitor} from "@capacitor/core";
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class HomeService{
+export class HomeService {
 
-  constructor(private firestore: Firestore, private dbService: DbService) { }
+  constructor(private firestore: Firestore, private dbService: DbService) {}
 
   getServices() {
     console.log(this.dbService.platform)
     if (this.dbService.platform === 'web') {
       // Si estamos en la web, obtener desde Firebase
       const serviceRef = collection(this.firestore, 'services');
-      return collectionData(serviceRef, { idField: 'id' }) as Observable<Service[]>;
+      return collectionData(serviceRef, {idField: 'id'}) as Observable<Service[]>;
     } else {
       // Si es Android (nativa), obtener desde SQLite o LocalStorage
       console.log("Native")

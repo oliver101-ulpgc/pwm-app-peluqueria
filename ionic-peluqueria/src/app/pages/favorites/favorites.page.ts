@@ -1,15 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {
-  IonContent,
-  IonHeader,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonThumbnail,
-  IonAvatar,
-  IonTitle,
-  IonToolbar, IonBackButton
-} from '@ionic/angular/standalone';
+import {IonBackButton, IonContent, IonHeader, IonList, IonTitle, IonToolbar} from '@ionic/angular/standalone';
 import {Service} from "../../models/service.model";
 import {Router, RouterModule} from '@angular/router';
 import {NgForOf} from "@angular/common";
@@ -21,7 +11,7 @@ import {ServiceItemComponent} from "../../components/service/service-item/servic
   selector: 'app-home',
   templateUrl: 'favorites.page.html',
   styleUrls: ['favorites.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, NgForOf, IonList, IonAvatar, IonItem, IonThumbnail, IonLabel, RouterModule, IonBackButton, ServiceItemComponent],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, NgForOf, IonList, RouterModule, IonBackButton, ServiceItemComponent],
   standalone: true
 })
 export class FavoritesPage implements OnInit, OnDestroy {

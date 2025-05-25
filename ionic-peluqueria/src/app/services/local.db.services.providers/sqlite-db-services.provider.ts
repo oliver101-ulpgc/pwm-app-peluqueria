@@ -12,7 +12,7 @@ const createTableIfNotExistsServicesStatement = `
     price    INTEGER,
     duration INTEGER,
     favorite TEXT
-  );
+  )
 `;
 
 const insertOrReplaceServicesStatement = `
@@ -25,12 +25,12 @@ const insertOrReplaceServicesStatement = `
     price,
     duration,
     favorite
-  ) VALUES (?, ?, ?, ?, ?, ?, ?);
+  ) VALUES (?, ?, ?, ?, ?, ?, ?)
 `;
 
-const deleteAllServicesStatement = `DELETE FROM SERVICES;`;
+const deleteAllServicesStatement = `DELETE FROM SERVICES`;
 
-const selectAllServicesQuery = `SELECT * FROM SERVICES;`;
+const selectAllServicesQuery = `SELECT * FROM SERVICES`;
 
 export class SqliteDbServicesProvider implements DbServicesProvider {
   private db!: SQLiteDBConnection;
@@ -53,7 +53,9 @@ export class SqliteDbServicesProvider implements DbServicesProvider {
   }
 
   async getAllServices(): Promise<Service[]> {
-    const result = await this.db!.query(selectAllServicesQuery);
+    // FIXME: Don't query SQLite to avoid errors
+    return [];
+    const result = await this.db.query(selectAllServicesQuery);
     return result.values?.map(services => ({
       ...services,
     })) || [];

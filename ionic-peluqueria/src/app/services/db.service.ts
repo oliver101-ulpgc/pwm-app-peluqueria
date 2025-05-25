@@ -3,12 +3,12 @@ import {CapacitorSQLite, SQLiteConnection, SQLiteDBConnection} from "@capacitor-
 import {Service} from "../models/service.model";
 import {Capacitor} from "@capacitor/core";
 import {collection, collectionData, Firestore} from "@angular/fire/firestore";
-import { firstValueFrom } from 'rxjs';
+import {firstValueFrom, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DbService{
+export class DbService {
 
   db: SQLiteDBConnection | null = null;
   public platform: 'native' | 'web' = Capacitor.getPlatform() === 'web' ? 'web' : 'native';
@@ -130,6 +130,4 @@ export class DbService{
       await this.db!.run('UPDATE SERVICES SET favorite = ? WHERE id = ?', [isFavorite ? 'true' : 'false', id]);
     }
   }
-
-
 }

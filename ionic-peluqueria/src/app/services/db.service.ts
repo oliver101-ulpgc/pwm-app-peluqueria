@@ -1,133 +1,39 @@
-import {inject, Injectable} from '@angular/core';
-import {CapacitorSQLite, SQLiteConnection, SQLiteDBConnection} from "@capacitor-community/sqlite";
+import {Injectable} from '@angular/core';
 import {Service} from "../models/service.model";
 import {Capacitor} from "@capacitor/core";
-import {collection, collectionData, Firestore} from "@angular/fire/firestore";
-import {firstValueFrom, Observable} from 'rxjs';
+import {DbServicesProvider} from "./local.db.services.providers/db-services.provider";
+import {SqliteDbServicesProvider} from "./local.db.services.providers/sqlite-db-services.provider";
+import {LocalStorageDbServicesProvider} from "./local.db.services.providers/local-storage-db-services.provider";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
-
-  db: SQLiteDBConnection | null = null;
-  public platform: 'native' | 'web' = Capacitor.getPlatform() === 'web' ? 'web' : 'native';
-  private localStorageKey = "todos";
-  private firestore =  inject(Firestore);
-  private sqlite!: SQLiteConnection;
+  private platform: 'native' | 'web' = Capacitor.getPlatform() === 'web' ? 'web' : 'native';
+  private dbServiceProvider!: DbServicesProvider;
 
   constructor() {
     this.init();
   }
 
-  private init() {
-    this.sqlite = new SQLiteConnection(CapacitorSQLite);
-    this.initLocalStorageIfEmpty();
-  }
-
-  private initLocalStorageIfEmpty() {
-    const data = localStorage.getItem(this.localStorageKey);
-    if (!data)
-      localStorage.setItem(this.localStorageKey, JSON.stringify([]));
-  }
-  private getLocalServices(): Service[] {
-    const data = localStorage.getItem(this.localStorageKey);
-    return data ? JSON.parse(data) : [];
-  }
-  private setLocalServices(services: Service[]) {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(services));
-  }
-
-  private async createSQLiteConnection(): Promise<void> {
-    if (!this.db) {
-      this.db =
-        await this.sqlite!.createConnection('data.db', false, 'no-encryption', 1, false);
-      await this.db.open();
-      await this.db.execute("CREATE TABLE IF NOT EXISTS SERVICES(id TEXT PRIMARY KEY, type TEXT,  image TEXT, title TEXT, price INTEGER, duration INTEGER, favorite TEXT)")
+  private async init() {
+    switch (this.platform) {
+      case "native":
+        this.dbServiceProvider = new SqliteDbServicesProvider();
+        this.dbServiceProvider.initDb();
+        break;
+      case "web":
+        this.dbServiceProvider = new LocalStorageDbServicesProvider();
+        this.dbServiceProvider.initDb();
+        break;
     }
   }
 
-  async syncFirebaseToSQLite(): Promise<void> {
-    if (this.platform === 'native') {
-      const serviceRef = collection(this.firestore, 'services');
-
-      let servicesSnapshot;
-      try {
-        servicesSnapshot = await firstValueFrom(collectionData(serviceRef, { idField: 'id' }));
-        console.log("Services from Firestore:", servicesSnapshot);
-      } catch (e) {
-        console.error("Error reading from Firestore", e);
-        return;
-      }
-
-      await this.createSQLiteConnection();
-
-      for (let service of servicesSnapshot!) {
-        try {
-          await this.db!.run(
-            'INSERT OR REPLACE INTO SERVICES (id, type, image, title, price, duration, favorite) VALUES (?, ?, ?, ?, ?, ?, ?)',
-            [
-              service['id'],
-              service['type'],
-              service['image'],
-              service['title'],
-              service['price'],
-              service['duration'],
-              service['favorite'] ? 'true' : 'false'
-            ]
-          );
-        } catch (err) {
-          console.error("Error inserting into SQLite", err, service);
-        }
-      }
-    }
+  public async saveLocally(services: Service[]) {
+    this.dbServiceProvider.setServices(services);
   }
 
-  async getAllServices(): Promise<Service[]> {
-    if (this.platform === 'web') {
-      return this.getLocalServices();
-    }
-    await this.createSQLiteConnection();
-    const result = await this.db!.query('SELECT * FROM SERVICES');
-    return result.values?.map(services => ({
-      ...services,
-    })) || [];
-  }
-
-  async addService(type: string, image: string, title: string, price: number, duration: number, favorite: boolean): Promise<Service[]> {
-    if (this.platform === 'web') {
-      const service = this.getLocalServices();
-      const newService: Service =
-        { id: Date.now().toString(), type: type, image: image, title: title, price_euro: price, duration_minutes: duration, isFavorite: false };
-      service.push(newService);
-      this.setLocalServices(service);
-      return service;
-    }
-    await this.createSQLiteConnection();
-    await this.db!.run(
-      'INSERT INTO SERVICES (type, image, title, price, duration, favorite) VALUES (?, ?, ?, ?, ?, ?)', [type, image, title, price, duration, favorite]);
-    return this.getAllServices();
-  }
-
-  async deleteService(id: string): Promise<Service[]> {
-    if (this.platform === 'web') {
-      const todos = this.getLocalServices().filter(todo => todo.id !== id);
-      this.setLocalServices(todos);
-      return todos;
-    }
-    await this.createSQLiteConnection();
-    await this.db!.run('DELETE FROM SERVICES WHERE id = ?', [id]);
-    return this.getAllServices();
-  }
-
-  async updateFavoriteStatus(id: string, isFavorite: boolean) {
-    if (this.platform === 'web') {
-      const allServices = this.getLocalServices();
-      const updated = allServices.map(s => s.id === id ? { ...s, isFavorite } : s);
-      this.setLocalServices(updated);
-    } else {
-      await this.createSQLiteConnection();
-      await this.db!.run('UPDATE SERVICES SET favorite = ? WHERE id = ?', [isFavorite ? 'true' : 'false', id]);
-    }
+  public async getAllServices(): Promise<Service[]> {
+    return await this.dbServiceProvider.getAllServices();
   }
 }

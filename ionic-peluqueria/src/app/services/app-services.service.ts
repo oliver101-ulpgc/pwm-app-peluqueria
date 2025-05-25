@@ -19,7 +19,7 @@ export class AppServicesService {
   private async init() {
     this.services$.next(await this.dbService.getAllServices());
     console.log('Servicios locales:', this.services$.value);
-    this.handleSyncingFromFirestore();
+    this.handleSyncingFromFirestore().then();
     // hacer que cada vez que cambie services$ se escriba de nuevo en local
     // TODO
   }
